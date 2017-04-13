@@ -1,4 +1,4 @@
-body * 
+body
 {
     margin: 0px;
 }
@@ -14,9 +14,12 @@ body *
 #titreHeader
 {
     line-height: 50px;
+    margin: 0;
+    
 }
 
-header
+header, footer
 {
-    background-color: red;
+    background-color: #B01A2E;
+    width: 100%;
 }
