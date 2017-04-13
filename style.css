@@ -23,3 +23,21 @@ header, footer
     background-color: #B01A2E;
     width: 100%;
 }
+.texte-index{
+    margin: 0 auto;
+    width: 500px;
+    border:solid 1px;
+}
+h1, h2 {
+	color: black;
+	font-family: "Calibri";
+}
+h1{
+    font: 50px;
+	text-shadow: 0px 0px 9px #333;
+}
+h2
+{
+    font: 30px;
+	text-shadow: 0px 0px 9px #333;
+}

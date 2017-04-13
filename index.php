@@ -12,8 +12,10 @@
         <h1 id="titreHeader">Site du BDE</h1>
     </header>
 
-    <nav>
-
+    <nav class= "texte-index">
+      <h1>Site du BDE</h1>
+      <hr></hr>
+      <h2>Centre de Reims</h2>
     </nav>
     
     <footer>
