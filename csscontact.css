@@ -1,26 +1,32 @@
-.texte-index{
-    text-align: center;
-    margin: 0 auto;
-    width: 500px;
-    border:solid 1px;
+.flex-container, .president, .Big_Boss{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 1200px auto;
 }
+
+.flex-item{
+    margin: 10 auto;
+    width: 300px;
+    /*border:solid 1px;*/
+    padding: 5px;
+    height: 450px auto;
+    /*margin-bottom: 25px auto;*/
+}
+
 h1, h2 {
 	color: black;
 	font-family: "Calibri";
 }
-#BDE{
-    font-size: 50px auto;
-	text-shadow: 0px 0px 9px #333;
 
-}
-h1{
-    font: 50px;
-	text-shadow: 0px 0px 9px #333;
-    font-size: 50px auto;
-}
 h2{
 	text-shadow: 0px 0px 9px #333;
     font-size: 30px auto;
+    
+    text-align: center;
 }
 hr {
 	height: 1px;
@@ -30,11 +36,14 @@ hr {
     color: #F00;
     background-color: #F00;
 }
-#deventure{
-    border-radius: 4px;
-    max-width: 100%;
+
+#Avatar{
     height: auto;
-    display: block;
+    width: 250px;
     margin: auto;
-    width: 50%;
+    display: block;
+    border-radius: 8px;
+}
+p{
+
 }
