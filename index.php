@@ -15,6 +15,8 @@
       <hr></hr>
       <h2>Centre de Reims</h2>
     </div>
+	
+    <img id="deventure" src="Images/deventure.jpg" alt="deventure du CESI" />
     
 
     <?php include 'footer.php'; ?>
