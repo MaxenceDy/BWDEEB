@@ -8,18 +8,19 @@
   </head>
 
   <body>
-
+    
     <?php include('header.php'); ?>
-    
-    <div class= "texte-index">
-      <h1 id="BDE">Site du BDE</h1>
-      <hr></hr>
-      <h2>Centre de Reims</h2>
+
+    <div id="wrapper">
+        <div class= "texte-index">
+          <h1 id="BDE">Site du BDE</h1>
+          <hr></hr>
+          <h2>Centre de Reims</h2>
+        </div>
+        <img id="deventure" src="Images/deventure.jpg" alt="deventure du CESI" />
     </div>
-	
-    <img id="deventure" src="Images/deventure.jpg" alt="deventure du CESI" />
-    
 
     <?php include 'footer.php'; ?>
+    
   </body>
 </html>

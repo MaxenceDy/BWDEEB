@@ -2,7 +2,6 @@
     text-align: center;
     margin: 0 auto;
     width: 500px;
-    border:solid 1px;
 }
 h1, h2 {
 	color: black;
@@ -24,7 +23,7 @@ h2{
 }
 hr {
 	height: 1px;
-	margin: 40px 50px 80px;
+	margin: 40px 50px 40px;
 	font-size: 60px;
 	line-height: 1;
     color: #F00;
@@ -37,4 +36,6 @@ hr {
     display: block;
     margin: auto;
     width: 50%;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }

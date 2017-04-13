@@ -1,8 +1,22 @@
+/*GENERAL*/
+
 body
 {
     margin: 0px;
+    font-family: "Calibri";
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+#wrapper
+{
+    flex: 1 0 auto;
+}
+
+/*HEADER*/
+
+/*image*/
 #logoHeader
 {
     width: 80px;
@@ -13,11 +27,11 @@ body
     margin-top: 10px;
 }
 
+/*h1*/
 #titreHeader
 {
     line-height: 80px;
     margin: 0;
-    
 }
 
 header
@@ -27,44 +41,59 @@ header
     height: 80px;
 }
 
+header a
+{
+    float: right;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: black;
+    text-decoration: none;
+    line-height: 70px;
+    transition: 0.5s;        
+}
+
+header a:hover, footer a:hover
+{
+    background-color: #FF8094;
+    transition: 0.5s;    
+}
+
+/*FOOTER*/
 footer
 {
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0px;
     width: 100%;
     height: 40px;
     background-color: #B01A2E;
 }
 
-header a, footer a
+
+footer a
 {
     float: right;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;    
     color: black;
     text-decoration: none;
-    line-height: 70px;
+    transition: 0.5s; 
+    line-height: 40px;
 }
 
-a:hover
-{
-    background-color: #FF8094;
-}
-/*
-h2{
-    font: 30px;
-	text-shadow: 0px 0px 9px #333;
-}*/
-
+/*NAV*/
 
 nav
 {
     background-color: #CC7A90;
     margin: 0;
+    height: 30px;
 }
 
 nav ul
 {
     margin: 0;
+    padding: 0;
     list-style: none;
 }
 
@@ -72,7 +101,24 @@ nav li
 {
     margin: 0px;
     list-style: none;
-    display: inline;
-    padding-left : 5px;
-    padding-right : 5px;    
+    display: block;
+    float: left;   
+    line-height: 30px;  
+    padding-left : 20px;
+}
+
+nav a
+{
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid;
+    border-bottom-color: #CC7A90;
+    transition: 0.5s;   
+}
+
+nav a:hover
+{
+    border-bottom: 2px solid;
+    border-bottom-color: #B01A2E;
+    transition: 0.5s;
 }

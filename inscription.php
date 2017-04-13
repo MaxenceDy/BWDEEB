@@ -11,7 +11,7 @@
 
   <?php include('header.php'); ?>
     
-	<div id="wrapper">
+	<div id=wrapper>
 		<form id="LOGIN" method="POST" action="#">
 			<div class="login">
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
@@ -19,10 +19,16 @@
 				<br /><label for="email">Email</label> <br />
 				<input type="email" name="email" id="email" /> <br />
 				
-				<label for="password">Password</label> <br />
+				<label for="password">Utilisateur</label> <br />
 				<input type="password" name="password" id="pass" /> <br />
 				
-				<input type="submit" value="Login" />
+				<br /><label for="email">Password</label> <br />
+				<input type="email" name="email" id="email" /> <br />
+				
+				<label for="password">Retapez votre password</label> <br />
+				<input type="password" name="password" id="pass" /> <br />
+				
+				<input type="submit" value="s'inscrire" />
 			</div>
 		</form>
   </div>
