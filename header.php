@@ -8,7 +8,7 @@
 
 <nav>
     <ul>
-        <li><a href="">Accueil</a></li>
+        <li><a href="index.php">Accueil</a></li>
         <li><a href="">Activités</a></li>
         <li><a href="">Boutique</a></li>
         <li><a href="">Suggestion</a></li>
