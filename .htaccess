@@ -1,0 +1,7 @@
+RewriteEngine on
+ErrorDocument 404 http://localhost:8080/BWDEEB/erreur.php
+
+
+#RewriteRule API.php/(.+)/(.+)$ API.php?users=$1&id=$2 [L]
+#RewriteRule API.php/(.+)$ API.php?users=$1 [L]
+
