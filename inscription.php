@@ -9,7 +9,7 @@
 
   <body>
 
-    <?php include('header.php'); ?>
+  <?php include('header.php'); ?>
     
 	<div id=wrapper>
 		<form id="LOGIN" method="POST" action="#">
@@ -33,7 +33,7 @@
 		</form>
   </div>
 
-    <?php include 'footer.php'; ?>
+  <?php include 'footer.php'; ?>
 	
   </body>
 </html>
