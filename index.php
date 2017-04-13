@@ -7,20 +7,14 @@
   </head>
 
   <body>
-    <header>
-        <img src="Images/Logo.png" alt="logo" id="logoHeader">
-        <h1 id="titreHeader">Site du BDE</h1>
-    </header>
 
-    <nav class= "texte-index">
+    <?php include('header.php'); ?>
+    
+    <div class= "texte-index">
       <h1 id="BDE">Site du BDE</h1>
       <hr></hr>
       <h2>Centre de Reims</h2>
-    </nav>
-    
-    <footer>
-    </footer>
-    <?php include('header.php'); ?>
+    </div>
     
 
     <?php include 'footer.php'; ?>
