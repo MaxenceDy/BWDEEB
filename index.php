@@ -7,6 +7,7 @@
   </head>
 
   <body>
+<<<<<<< HEAD
     <header>
         <img src="Images/Logo.png" alt="logo" id="logoHeader">
         <h1 id="titreHeader">Site du BDE</h1>
@@ -20,6 +21,11 @@
     
     <footer>
     </footer>
+=======
+    <?php include('header.php'); ?>
+>>>>>>> c7067938f0859c5272d0e66206c1a1fc6f5dc005
     
+
+    <?php include 'footer.php'; ?>
   </body>
 </html>
