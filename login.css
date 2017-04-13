@@ -1,3 +1,9 @@
+#wrapper
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #LogoLogin
 {
@@ -5,6 +11,11 @@
 	height: 400px;
 	width: 600px;
 	padding: 20px;
+}
+
+form
+{
+  text-align: center;
 }
 
 [class*="fontawesome-"]:before {

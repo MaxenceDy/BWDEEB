@@ -11,7 +11,7 @@
 
     <?php include('header.php'); ?>
     
-	<center>
+	<div id="wrapper">
 		<form id="LOGIN" method="POST" action="#">
 			<div class="login">
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
@@ -25,7 +25,7 @@
 				<input type="submit" value="Login" />
 			</div>
 		</form>
-    </center>
+    </div>
 
     <?php include 'footer.php'; ?>
 	
