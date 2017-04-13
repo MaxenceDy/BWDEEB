@@ -3,26 +3,29 @@
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <title>BDE Exia Reims : connexion</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <link rel="stylesheet" type="text/css" href="login.css">
   </head>
 
   <body>
 
     <?php include('header.php'); ?>
     
-    <div class= "login">
-	
-		<img src="Images/Logo.png" alt="logo" id="logoLogin">
-		
-		<form id="LOGIN" method="POST">
-			<input type="text" name="login" placeholder="utilisateur ou mail" value="<?php if (isset($_POST['login'])) echo($_POST['login']); ?>"/><br><br>
-			<input name="passwd" type="password" placeholder="mot de passe" value="<?phpif (isset($_POST['passwd'])) echo($_POST['passwd']); ?>"  /><br><br>
-			<input id="button" type="submit" name"submit" value="connexion" />
+	<center>
+		<form id="LOGIN" method="POST" action="#">
+			<div class="login">
+				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
+				
+				<br /><label for="email">Email</label> <br />
+				<input type="email" name="email" id="email" /> <br />
+				
+				<label for="password">Password</label> <br />
+				<input type="password" name="password" id="pass" /> <br />
+				
+				<input type="submit" value="Login" />
+			</div>
 		</form>
-		
-	
-    </div>
-    
+    </center>
 
     <?php include 'footer.php'; ?>
 	
