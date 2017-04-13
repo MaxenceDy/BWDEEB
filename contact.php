@@ -4,15 +4,13 @@
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <title>BDE Exia Reims</title>
     <link rel="stylesheet" type="text/css" href="header.css">
-   
-    <link rel="stylesheet" type="text/css" href="csscontact.css">    
+    <link rel="stylesheet" type="text/css" href="contact.css">    
   </head>
 
   <body>
-    <header>
-        <img src="Images/Logo.png" alt="logo" id="logoHeader">
-        <h1 id="titreHeader">Site du BDE</h1>
-    </header>
+
+    <?php include('header.php'); ?>
+
     <div class="Big_Boss">
       <div class= "flex-item">
         <h2>Big Boss</h2>
@@ -97,8 +95,7 @@
        
       </div>
     </div>
-    <footer>
-    </footer>
-    <?php include('header.php'); ?>
+
     <?php include 'footer.php'; ?>
+    
   </body>
