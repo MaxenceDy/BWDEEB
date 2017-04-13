@@ -34,5 +34,10 @@ footer
     width: 100%;
     height: 40px;
     background-color: #B01A2E;
-    
+}
+
+header a 
+{
+    float: right;
+    padding: 5px;
 }
