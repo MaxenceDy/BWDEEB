@@ -3,6 +3,15 @@
 body
 {
     margin: 0px;
+    font-family: "Calibri";
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#wrapper
+{
+    flex: 1 0 auto;
 }
 
 /*HEADER*/
@@ -31,23 +40,7 @@ header
     height: 80px;
 }
 
-header a:hover, footer a:hover
-{
-    background-color: #FF8094;
-    transition: 0.5s;    
-}
-
-/*FOOTER*/
-footer
-{
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    height: 40px;
-    background-color: #B01A2E;
-}
-
-header a, footer a
+header a
 {
     float: right;
     padding: 5px;
@@ -57,8 +50,31 @@ header a, footer a
     transition: 0.5s;        
 }
 
+header a:hover, footer a:hover
+{
+    background-color: #FF8094;
+    transition: 0.5s;    
+}
+
+/*FOOTER*/
+footer
+{
+    /*position: fixed;*/
+    bottom: 0px;
+    width: 100%;
+    height: 40px;
+    background-color: #B01A2E;
+}
+
+
 footer a
 {
+    float: right;
+    padding-left: 5px;
+    padding-right: 5px;    
+    color: black;
+    text-decoration: none;
+    transition: 0.5s; 
     line-height: 40px;
 }
 
