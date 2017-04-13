@@ -11,7 +11,7 @@
         <li><a href="index.php">Accueil</a></li>
         <li><a href="">Activités</a></li>
         <li><a href="">Boutique</a></li>
-        <li><a href="">Suggestions d'idées</a></li>
+        <li><a href="suggestion.php">Suggestions d'idées</a></li>
         <li><a href="">Administration</a></li>            
     </ul>        
 </nav>
