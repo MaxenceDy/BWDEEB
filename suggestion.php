@@ -12,17 +12,14 @@
   <?php include('header.php'); ?>
     
 	<div id="wrapper">
-		<form id="LOGIN" method="POST" action="#">
+		<form id="SUGG" method="POST" action="#">
 			<div class="login">
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
 				
-				<br /><label for="email">Email</label> <br />
-				<input type="email" name="email" id="email" /> <br />
+				<br /><label for="suggestion">Ma suggestion</label> <br />
+				<textarea name="suggestion" id="suggestion" rows="10" cols="40"></textarea><br>
 				
-				<label for="password">Password</label> <br />
-				<input type="password" name="password" id="pass" /> <br />
-				
-				<input type="submit" value="Login" />
+				<input type="submit" value="Envoyer" />
 			</div>
 		</form>
   </div>
