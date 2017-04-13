@@ -7,17 +7,9 @@
   </head>
 
   <body>
-    <header>
-        <img src="Images/Logo.png" alt="logo" id="logoHeader">
-        <h1 id="titreHeader">Site du BDE</h1>
-    </header>
-
-    <nav>
-
-    </nav>
+    <?php include('header.php'); ?>
     
-    <footer>
-    </footer>
-    
+
+    <?php include 'footer.php'; ?>
   </body>
 </html>

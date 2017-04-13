@@ -13,7 +13,7 @@ body
 
 #titreHeader
 {
-    line-height: 50px;
+    line-height: 40px;
     margin: 0;
     
 }
@@ -22,4 +22,7 @@ header, footer
 {
     background-color: #B01A2E;
     width: 100%;
+    height: 40px;
 }
+
+//footer
