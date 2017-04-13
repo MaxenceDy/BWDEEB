@@ -9,20 +9,30 @@ body
     height: auto;
     float: left;
     margin-right: 30px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 #titreHeader
 {
-    line-height: 40px;
+    line-height: 80px;
     margin: 0;
     
 }
 
-header, footer
+header
 {
     background-color: #B01A2E;
     width: 100%;
-    height: 40px;
+    height: 80px;
 }
 
-//footer
+footer
+{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 40px;
+    background-color: #B01A2E;
+    
+}
