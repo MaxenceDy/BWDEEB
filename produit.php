@@ -14,6 +14,8 @@
   <div id="wrapper">
     <div id="containerImg">
 	    <img src="Images/gourde.jpg">
+      <p>Coloris : </p>
+      <p>Tailles : </p>
     </div>
 
     <aside id="containerDsc">
@@ -25,7 +27,7 @@
     </aside>
 
   </div>
-  
+
   <?php include 'footer.php'; ?>
 	
   </body>
