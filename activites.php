@@ -16,53 +16,47 @@
 
     <div id="activiteFutures">
       <div class="container">
-        <img src="Images/foret.png">
+        <a href="detailActi.php"><img src="Images/foret.png"></a>
         <h2>Voyage en pleine nature</h2>
         <p>12h</p>
       </div>
       <div class="container">
-        <img src="Images/mer.png">
+        <a href="detailActi.php"><img src="Images/mer.png"></a>
         <h2>Voyage en pleine mer</h2>
         <p>12h</p>
       </div>
       <div class="container">
-        <img src="Images/desert.png">
+        <a href="detailActi.php"><img src="Images/desert.png"></a>
         <h2>Voyage en plein desert</h2>
         <p>12h</p>
       </div>
     </div>
 
-    <h1>Toutes nos activites</h1>
+    <h1>Toutes nos activités</h1>
     <div id="activites">
       <div class="container">
-        <img src="Images/foret.png">
+        <a href="detailActi.php"><img src="Images/foret.png"></a>
         <h2>Voyage en pleine nature</h2>
-        <p>12h</p>
       </div>
       <div class="container">
-        <img src="Images/mer.png">
+        <a href="detailActi.php"><img src="Images/mer.png"></a>
         <h2>Voyage en pleine mer</h2>
-        <p>12h</p>
       </div>
       <div class="container">
-        <img src="Images/desert.png">
+        <a href="detailActi.php"><img src="Images/desert.png"></a>
         <h2>Voyage en plein desert</h2>
-        <p>12h</p>
       </div>
       <div class="container">
-        <img src="Images/foret.png">
+        <a href="detailActi.php"><img src="Images/foret.png"></a>
         <h2>Voyage en pleine nature</h2>
-        <p>12h</p>
       </div>
       <div class="container">
-        <img src="Images/mer.png">
+        <a href="detailActi.php"><img src="Images/mer.png"></a>
         <h2>Voyage en pleine mer</h2>
-        <p>12h</p>
       </div>
       <div class="container">
-        <img src="Images/desert.png">
+        <a href="detailActi.php"><img src="Images/desert.png"></a>
         <h2>Voyage en plein desert</h2>
-        <p>12h</p>
       </div>
     </div>
   </div>

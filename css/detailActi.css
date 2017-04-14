@@ -1,0 +1,36 @@
+#wrapper
+{
+    display: flex;
+}
+
+#containerActi
+{
+    display: flex;
+    flex-direction: column;
+}
+
+img
+{
+    width: 600px;
+    height: 400px;
+}
+
+#containerDsc p
+{
+    background-color: #F4C3C3;
+}
+
+strong
+{
+    color: red;
+}
+
+hr
+{
+    height: 1px;
+	margin: 40px 50px 40px;
+	font-size: 60px;
+	line-height: 1;
+    color: #F00;
+    background-color: #F00;
+}
