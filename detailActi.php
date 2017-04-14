@@ -57,6 +57,36 @@
         <a href="#"><img src="Images/foret.png"></a>
         <a href="#"><img src="Images/foret.png"></a>
         <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+      </div>
+
+      <h2>21 Mars 2016</h2>
+      <div id="photosDate">
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
       </div>
     </section>
   </div>

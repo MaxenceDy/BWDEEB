@@ -90,12 +90,15 @@ hr
 #containerPhotos
 {
     text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 80px;
 }
 
 #containerPhotos h2
 {
     text-align: left;
-    margin-left: 80px;
     font-weight: normal;
     font-size: 20px;
 }
@@ -115,6 +118,6 @@ hr
 
 #photosDate img
 {
-    margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
