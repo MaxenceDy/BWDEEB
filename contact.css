@@ -14,6 +14,7 @@
     /*border:solid 1px;*/
     padding: 5px;
     height: 450px auto;
+    
     /*margin-bottom: 25px auto;*/
 }
 
@@ -38,12 +39,15 @@ hr {
 }
 
 #Avatar{
-    height: auto;
+    height: 250px;
     width: 250px;
     margin: auto;
     display: block;
     border-radius: 8px;
 }
-p{
 
+p
+{
+    margin-left: 25px;
 }
+

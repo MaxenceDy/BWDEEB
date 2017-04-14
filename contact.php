@@ -27,9 +27,10 @@
         <p>Mail: <a href="mailto:matthieu.boxho@viacesi.fr">Envoyer un mail</a></p>
       </div>
     </div>
+
     <div class="flex-container">
       <div class= "flex-item">
-        <h2>Charger d'évenement</h2>
+        <h2>Chargé d'évenement</h2>
         <img src="Images/stephane1.png" alt="logo" id="Avatar">
         <p>Numéro de teléphone: <a href="tel:0652453333">06 52 45 90 67</a></p>
         <p>Mail: <a href="mailto:joshua.liaud@viacesi.fr">Envoyer un mail</a></p>
@@ -53,6 +54,7 @@
         <p>Mail: <a href="mailto:joshua.liaud@viacesi.fr">Envoyer un mail</a></p>
       </div>
     </div>
+
     <div class="flex-container">
       <div class= "flex-item">
         <h2>Chargé d'évenement</h2>
