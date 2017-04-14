@@ -5,6 +5,7 @@
     <title>BDE Exia Reims : connexion</title>
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
+	<script src="script/script.js"></script>
   </head>
 
   <body>
