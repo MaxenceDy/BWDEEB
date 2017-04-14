@@ -7,17 +7,17 @@
 {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    margin: 50px;
+    margin-left: 80px;
+    margin-right: 100px;
     margin-top: 20px;
     width: 100%;
     /*background-color: blue;*/
-    justify-content: space-between;
 }
 
 #containerDsc
 {
-    width: 50%;
+    margin-left: 60px;
+    width: 60%;
     min-width: 10%;
 }
 
@@ -35,7 +35,18 @@ img
 #containerDsc p
 {
     background-color: #F4C3C3;
-    height: 400px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#description
+{
+    height: 360px;
+}
+
+#prix
+{
+    height: 40px;
 }
 
 strong
@@ -51,4 +62,9 @@ hr
 	line-height: 1;
     color: #F00;
     background-color: #F00;
+}
+
+#bouton
+{
+    float: right;
 }

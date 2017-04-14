@@ -23,12 +23,12 @@
 
       <aside id="containerDsc">
         <h1>Voyage en plein air</h1>        
-        <p>
+        <p id="description">
           Description :<br><br>
           Balade dans la foret.
         </p>
-        <p>Prix de l'activité : 10€
-        <input type="button" onclick="#" value="Je vote pour l'activité">
+        <p id="prix">Prix de l'activité : 10€
+        <input type="button" onclick="#" id="bouton" value="Je vote pour l'activité">
         </p>
       </aside>
 

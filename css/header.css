@@ -3,22 +3,22 @@
 @font-face
 {
     font-family: "DinRegular";
-    src: url('Font/DINR____.ttf');
+    src: url('../Font/DINR____.ttf');
 }
 @font-face {
 	font-family: "DinRegular";
 	font-style: italic;
-	src: url('Font/DINRegularItalicAlt.ttf');
+	src: url('../Font/DINRegularItalicAlt.ttf');
 }
 @font-face {
 	font-family: "DinRegular";
 	font-weight: bold;
-	src: url('Font/DINBold.ttf');
+	src: url('../Font/DINBold.ttf');
 }
 
 body
 {
-    font-family: "DinRegular", "Calibri";    
+    font-family: "DinRegular", "Comic Sans MS";    
     margin: 0px;
     display: flex;
     flex-direction: column;
