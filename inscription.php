@@ -13,7 +13,7 @@
     
 	<div id=wrapper>
 		<form id="LOGIN" method="POST" action="#">
-			<div class="login">
+			<div class="form">
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
 				
 				<br /><label for="email">Email</label> <br />

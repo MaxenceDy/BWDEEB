@@ -17,7 +17,7 @@
 		<!-- GESTION DE L'AVATAR -->
 		<div id="gest-avatar">
 			<form method="POST" action="upload.php" enctype="multipart/form-data">
-				<div class="gest-avatar">
+				<div class="form">
 					
 					<!-- On limite le fichier à 100Ko -->
 					<input type="hidden" name="MAX_FILE_SIZE" value="100000">
@@ -34,13 +34,13 @@
 		<!-- GESTION DES INFO PERSO -->
 		<div id="gest-perso">
 			<form id="gest-perso" method="POST" action="#">
-			<div class="gest-perso">
+			<div class="form">
 				
 				<br /><label for="nom">Nom</label> <br />
 				<input type="text" name="nom" id="nom" /> <br />
 				
 				<label for="prenom">Prénom</label> <br />
-				<input type="text name="prenom" id="prenom" /> <br />
+				<input type="text" name="prenom" id="prenom" /> <br />
 				
 				<label for="dateN">Date de naissance</label> <br />
 				<input type="date" name="dateN" id="dateN" /> <br />

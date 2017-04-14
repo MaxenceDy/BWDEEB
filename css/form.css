@@ -14,7 +14,7 @@ form
 }
 
 
-/*LOGIN + INSCRIPTION*/
+/*LOGIN + INSCRIPTION + gestion info/avatar */
 #LogoLogin
 {
 	
@@ -23,15 +23,15 @@ form
 	padding: 20px;
 }
 
-div.login label{
+div.form label{
   display: inline-block;
   color: gray;
   font-size: 1.1em;
   margin-top: 0.6em;
 }
 
-/*INPUT*/
-div.login input[type="email"], div.login input[type="password"]{
+	/*INPUT*/
+div.form input[type="email"], div.form input[type="password"], div.form input[type="text"], div.form input[type="date"]{
   border: 0.1em solid #dfdfdf;
   padding: 1em;
   margin: 0.6em 0;
@@ -47,13 +47,13 @@ div.login input[type="email"], div.login input[type="password"]{
   transition: all 0.15s ease-in-out;
 }
 
-div.login input[type="email"]:focus, div.login input[type="password"]:focus{
+div.form input[type="email"]:focus, div.form input[type="password"]:focus, div.form input[type="text"]:focus, div.form input[type="date"]:focus{
   outline: none;
   border: 0.1em solid #bdbdbd;
 }
 
-/*BOUTON*/
-div.login input[type="submit"]{
+	/*BOUTON*/
+div.form input[type="submit"]{
   background: #f85f64;
   color: #fff;
   outline: none;
@@ -72,17 +72,13 @@ div.login input[type="submit"]{
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
-div.login input[type="submit"]:hover{
+div.form input[type="submit"]:hover{
   background: rgba(248, 95, 100, 0.8);
 }
 
 
-
-
-
-
-/*SUGGESTION*/
-div.login textarea{
+	/*SUGGESTION*/
+div.form textarea{
   border: 0.1em solid #dfdfdf;
   padding: 1em;
   margin: 0.6em 0;
@@ -98,45 +94,7 @@ div.login textarea{
   transition: all 0.15s ease-in-out;
 }
 
-div.login textarea:focus{
+div.form textarea:focus{
   outline: none;
   border: 0.1em solid #bdbdbd;
-}
-
-
-
-
-
-
-
-/*Modification Info + avatar*/
-div.gest-avatar label, div.gest-perso label {
-  display: inline-block;
-  color: gray;
-  font-size: 1.1em;
-  margin-top: 0.6em;
-}
-
-div.gest-avatar input[type="submit"], div.gest-perso input[type="submit"]{
-  background: #f85f64;
-  color: #fff;
-  outline: none;
-  text-transform: uppercase;
-  padding: 1.2em;
-  overflow: hidden;
-  border: none;
-  letter-spacing: 0.1em;
-  margin: 0.5em 0;
-  font-weight: bold;
-  -moz-border-radius: 0.4em;
-  -webkit-border-radius: 0.4em;
-  border-radius: 0.4em;
-  -moz-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  -webkit-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-}
-
-div.gest-avatar input[type="submit"]:hover, div.gest-pero input[type="submit"]:hover {
-  background: rgba(248, 95, 100, 0.8);
 }
