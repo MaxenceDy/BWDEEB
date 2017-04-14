@@ -5,7 +5,7 @@
     <title>BDE Exia Reims : connexion</title>
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
-	<script src="script/script.js"></script>
+	<script src="script/form.js"></script>
   </head>
 
   <body>
@@ -22,8 +22,8 @@
 			<div id="nav">
 				<nav id="compte">
 					<ul>
-						<li><a href="index.php">Avatar</a></li>
-						<li><a href="activites.php">info perso</a></li>        
+						<li><a href="#" id="bt_avatar">Avatar</a></li>
+						<li><a href="#" id="bt_info">info perso</a></li>        
 					</ul>        
 				</nav>
 			</div>

@@ -3,8 +3,8 @@ window.onload = function() {
 	//document.getElementById("experience").classList.add("Hide");
 	//document.getElementById("loisirs").classList.add("Hide");
 	
-	document.getElementById("bt_comp").addEventListener("click", ShowComp);
-	document.getElementById("bt_form").addEventListener("click", ShowForm);
+	document.getElementById("bt_avatar").addEventListener("click", ShowAvatar);
+	document.getElementById("bt_info").addEventListener("click", ShowInfo);
 	//document.getElementById("bt_exp").addEventListener("click", ShowExp);
 	//document.getElementById("bt_L").addEventListener("click", ShowLoisirs);
 	
@@ -13,20 +13,20 @@ window.onload = function() {
 
 function ShowAvatar(e){
 		e.preventDefault();
-		document.getElementById("competence").classList.remove("Hide");
+		document.getElementById("gest-avatar").classList.remove("Hide");
 		
-		document.getElementById("formation").classList.add("Hide");
-		document.getElementById("experience").classList.add("Hide");
-		document.getElementById("loisirs").classList.add("Hide");
+		document.getElementById("gest-perso").classList.add("Hide");
+		//document.getElementById("experience").classList.add("Hide");
+		//document.getElementById("loisirs").classList.add("Hide");
 	}
 	
 	function ShowInfo(e){
 		e.preventDefault();
-		document.getElementById("formation").classList.remove("Hide");
+		document.getElementById("gest-perso").classList.remove("Hide");
 		
-		document.getElementById("competence").classList.add("Hide");
-		document.getElementById("experience").classList.add("Hide");
-		document.getElementById("loisirs").classList.add("Hide");
+		document.getElementById("gest-avatar").classList.add("Hide");
+		//document.getElementById("experience").classList.add("Hide");
+		//document.getElementById("loisirs").classList.add("Hide");
 	}
 	
 	/*
