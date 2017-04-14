@@ -98,3 +98,43 @@ div.form textarea:focus{
   outline: none;
   border: 0.1em solid #bdbdbd;
 }
+
+
+
+
+
+
+/* NAV COMPTE */
+
+#compte
+{
+    background-color: #FFFFFF;
+    margin: 0;
+    height: 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#compte a
+{
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid;
+    border-bottom-color: #FFFFFF;
+    transition: 0.5s;
+	font-size : 3em;
+	margin-right: 20px;
+}
+
+#compte a:hover
+{
+    border-bottom: 2px solid;
+    border-bottom-color: #B01A2E;
+    transition: 0.5s;
+}
+
+#wrapper2
+{
+    display: flex;
+    flex-direction: column;
+}
