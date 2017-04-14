@@ -4,14 +4,6 @@
     justify-content: center;
 }
 
-#LogoLogin
-{
-	
-	height: 400px;
-	width: 600px;
-	padding: 20px;
-}
-
 form
 {
   text-align: center;
@@ -21,7 +13,17 @@ form
   font-family: 'FontAwesome', sans-serif;
 }
 
-div.login label, div.gest-avatar label, div.gest-perso label {
+
+/*LOGIN + INSCRIPTION*/
+#LogoLogin
+{
+	
+	height: 400px;
+	width: 600px;
+	padding: 20px;
+}
+
+div.login label{
   display: inline-block;
   color: gray;
   font-size: 1.1em;
@@ -51,7 +53,7 @@ div.login input[type="email"]:focus, div.login input[type="password"]:focus{
 }
 
 /*BOUTON*/
-div.login input[type="submit"], div.gest-avatar input[type="submit"], div.gest-perso input[type="submit"]{
+div.login input[type="submit"]{
   background: #f85f64;
   color: #fff;
   outline: none;
@@ -70,9 +72,14 @@ div.login input[type="submit"], div.gest-avatar input[type="submit"], div.gest-p
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
-div.login input[type="submit"]:hover, div.gest-avatar input[type="submit"]:hover, div.gest-pero input[type="submit"]:hover {
+div.login input[type="submit"]:hover{
   background: rgba(248, 95, 100, 0.8);
 }
+
+
+
+
+
 
 /*SUGGESTION*/
 div.login textarea{
@@ -94,4 +101,42 @@ div.login textarea{
 div.login textarea:focus{
   outline: none;
   border: 0.1em solid #bdbdbd;
+}
+
+
+
+
+
+
+
+/*Modification Info + avatar*/
+div.gest-avatar label, div.gest-perso label {
+  display: inline-block;
+  color: gray;
+  font-size: 1.1em;
+  margin-top: 0.6em;
+}
+
+div.gest-avatar input[type="submit"], div.gest-perso input[type="submit"]{
+  background: #f85f64;
+  color: #fff;
+  outline: none;
+  text-transform: uppercase;
+  padding: 1.2em;
+  overflow: hidden;
+  border: none;
+  letter-spacing: 0.1em;
+  margin: 0.5em 0;
+  font-weight: bold;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em;
+  -moz-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+}
+
+div.gest-avatar input[type="submit"]:hover, div.gest-pero input[type="submit"]:hover {
+  background: rgba(248, 95, 100, 0.8);
 }

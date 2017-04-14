@@ -3,8 +3,8 @@
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <title>BDE Exia Reims</title>
-    <link rel="stylesheet" type="text/css" href="header.css">
-    <link rel="stylesheet" type="text/css" href="contact.css">    
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/contact.css">    
   </head>
 
   <body>
