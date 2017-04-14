@@ -11,11 +11,7 @@ h1, h2 {
 	text-shadow: 0px 0px 9px #333;
 
 }
-h1{
-    font: 50px;
-	text-shadow: 0px 0px 9px #333;
-    font-size: 50px auto;
-}
+
 h2{
 	text-shadow: 0px 0px 9px #333;
     font-size: 30px auto;

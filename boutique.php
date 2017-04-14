@@ -15,37 +15,37 @@
     <div class="container">
       <img src="Images/sweat.png">
       <div class="fondTexte"></div>
-      <p>Sweat Exia</p>
+      <p>Sweat</p>
     </div>
      <div class="container">
-      <img src="Images/sweat.png">
+      <img src="Images/housse.jpg">
       <div class="fondTexte"></div>      
-      <p>Sweat Exia</p>
+      <p>Housse</p>
     </div>
      <div class="container">
-      <img src="Images/sweat.png">
+      <img src="Images/Logo.png">
       <div class="fondTexte"></div>
-      <p>Sweat Exia</p>
+      <p>Sticker</p>
     </div>
      <div class="container">
-      <img src="Images/sweat.png">
+      <img src="Images/snapback.jpg">
       <div class="fondTexte"></div>
-      <p>Sweat Exia</p>
+      <p>Casquette</p>
     </div>
      <div class="container">
-      <img src="Images/sweat.png">
+      <img src="Images/Spinner2.png">
       <div class="fondTexte"></div>
-      <p>Sweat Exia</p>
+      <p>Spinner 2 branches</p>
     </div>
      <div class="container">
-      <img src="Images/sweat.png">
+      <img src="Images/Spinner3.png">
       <div class="fondTexte"></div>
-      <p>Sweat Exia</p>
+      <p>Spinner 3 branches</p>
     </div>
      <div class="container">
-      <img src="Images/sweat.png">
+      <img src="Images/tshirt.jpg">
       <div class="fondTexte"></div>
-      <p>Sweat Exia</p>
+      <p>T-shirt</p>
     </div>
   </div>
 
