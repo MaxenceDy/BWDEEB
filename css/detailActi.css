@@ -6,7 +6,24 @@
 #containerActi
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 50px;
+    margin-top: 20px;
+    width: 100%;
+    /*background-color: blue;*/
+    justify-content: space-between;
+}
+
+#containerDsc
+{
+    width: 50%;
+    min-width: 10%;
+}
+
+#containerImg
+{
+    margin-top: 60px;
 }
 
 img
@@ -18,6 +35,7 @@ img
 #containerDsc p
 {
     background-color: #F4C3C3;
+    height: 400px;
 }
 
 strong
