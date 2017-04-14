@@ -13,9 +13,19 @@
   
   <div id="wrapper">
     <div id="containerImg">
-	    <img src="Images/gourde.jpg">
-      <p>Coloris : </p>
-      <p>Tailles : </p>
+	    <img src="Images/tshirt.jpg">
+      <form>
+        <p>Coloris : 
+        <input type="radio" name="coloris" value="noir" checked>Noir</input>
+        <input type="radio" name="coloris" value="rouge">Rouge</input>
+        </p>
+        <p>Tailles : 
+        <input type="radio" name="taille" value="S">S</input>
+        <input type="radio" name="taille" value="M" checked>M</input>
+        <input type="radio" name="taille" value="L">L</input>
+        <input type="radio" name="taille" value="XL">XL</input>
+        </p>
+      </form>
     </div>
 
     <aside id="containerDsc">
