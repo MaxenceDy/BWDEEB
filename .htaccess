@@ -1,5 +1,4 @@
 RewriteEngine on
-ErrorDocument 404 /BWDEEB/erreur.php
 RewriteRule header.php /BWDEEB/erreur.php [L]
 RewriteRule footer.php /BWDEEB/erreur.php [L]
 
@@ -7,4 +6,8 @@ RewriteRule footer.php /BWDEEB/erreur.php [L]
 
 #RewriteRule API.php/(.+)/(.+)$ API.php?users=$1&id=$2 [L]
 #RewriteRule API.php/(.+)$ API.php?users=$1 [L]
+
+
+
+ErrorDocument 404 /BWDEEB/erreur.php
 
