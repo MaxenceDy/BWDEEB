@@ -21,7 +21,7 @@
     <aside id="containerDsc">
       <h1>Gourde Exia</h1>
       <p>
-        Description :<br>
+        Description :<br><br>
         Magnifique gourde avec le logo de l'Exia pour partir en balade.
       </p>
     </aside>
