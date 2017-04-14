@@ -21,7 +21,7 @@ form
   font-family: 'FontAwesome', sans-serif;
 }
 
-div.login label {
+div.login label, div.gest-avatar label, div.gest-perso label {
   display: inline-block;
   color: gray;
   font-size: 1.1em;
@@ -51,7 +51,7 @@ div.login input[type="email"]:focus, div.login input[type="password"]:focus{
 }
 
 /*BOUTON*/
-div.login input[type="submit"] {
+div.login input[type="submit"], div.gest-avatar input[type="submit"], div.gest-perso input[type="submit"]{
   background: #f85f64;
   color: #fff;
   outline: none;
@@ -70,7 +70,7 @@ div.login input[type="submit"] {
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
-div.login input[type="submit"]:hover {
+div.login input[type="submit"]:hover, div.gest-avatar input[type="submit"]:hover, div.gest-pero input[type="submit"]:hover {
   background: rgba(248, 95, 100, 0.8);
 }
 
