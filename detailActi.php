@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
-    <title>BDE Exia Reims : connexion</title>
+    <title>BDE Exia Reims : Balade</title>
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/detailActi.css">
   </head>
@@ -33,14 +33,32 @@
       </aside>
 
     </section>
-    <!--
-    <hr>
 
-    <h1>Photos</h1>
-    <p id="avertissement">
-      <strong>Connectez-vous</strong> pour voir ces photos ou pour vous inscrire à des activités !
-    </p>
-    -->
+    <hr>
+    
+    <section id="containerPhotos">
+      <h1>Photos</h1>
+      <!--
+      <p id="avertissement">
+        <a href="login.php">Connectez-vous</a> pour voir ces photos ou pour vous inscrire à des activités !
+      </p>
+      -->
+      <h2>1er Janvier 2017</h2>
+      <div id="photosDate">
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+        <a href="#"><img src="Images/foret.png"></a>
+      </div>
+    </section>
   </div>
 
   <?php include 'footer.php'; ?>

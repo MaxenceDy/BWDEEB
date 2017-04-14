@@ -1,25 +1,25 @@
+/*GENERAL*/
+
 #wrapper
 {
     display: flex;
+    flex-direction: column;
 }
 
 #containerActi
 {
     display: flex;
     flex-direction: row;
-    margin-left: 80px;
-    margin-right: 100px;
+    /*margin-left: 80px;*/
+    padding-left: 80px;
+    padding-right: 100px;
+    box-sizing: border-box;
     margin-top: 20px;
     width: 100%;
     /*background-color: blue;*/
 }
 
-#containerDsc
-{
-    margin-left: 60px;
-    width: 60%;
-    min-width: 10%;
-}
+/*IMAGE*/
 
 #containerImg
 {
@@ -32,6 +32,15 @@ img
     height: 400px;
 }
 
+/*DESCRIPTION*/
+
+#containerDsc
+{
+    margin-left: 60px;
+    width: 60%;
+    min-width: 10%;
+}
+
 #containerDsc p
 {
     background-color: #F4C3C3;
@@ -41,30 +50,71 @@ img
 
 #description
 {
-    height: 360px;
+    height: 300px;
+    padding: 20px;
 }
 
 #prix
 {
-    height: 40px;
+    height: 20px;
+    padding: 20px;
 }
 
-strong
+#bouton
+{
+    float: right;
+}
+
+
+/*TEXTE*/
+
+#containerPhotos a
 {
     color: red;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 hr
 {
     height: 1px;
-	margin: 40px 50px 40px;
+	margin-left: 450px;
+    margin-right: 450px;
 	font-size: 60px;
 	line-height: 1;
     color: #F00;
     background-color: #F00;
 }
 
-#bouton
+/*PHOTOS*/
+#containerPhotos
 {
-    float: right;
+    text-align: center;
+}
+
+#containerPhotos h2
+{
+    text-align: left;
+    margin-left: 80px;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+#containerPhotos img
+{
+    width: 200px;
+    height: 100px;
+}
+
+#photosDate
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#photosDate img
+{
+    margin-left: 10px;
+    margin-right: 10px;
 }
