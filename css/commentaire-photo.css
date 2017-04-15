@@ -43,16 +43,6 @@ hr {
     padding: 10px;
     background-color: #B01A2E;
 }
-::-webkit-scrollbar{									/* Scrollbars */
-	width: 14px;
-	height: 14px;
-	background: deeppink ;
-}
-::-moz-scrollbar{
-    width: 14px;
-	height: 14px;
-	background: deeppink ;
-}
 #ComIn
 {
     display: flex;
