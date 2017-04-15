@@ -1,26 +1,13 @@
-<?php
-  session_start();
-
-  var_dump($_SESSION);
-
-  if(empty($_SESSION))
-  {
-    $connecte = false;
-  }
-  else{
-      $connecte = true;
-  }
-?>
-
 <header>
     <?php 
-        if($connecte = true){
+        //var_dump( $connecte);
+        if(isset($_SESSION['connecte']) && ($_SESSION['connecte'] == true)){
         ?>
             <a href="compte.php">Mon compte</a>
             <a href="logout.php">Deconnexion</a>
         <?php
         }
-        elseif($connecte = false){ 
+        else{ 
         ?>
             <a href="inscription.php">Inscription</a>
             <a href="login.php">Connexion</a>
