@@ -1,3 +1,24 @@
+<?php 
+  //on démarre la session
+  session_start();
+
+  $connecte = "";
+
+  //si il est déjà connecté
+  if(isset($_SESSION['email']) && isset($_SESSION['password']))
+  {
+    header('Location: http://localhost/BWDEEB/index.php');
+    exit();
+  }
+  //si les données ont été envoyées
+  elseif(isset($_POST['email'])  && isset($_POST['password']))
+  {
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['password'] = $_POST['password'];
+    header('Location: http://localhost/BWDEEB/index.php');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -12,7 +33,7 @@
   <?php include('header.php'); ?>
     
 	<div id="wrapper">
-		<form id="LOGIN" method="POST" action="#">
+		<form id="LOGIN" method="POST" action="login.php">
 			<div class="form">
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
 				

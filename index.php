@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(isset($_SESSION['email']) && isset($_SESSION['password'])){
+    $connecte = $_SESSION['email'] . 'est connecte avec' . $_SESSION['password'];
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -10,6 +17,8 @@
   <body>
     
     <?php include('header.php'); ?>
+
+    <?php echo $connecte ?>
 
     <div id="wrapper">
         <div class= "texte-index">
