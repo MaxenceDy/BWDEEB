@@ -19,7 +19,7 @@
 
     <div id="PhotoCom">
       <div class="container">
-        <img src="Images/foret.png">
+        <img id="monImg" src="Images/foret.png">
         <br>
         <a href="" onclick=""><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
       </div>
@@ -56,6 +56,12 @@
         </div>
         <br>
       </div>
+    </div>
+    <!-- Agrandissement -->
+    <div id="monAgrandissement" class="Agrandissement">
+      <span class="close">×</span>
+      <img class="Agrandissement-content" id="img01">
+      <div id="caption"></div>
     </div>
   </div>
   <script src="script/jquery-3.2.1.js"></script>
