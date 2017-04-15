@@ -22,7 +22,7 @@
       </div>
 
       <aside id="containerDsc">
-        <h1>Voyage en plein air</h1>        
+        <h1>Voyage en plein air - 21 Janvier 2017</h1>        
         <p id="description">
           Description :<br><br>
           Balade dans la foret.
@@ -43,30 +43,6 @@
         <a href="login.php">Connectez-vous</a> pour voir ces photos ou pour vous inscrire à des activités !
       </p>
       -->
-      <h2>1er Janvier 2017</h2>
-      <div id="photosDate">
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-      </div>
-
-      <h2>21 Mars 2016</h2>
       <div id="photosDate">
         <a href="#"><img src="Images/foret.png"></a>
         <a href="#"><img src="Images/foret.png"></a>

@@ -39,26 +39,32 @@
       <div class="container">
         <a href="detailActi.php"><img src="Images/foret.png"></a>
         <h2>Voyage en pleine nature</h2>
+        <p>21 Janvier 2017</p>
       </div>
       <div class="container">
         <a href="detailActi.php"><img src="Images/mer.png"></a>
         <h2>Voyage en pleine mer</h2>
+        <p>21 Janvier 2017</p>
       </div>
       <div class="container">
         <a href="detailActi.php"><img src="Images/desert.png"></a>
         <h2>Voyage en plein desert</h2>
+        <p>21 Janvier 2017</p>
       </div>
       <div class="container">
         <a href="detailActi.php"><img src="Images/foret.png"></a>
         <h2>Voyage en pleine nature</h2>
+        <p>21 Janvier 2017</p>
       </div>
       <div class="container">
         <a href="detailActi.php"><img src="Images/mer.png"></a>
         <h2>Voyage en pleine mer</h2>
+        <p>21 Janvier 2017</p>
       </div>
       <div class="container">
         <a href="detailActi.php"><img src="Images/desert.png"></a>
         <h2>Voyage en plein desert</h2>
+        <p>21 Janvier 2017</p>
       </div>
     </div>
   </div>
