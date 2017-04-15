@@ -39,7 +39,7 @@ hr {
     height: 400px;
     border:solid 1px;
     overflow-x: hidden; 
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 10px;
     background-color: #B01A2E;
 }
