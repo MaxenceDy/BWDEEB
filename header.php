@@ -1,5 +1,8 @@
 <?php
   session_start();
+
+  var_dump($_SESSION);
+  
   if(isset($_SESSION['email']) && isset($_SESSION['password']) && ($_SESSION['connecte'] == true))
   {
     $connecte = true;

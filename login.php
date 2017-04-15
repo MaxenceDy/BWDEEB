@@ -1,6 +1,4 @@
 <?php 
-  //on démarre la session
-  session_start();
 
   //si il est déjà connecté
   if(isset($_SESSION['email']) && isset($_SESSION['password']))
