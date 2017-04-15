@@ -1,5 +1,8 @@
 <?php include('verification.php'); ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14babb1c00aee55eccaf505538502813e75213b2
 <!DOCTYPE html>
 <html lang="fr">
   <head>
