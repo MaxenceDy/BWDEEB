@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
-    <title>BDE Exia Reims : connexion</title>
+    <title>BDE Exia Reims : Activités</title>
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/activites.css">
   </head>

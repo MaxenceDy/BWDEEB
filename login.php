@@ -5,6 +5,7 @@
   //si il est déjà connecté
   if(isset($_SESSION['email']) && isset($_SESSION['password']))
   {
+    $_SESSION['connecte'] = true;
     header('Location: http://localhost/BWDEEB/index.php');
     exit();
   }
@@ -13,6 +14,7 @@
   {
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['password'] = $_POST['password'];
+    $_SESSION['connecte'] = true;
     header('Location: index.php');
   }
 ?>
