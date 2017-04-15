@@ -1,5 +1,11 @@
 <?php include('verification.php'); ?>
 
+<?php
+  if(!isset($_SESSION['connecte'])){
+    header('Location:erreur.php');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -12,7 +18,7 @@
   <body>
 
   <?php include('header.php'); ?>
-    
+
 	<div id="wrapper">
 		<form id="SUGG" method="POST" action="#">
 			<div class="form">

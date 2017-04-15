@@ -6,7 +6,7 @@
   if(isset($_SESSION['email']) && isset($_SESSION['password']))
   {
     $_SESSION['connecte'] = true;
-    header('Location: http://localhost/BWDEEB/index.php');
+    header('Location: index.php');
     exit();
   }
   //si les données ont été envoyées
