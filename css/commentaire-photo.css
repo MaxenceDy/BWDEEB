@@ -46,7 +46,7 @@ hr {
 ::-webkit-scrollbar {									/* Scrollbars */
 	width: 14px;
 	height: 14px;
-	background: #bfb6a3 ;
+	background: deeppink ;
 }
 #ComIn
 {
@@ -60,6 +60,7 @@ hr {
     border:solid 1px;
     padding: 5px;
     background-color: #F4C3C3;
+
 }
 
 .container
