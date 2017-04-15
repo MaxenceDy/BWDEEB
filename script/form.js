@@ -1,6 +1,11 @@
 window.onload = function() {
 	// au chargement de la page seul Avatar est afficher par défaut
 	document.getElementById("gest-perso").classList.add("Hide");
+	if(document.getElementById("gest-boutique")!=null){
+		document.getElementById("gest-boutique").classList.add("Hide");
+		document.getElementById("bt_boutique").addEventListener("click", ShowBoutique);
+	}
+	
 	
 	// ajout des EventListener
 	document.getElementById("bt_avatar").addEventListener("click", ShowAvatar);
@@ -15,6 +20,12 @@ function ShowAvatar(e){
 	document.getElementById("gest-avatar").classList.remove("Hide");
 	
 	document.getElementById("gest-perso").classList.add("Hide");
+	
+	if(document.getElementById("gest-boutique")!=null){
+		document.getElementById("gest-boutique").classList.add("Hide");
+	}
+	
+	
 }
 	
 // cache la partie Avatar pour laisser place à la partie INFO
@@ -23,4 +34,18 @@ function ShowInfo(e){
 	document.getElementById("gest-perso").classList.remove("Hide");
 	
 	document.getElementById("gest-avatar").classList.add("Hide");
+	
+	if(document.getElementById("gest-boutique")!=null){
+		document.getElementById("gest-boutique").classList.add("Hide");
+	}
+	
+}
+
+// cache la partie Avatar pour laisser place à la partie INFO
+function ShowBoutique(e){
+	e.preventDefault();
+	document.getElementById("gest-boutique").classList.remove("Hide");
+	
+	document.getElementById("gest-avatar").classList.add("Hide");
+	document.getElementById("gest-perso").classList.add("Hide");
 }
