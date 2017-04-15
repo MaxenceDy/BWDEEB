@@ -1,8 +1,5 @@
 <?php include('verification.php'); ?>
-<<<<<<< HEAD
 
-=======
->>>>>>> 14babb1c00aee55eccaf505538502813e75213b2
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -48,7 +45,7 @@
           <h4>LIAUD Joshua<br></h4>
           <br>
           <hr></hr>
-          <p>Je commente une cinquième fois</p>
+          <p>Je commente une cinquifème fois</p>
         </div>
         <div id="ComIn">
           <h4>LIAUD Joshua<br></h4>
