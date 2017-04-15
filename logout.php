@@ -1,9 +1,13 @@
 <?php
-//Verifier si connecté ou non
-session_start();
+// On démarre la session
+session_start ();
 
-$_SESSION['connect']="";
-$_SESSION['email']="";
-$_SESSION['name']=="";
-session_destroy(session_id());
+// On détruit les variables de notre session
+session_unset ();
+
+// On détruit notre session
+session_destroy ();
+
+// On redirige le visiteur vers la page d'accueil
 header ("Location:index.php");
+?>
