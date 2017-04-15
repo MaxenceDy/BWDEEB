@@ -1,23 +1,23 @@
 $(window).on('load', function (){
     $('.custom-scroll-bar').mCustomScrollbar();
 });
-// Get the modal
-var modal = document.getElementById('monAgrandissement');
+// Get the Agrandissement
+var Agrandissement = document.getElementById('monAgrandissement');
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
+// Get the image and insert it inside the Agrandissement - use its "alt" text as a caption
 var img = document.getElementById('monImg');
-var modalImg = document.getElementById("img01");
+var AgrandissementImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
 img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
+    Agrandissement.style.display = "block";
+    AgrandissementImg.src = this.src;
     captionText.innerHTML = this.alt;
 }
 
-// Get the <span> element that closes the modal
+// Get the <span> element that closes the Agrandissement
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
+// When the user clicks on <span> (x), close the Agrandissement
 span.onclick = function() { 
-    modal.style.display = "none";
+    Agrandissement.style.display = "none";
 }
