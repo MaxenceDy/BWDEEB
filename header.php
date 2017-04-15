@@ -2,13 +2,13 @@
   session_start();
 
   var_dump($_SESSION);
-  
-  if(isset($_SESSION['email']) && isset($_SESSION['password']) && ($_SESSION['connecte'] == true))
+
+  if(empty($_SESSION))
   {
-    $connecte = true;
+    $connecte = false;
   }
   else{
-      $connecte = false;
+      $connecte = true;
   }
 ?>
 
