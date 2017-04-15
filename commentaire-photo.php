@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/commentaire-photo.css">
     <link rel="stylesheet" type="text/css" href="script/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="script/form.css">    
   </head>
 
   <body>
@@ -19,43 +20,49 @@
 
     <div id="PhotoCom">
       <div class="container">
-        <img id="monImg" src="Images/foret.png">
+        <img id="monImg" src="Images/LAN2016.jpg">
         <br>
         <a href="" onclick=""><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
       </div>
-      <div class="container custom-scroll-bar" id="ComOut">
-        <div id="ComIn">
-          <h4>LIAUD Joshua<br></h4>
+      <div id="OutCom">
+        <div class="container custom-scroll-bar" id="ComOut">
+          <div id="ComIn">
+            <h4>LIAUD Joshua<br></h4>
+            <br>
+            <hr></hr>
+            <p>Je commente une première fois</p>
+          </div>
+          <div id="ComIn">
+            <h4>LIAUD Joshua<br></h4>
+            <br>
+            <hr></hr>
+            <p>Je commente une deuxième fois</p>
+          </div>
+          <div id="ComIn">
+            <h4>LIAUD Joshua<br></h4>
+            <br>
+            <hr></hr>
+            <p>Je commente une troisième fois</p>
+          </div>
+          <div id="ComIn">
+            <h4>LIAUD Joshua<br></h4>
+            <br>
+            <hr></hr>
+            <p>Je commente une cinquifème fois</p>
+          </div>
+          <div id="ComIn">
+            <h4>LIAUD Joshua<br></h4>
+            <br>
+            <hr></hr>
+            <p>Je commente une sixième fois bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
+          </div>
           <br>
-          <hr></hr>
-          <p>Je commente une première fois</p>
         </div>
-        <div id="ComIn">
-          <h4>LIAUD Joshua<br></h4>
-          <br>
-          <hr></hr>
-          <p>Je commente une deuxième fois</p>
+        <div class="container">
+          <textarea name="sugestion" class="formCom custom-scroll-bar" id="suggestion" row="10" cols="40"></textarea>
         </div>
-        <div id="ComIn">
-          <h4>LIAUD Joshua<br></h4>
-          <br>
-          <hr></hr>
-          <p>Je commente une troisième fois</p>
-        </div>
-        <div id="ComIn">
-          <h4>LIAUD Joshua<br></h4>
-          <br>
-          <hr></hr>
-          <p>Je commente une cinquifème fois</p>
-        </div>
-        <div id="ComIn">
-          <h4>LIAUD Joshua<br></h4>
-          <br>
-          <hr></hr>
-          <p>Je commente une sixième fois bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
-        </div>
-        <br>
       </div>
+      
     </div>
     <!-- Agrandissement -->
     <div id="monAgrandissement" class="Agrandissement">
