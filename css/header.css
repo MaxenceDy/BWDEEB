@@ -71,13 +71,15 @@ header a
     color: black;
     text-decoration: none;
     line-height: 70px;
-    transition: 0.5s;        
+    transition: 0.5s;       
+    transition-property: background-color;     
 }
 
 header a:hover, footer a:hover
 {
     background-color: #FF8094;
-    transition: 0.5s;    
+    transition: 0.5s;
+    transition-property: background-color;  
 }
 
 /*FOOTER*/
@@ -100,6 +102,7 @@ footer a
     text-decoration: none;
     transition: 0.5s; 
     line-height: 40px;
+    transition-property: background-color;      
 }
 
 /*NAV*/
@@ -134,7 +137,7 @@ nav a
     color: black;
     border-bottom: 2px solid;
     border-bottom-color: #CC7A90;
-    transition: 0.5s;   
+    transition: 0.5s;
 }
 
 nav a:hover
