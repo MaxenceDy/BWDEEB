@@ -1,6 +1,29 @@
+<?php
+  session_start();
+  if(isset($_SESSION['email']) && isset($_SESSION['password']))
+  {
+    $connecte = true;
+  }
+  else{
+      $connecte = false;
+  }
+?>
+
 <header>
-    <a href="inscription.php">Inscription</a>
-    <a href="login.php">Connexion</a>
+    <?php 
+        if($connecte = true){
+        ?>
+            <a href="compte.php">Mon compte</a>
+            <a href="logout.php">Deconnexion</a>
+        <?php
+        }
+        elseif($connecte = false){ 
+        ?>
+            <a href="inscription.php">Inscription</a>
+            <a href="login.php">Connexion</a>
+        <?php 
+        }
+    ?>
 
     <img src="Images/Logo.png" alt="logo" id="logoHeader">
     <h1 id="titreHeader">Site du BDE</h1>

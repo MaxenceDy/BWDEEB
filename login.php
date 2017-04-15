@@ -13,7 +13,7 @@
   {
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['password'] = $_POST['password'];
-    header('Location: http://localhost/BWDEEB/index.php');
+    header('Location: index.php');
   }
 ?>
 
