@@ -1,3 +1,5 @@
+<?php include('verification.php'); ?>
+
 <?php 
 
   //si il est déjà connecté
@@ -16,8 +18,6 @@
     header('Location: index.php');
   }
 ?>
-
-<?php include('verification.php'); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
