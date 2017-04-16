@@ -1,11 +1,11 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 14 Avril 2017 à 21:51
+-- Généré le :  Dim 16 Avril 2017 à 09:46
 -- Version du serveur :  5.7.14
--- Version de PHP :  5.6.25
+-- Version de PHP :  7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,8 +31,17 @@ CREATE TABLE `activites` (
   `Nom_Activite` char(25) NOT NULL,
   `Date_Activite` date NOT NULL,
   `Description_A` varchar(1000) NOT NULL,
-  `Prix_Activites` int(11) NOT NULL
+  `Prix_Activites` int(11) NOT NULL,
+  `photo_Activites` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `activites`
+--
+
+INSERT INTO `activites` (`Id_Activite`, `Nom_Activite`, `Date_Activite`, `Description_A`, `Prix_Activites`, `photo_Activites`) VALUES
+(1, 'Geekobowling 18 01 2017', '2017-01-18', 'Venez affronter d\'autre promo d\'informatique à une super soirée bowling, color-bowl de Reims. Venez nombreux', 15, 'Images/Activites/geekobowling.01.2017.png'),
+(2, 'LAN#7 7-8 04 2017', '2017-04-07', 'EXIA LAN#7, Venez vous affontez sur nos tournois pour rencontrés des teams de votre niveaux sur Counter Strike : Global Offensive, ou League Of Legend, ou encore Overwatch et tenter de remporter les différents lots :\r\nCS:GO	LOL	OW\r\n750	500	240\r\n500	350	180\r\n300 	150	60', 15, 'Images/Activites/LAN.04.2017.jpg');
 
 -- --------------------------------------------------------
 
@@ -76,6 +85,18 @@ CREATE TABLE `coloris` (
   `Nom_Coloris` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `coloris`
+--
+
+INSERT INTO `coloris` (`Id_Colors`, `Nom_Coloris`) VALUES
+(1, 'Gris/Noir'),
+(2, 'Rouge/Noir'),
+(3, 'Unique'),
+(4, 'Noir'),
+(5, 'Blanc'),
+(6, 'Gris');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +123,13 @@ CREATE TABLE `commentaire_activite` (
   `Id_utilisateur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `commentaire_activite`
+--
+
+INSERT INTO `commentaire_activite` (`Id_Commentaire_A`, `Commentaire_A`, `Date_Commentaire_Activite`, `Id_Activite`, `Id_utilisateur`) VALUES
+(1, 'Trop cool cet soirée, bowling même nul on s\'éclate! A refaire!', '2017-01-20', 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +143,14 @@ CREATE TABLE `commentaire_photo` (
   `Id_utilisateur` int(11) NOT NULL,
   `Id_Photo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `commentaire_photo`
+--
+
+INSERT INTO `commentaire_photo` (`Id_Commentaire_P`, `Commentaire_P`, `Date_Commentaire_Photo`, `Id_utilisateur`, `Id_Photo`) VALUES
+(1, 'Super belle ces piste!!!', '2017-01-25', 4, 3),
+(2, 'Qui lance sur la photo?', '2017-01-19', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -166,6 +202,14 @@ CREATE TABLE `idees_activites` (
   `Prix_Idees_Activites` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `idees_activites`
+--
+
+INSERT INTO `idees_activites` (`Id_Idee_Activite`, `Nom_Idee_Activite`, `Valide`, `Description_I_A`, `Prix_Idees_Activites`) VALUES
+(1, 'LAN#8 25-26 11 2017', 0, 'La plus grosse LAN de la region', 150),
+(2, 'Ping pong', 0, 'Ping pong a lexia', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -177,6 +221,14 @@ CREATE TABLE `like_photo` (
   `Id_utilisateur` int(11) NOT NULL,
   `Id_Photo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `like_photo`
+--
+
+INSERT INTO `like_photo` (`Id_like`, `Id_utilisateur`, `Id_Photo`) VALUES
+(1, 3, 4),
+(2, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -191,6 +243,19 @@ CREATE TABLE `liste_participant` (
   `Id_utilisateur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `liste_participant`
+--
+
+INSERT INTO `liste_participant` (`Id_Payement_A`, `Payer_A`, `Id_Activite`, `Id_utilisateur`) VALUES
+(1, 1, 1, 2),
+(2, 1, 2, 2),
+(3, 1, 1, 4),
+(4, 1, 2, 9),
+(5, 1, 2, 10),
+(6, 1, 2, 8),
+(7, 1, 2, 11);
+
 -- --------------------------------------------------------
 
 --
@@ -199,10 +264,21 @@ CREATE TABLE `liste_participant` (
 
 CREATE TABLE `photo` (
   `Id_Photo` int(11) NOT NULL,
-  `Nom_Photo` char(25) NOT NULL,
+  `Nom_Photo` char(50) NOT NULL,
   `Moderation` tinyint(1) NOT NULL,
   `Id_Activite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `photo`
+--
+
+INSERT INTO `photo` (`Id_Photo`, `Nom_Photo`, `Moderation`, `Id_Activite`) VALUES
+(1, 'Images/Activites/DCM1000.jpg', 1, 1),
+(2, 'Images/Activites/DCM1001.jpg', 1, 1),
+(3, 'Images/Activites/DCM1002.jpg', 1, 1),
+(4, 'Images/Activites/DCM1003.jpg', 1, 1),
+(5, 'Images/Activites/DCM1004.jpg', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -215,6 +291,16 @@ CREATE TABLE `proposition_date_i_a` (
   `Date_I_A` date DEFAULT NULL,
   `Id_Idee_Activite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `proposition_date_i_a`
+--
+
+INSERT INTO `proposition_date_i_a` (`Id_Date`, `Date_I_A`, `Id_Idee_Activite`) VALUES
+(1, '2017-04-20', 2),
+(2, '2017-04-27', 2),
+(3, '2017-05-04', 2),
+(4, '2017-05-11', 2);
 
 -- --------------------------------------------------------
 
@@ -229,6 +315,41 @@ CREATE TABLE `stock_article` (
   `Id_Article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `stock_article`
+--
+
+INSERT INTO `stock_article` (`Stock`, `Id_Taille`, `Id_Colors`, `Id_Article`) VALUES
+(1, 1, 3, 2),
+(5, 1, 3, 4),
+(5, 1, 3, 7),
+(5, 1, 3, 8),
+(5, 1, 3, 9),
+(15, 1, 3, 10),
+(2, 1, 3, 11),
+(5, 1, 4, 5),
+(5, 1, 4, 6),
+(5, 1, 5, 5),
+(5, 1, 5, 6),
+(5, 1, 6, 5),
+(5, 1, 6, 6),
+(1, 2, 1, 1),
+(1, 2, 2, 1),
+(1, 3, 1, 1),
+(1, 3, 2, 1),
+(26, 3, 3, 3),
+(5, 4, 1, 1),
+(5, 4, 2, 1),
+(10, 5, 1, 1),
+(10, 5, 2, 1),
+(6, 6, 1, 1),
+(6, 6, 2, 1),
+(0, 6, 3, 3),
+(2, 7, 1, 1),
+(2, 7, 2, 1),
+(1, 8, 1, 1),
+(1, 8, 2, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -239,6 +360,20 @@ CREATE TABLE `taille_article` (
   `Id_Taille` int(11) NOT NULL,
   `Taille` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `taille_article`
+--
+
+INSERT INTO `taille_article` (`Id_Taille`, `Taille`) VALUES
+(1, 'Unique'),
+(2, 'XS'),
+(3, 'S'),
+(4, 'M'),
+(5, 'L'),
+(6, 'XL'),
+(7, 'XXL'),
+(8, 'XXXL');
 
 -- --------------------------------------------------------
 
@@ -251,6 +386,30 @@ CREATE TABLE `transaction` (
   `Montant` int(11) NOT NULL,
   `Type_Transaction` char(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `transaction`
+--
+
+INSERT INTO `transaction` (`Id_Transaction`, `Montant`, `Type_Transaction`) VALUES
+(1, 30, 'Espèces'),
+(2, 30, 'Carte'),
+(3, 36, 'Espèces'),
+(4, 36, 'Carte'),
+(5, 2, 'Espèces'),
+(6, 2, 'Carte'),
+(7, 20, 'Espèces'),
+(8, 20, 'Carte'),
+(9, 5, 'Espèces'),
+(10, 5, 'Carte'),
+(11, 7, 'Espèces'),
+(12, 7, 'Carte'),
+(13, 10, 'Espèces'),
+(14, 10, 'Carte'),
+(15, 15, 'Espèces'),
+(16, 15, 'Carte'),
+(17, 60, 'Espèces'),
+(18, 60, 'Carte');
 
 -- --------------------------------------------------------
 
@@ -322,6 +481,24 @@ CREATE TABLE `vote_activite` (
   `Id_utilisateur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `vote_activite`
+--
+
+INSERT INTO `vote_activite` (`Id_Vote_Activite`, `Id_Idee_Activite`, `Id_utilisateur`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(12, 1, 3),
+(13, 1, 4),
+(14, 1, 5),
+(15, 1, 7),
+(16, 1, 8),
+(17, 1, 9),
+(18, 2, 3),
+(19, 2, 7),
+(20, 2, 9),
+(21, 2, 10);
+
 -- --------------------------------------------------------
 
 --
@@ -333,6 +510,16 @@ CREATE TABLE `vote_date` (
   `Id_utilisateur` int(11) NOT NULL,
   `Id_Date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `vote_date`
+--
+
+INSERT INTO `vote_date` (`Id_Vote_Date`, `Id_utilisateur`, `Id_Date`) VALUES
+(1, 1, 2),
+(2, 4, 3),
+(3, 7, 4),
+(4, 10, 4);
 
 --
 -- Index pour les tables exportées
@@ -449,8 +636,7 @@ ALTER TABLE `taille_article`
 -- Index pour la table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`Id_Transaction`),
-  ADD UNIQUE KEY `Type_Transaction` (`Type_Transaction`);
+  ADD PRIMARY KEY (`Id_Transaction`);
 
 --
 -- Index pour la table `type_article`
@@ -490,7 +676,7 @@ ALTER TABLE `vote_date`
 -- AUTO_INCREMENT pour la table `activites`
 --
 ALTER TABLE `activites`
-  MODIFY `Id_Activite` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Activite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `article`
 --
@@ -500,7 +686,7 @@ ALTER TABLE `article`
 -- AUTO_INCREMENT pour la table `coloris`
 --
 ALTER TABLE `coloris`
-  MODIFY `Id_Colors` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Colors` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `commande`
 --
@@ -510,12 +696,12 @@ ALTER TABLE `commande`
 -- AUTO_INCREMENT pour la table `commentaire_activite`
 --
 ALTER TABLE `commentaire_activite`
-  MODIFY `Id_Commentaire_A` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Commentaire_A` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `commentaire_photo`
 --
 ALTER TABLE `commentaire_photo`
-  MODIFY `Id_Commentaire_P` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Commentaire_P` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `fonction`
 --
@@ -525,37 +711,37 @@ ALTER TABLE `fonction`
 -- AUTO_INCREMENT pour la table `idees_activites`
 --
 ALTER TABLE `idees_activites`
-  MODIFY `Id_Idee_Activite` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Idee_Activite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `like_photo`
 --
 ALTER TABLE `like_photo`
-  MODIFY `Id_like` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `liste_participant`
 --
 ALTER TABLE `liste_participant`
-  MODIFY `Id_Payement_A` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Payement_A` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `photo`
 --
 ALTER TABLE `photo`
-  MODIFY `Id_Photo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Photo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `proposition_date_i_a`
 --
 ALTER TABLE `proposition_date_i_a`
-  MODIFY `Id_Date` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Date` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `taille_article`
 --
 ALTER TABLE `taille_article`
-  MODIFY `Id_Taille` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Taille` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `Id_Transaction` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Transaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT pour la table `type_article`
 --
@@ -570,12 +756,12 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `vote_activite`
 --
 ALTER TABLE `vote_activite`
-  MODIFY `Id_Vote_Activite` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Vote_Activite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT pour la table `vote_date`
 --
 ALTER TABLE `vote_date`
-  MODIFY `Id_Vote_Date` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Vote_Date` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Contraintes pour les tables exportées
 --
@@ -663,4 +849,3 @@ ALTER TABLE `vote_date`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
