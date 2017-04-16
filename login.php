@@ -15,6 +15,7 @@
     $_SESSION['email'] = $_POST['email'];
     $_SESSION['password'] = $_POST['password'];
     $_SESSION['connecte'] = true;
+	$_SESSION['LAST_ACTIVITY'] = time(); // set activity time stamp
     header('Location: index.php');
   }
 ?>
