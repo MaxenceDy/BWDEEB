@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 16 Avril 2017 à 13:26
+-- Généré le :  Dim 16 Avril 2017 à 13:47
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -108,8 +108,18 @@ INSERT INTO `coloris` (`Id_Colors`, `Nom_Coloris`) VALUES
 CREATE TABLE `commande` (
   `Id_Commande` int(11) NOT NULL,
   `Id_utilisateur` int(11) NOT NULL,
-  `Id_Transaction` int(11) NOT NULL
+  `Id_Transaction` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `commande`
+--
+
+INSERT INTO `commande` (`Id_Commande`, `Id_utilisateur`, `Id_Transaction`) VALUES
+(1, 2, NULL),
+(2, 4, NULL),
+(3, 5, NULL),
+(4, 7, NULL);
 
 -- --------------------------------------------------------
 
@@ -164,6 +174,16 @@ CREATE TABLE `contenu` (
   `Id_Commande` int(11) NOT NULL,
   `Id_Article` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `contenu`
+--
+
+INSERT INTO `contenu` (`Id_Commande`, `Id_Article`) VALUES
+(1, 1),
+(1, 3),
+(2, 3),
+(2, 4);
 
 -- --------------------------------------------------------
 
@@ -693,7 +713,7 @@ ALTER TABLE `coloris`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `Id_Commande` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `commentaire_activite`
 --
