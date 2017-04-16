@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 16 Avril 2017 à 09:46
+-- Généré le :  Dim 16 Avril 2017 à 09:53
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -54,25 +54,26 @@ CREATE TABLE `article` (
   `Nom_Article` varchar(50) NOT NULL,
   `Description_Article` varchar(1000) NOT NULL,
   `Prix_Article` int(11) NOT NULL,
-  `Id_Type` int(11) NOT NULL
+  `Id_Type` int(11) NOT NULL,
+  `Denomination` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `article`
 --
 
-INSERT INTO `article` (`Id_Article`, `Nom_Article`, `Description_Article`, `Prix_Article`, `Id_Type`) VALUES
-(1, 'Images/sweat.png', 'sweat aux couleurs de l\'école soyez fier de la représenter', 30, 1),
-(2, 'Images/housse.jpg', 'housse d\'ordinateur exia', 36, 2),
-(3, 'Images/Logo.png', 'sticker exia', 2, 2),
-(4, 'Images/snapback.jpg', 'snapback accompagnée de son logo exia', 20, 1),
-(5, 'images/Spinner2.png', 'spinner 2 branches fabriqué au sein de l\'école', 5, 2),
-(6, 'Images/Spinner3.png', 'spinner 3 branches fabriqué au sein de l\'école', 7, 2),
-(7, 'Images/mugGeek.jpg', 'Mug fun Exia', 7, 2),
-(8, 'Images/tshirt.jpg', 't-shirt aux couleurs du CESI', 10, 1),
-(9, 'Images/gourde.jpg', 'gourde d\'une contenance d\'1L', 15, 2),
-(10, 'Images/goodKey.jpg', 'Clé USB d\'une capacité de 32gba aux couleurs de l\'école', 15, 2),
-(11, 'Images/beerTable', 'Vous voulez vous divertir après une bonne partie de jeux vidéos entre amis ? Nous avons l\'objet idéal : cette table de beer pong façon geek', 60, 2);
+INSERT INTO `article` (`Id_Article`, `Nom_Article`, `Description_Article`, `Prix_Article`, `Id_Type`, `Denomination`) VALUES
+(1, 'Images/sweat.png', 'sweat aux couleurs de l\'école soyez fier de la représenter', 30, 1, 'Sweat'),
+(2, 'Images/housse.jpg', 'housse d\'ordinateur exia', 36, 2, 'Housse'),
+(3, 'Images/Logo.png', 'sticker exia', 2, 2, 'Stickers'),
+(4, 'Images/snapback.jpg', 'snapback accompagnée de son logo exia', 20, 1, 'Snapback'),
+(5, 'images/Spinner2.png', 'spinner 2 branches fabriqué au sein de l\'école', 5, 2, 'Spineur à deux branches'),
+(6, 'Images/Spinner3.png', 'spinner 3 branches fabriqué au sein de l\'école', 7, 2, 'Spineur à trois branches'),
+(7, 'Images/mugGeek.jpg', 'Mug fun Exia', 7, 2, 'Mug Exia'),
+(8, 'Images/tshirt.jpg', 't-shirt aux couleurs du CESI', 10, 1, 'T-Shirt Exia'),
+(9, 'Images/gourde.jpg', 'gourde d\'une contenance d\'1L', 15, 2, 'Gourde Exia'),
+(10, 'Images/goodKey.jpg', 'Clé USB d\'une capacité de 32gba aux couleurs de l\'école', 15, 2, 'Clef USB 32Gb Exia'),
+(11, 'Images/beerTable', 'Vous voulez vous divertir après une bonne partie de jeux vidéos entre amis ? Nous avons l\'objet idéal : cette table de beer pong façon geek', 60, 2, 'Table de Biere-Pong Exia');
 
 -- --------------------------------------------------------
 
