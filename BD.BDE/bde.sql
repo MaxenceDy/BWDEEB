@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 16 Avril 2017 à 09:53
+-- Généré le :  Dim 16 Avril 2017 à 13:26
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -41,7 +41,8 @@ CREATE TABLE `activites` (
 
 INSERT INTO `activites` (`Id_Activite`, `Nom_Activite`, `Date_Activite`, `Description_A`, `Prix_Activites`, `photo_Activites`) VALUES
 (1, 'Geekobowling 18 01 2017', '2017-01-18', 'Venez affronter d\'autre promo d\'informatique à une super soirée bowling, color-bowl de Reims. Venez nombreux', 15, 'Images/Activites/geekobowling.01.2017.png'),
-(2, 'LAN#7 7-8 04 2017', '2017-04-07', 'EXIA LAN#7, Venez vous affontez sur nos tournois pour rencontrés des teams de votre niveaux sur Counter Strike : Global Offensive, ou League Of Legend, ou encore Overwatch et tenter de remporter les différents lots :\r\nCS:GO	LOL	OW\r\n750	500	240\r\n500	350	180\r\n300 	150	60', 15, 'Images/Activites/LAN.04.2017.jpg');
+(2, 'LAN#7 7-8 04 2017', '2017-04-07', 'EXIA LAN#7, Venez vous affontez sur nos tournois pour rencontrés des teams de votre niveaux sur Counter Strike : Global Offensive, ou League Of Legend, ou encore Overwatch et tenter de remporter les différents lots :\r\nCS:GO	LOL	OW\r\n750	500	240\r\n500	350	180\r\n300 	150	60', 15, 'Images/Activites/LAN.04.2017.jpg'),
+(3, 'LAN#6 15-16 01 2017', '2016-01-15', 'EXIA LAN#6', 15, 'Images/Activites/LAN.01.2016.png');
 
 -- --------------------------------------------------------
 
@@ -717,7 +718,7 @@ ALTER TABLE `idees_activites`
 -- AUTO_INCREMENT pour la table `like_photo`
 --
 ALTER TABLE `like_photo`
-  MODIFY `Id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `liste_participant`
 --
