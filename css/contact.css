@@ -5,7 +5,17 @@
     flex-wrap: wrap;
     -webkit-justify-content: center;
     justify-content: center;
-    width: 1200px auto;
+    width: 1200px auto;}
+
+body{
+    background-image: url("../Images/circuit-imprimer.jpg");
+     opacity: 0.4;
+}
+
+#absent{
+ background-color: #ffffff;
+ opacity: 0;
+
 }
 
 .flex-item{
@@ -14,7 +24,7 @@
     /*border:solid 1px;*/
     padding: 5px;
     height: 450px auto;
-    
+    background-color: #FFFFFF;    
     /*margin-bottom: 25px auto;*/
 }
 
