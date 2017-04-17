@@ -4,6 +4,9 @@ window.onload = function() {
 	if(document.getElementById("gest-boutique")!=null){
 		document.getElementById("gest-boutique").classList.add("Hide");
 		document.getElementById("bt_boutique").addEventListener("click", ShowBoutique);
+		
+		document.getElementById("gest_droit").classList.add("Hide");
+		document.getElementById("bt_gestion_droit").addEventListener("click", ShowGestDroit);
 	}
 	
 	
@@ -23,6 +26,7 @@ function ShowAvatar(e){
 	
 	if(document.getElementById("gest-boutique")!=null){
 		document.getElementById("gest-boutique").classList.add("Hide");
+		document.getElementById("gest_droit").classList.add("Hide");
 	}
 	
 	
@@ -37,6 +41,7 @@ function ShowInfo(e){
 	
 	if(document.getElementById("gest-boutique")!=null){
 		document.getElementById("gest-boutique").classList.add("Hide");
+		document.getElementById("gest_droit").classList.add("Hide");
 	}
 	
 }
@@ -48,4 +53,15 @@ function ShowBoutique(e){
 	
 	document.getElementById("gest-avatar").classList.add("Hide");
 	document.getElementById("gest-perso").classList.add("Hide");
+	document.getElementById("gest_droit").classList.add("Hide");
+}
+
+// cache la partie Avatar pour laisser place à la partie INFO
+function ShowGestDroit(e){
+	e.preventDefault();
+	document.getElementById("gest_droit").classList.remove("Hide");
+	
+	document.getElementById("gest-avatar").classList.add("Hide");
+	document.getElementById("gest-perso").classList.add("Hide");
+	document.getElementById("gest-boutique").classList.add("Hide");
 }
