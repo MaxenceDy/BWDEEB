@@ -138,3 +138,7 @@ div.form textarea:focus{
     display: flex;
     flex-direction: column;
 }
+
+#err{
+  color: red;
+}
