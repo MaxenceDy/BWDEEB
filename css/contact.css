@@ -7,9 +7,8 @@
     justify-content: center;
     width: 1200px auto;}
 
-body{
+#Couleur_fond{
     background-image: url("../Images/circuit-imprimer.jpg");
-     opacity: 0.4;
 }
 
 #absent{
@@ -26,6 +25,7 @@ body{
     height: 450px auto;
     background-color: #FFFFFF;    
     /*margin-bottom: 25px auto;*/
+    border-radius: 16px;
 }
 
 h1, h2 {
