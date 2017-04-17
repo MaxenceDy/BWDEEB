@@ -1,3 +1,7 @@
+#wrapper{
+    background-image: url("../Images/circuit-imprimer.jpg");
+}
+
 .flex-container, .president, .Big_Boss{
     display: -webkit-flex;
     display: flex;
@@ -5,17 +9,12 @@
     flex-wrap: wrap;
     -webkit-justify-content: center;
     justify-content: center;
-    width: 1200px auto;}
-
-body{
-    background-image: url("../Images/circuit-imprimer.jpg");
-     opacity: 0.4;
+    width: 1200px auto;
 }
 
 #absent{
  background-color: #ffffff;
  opacity: 0;
-
 }
 
 .flex-item{

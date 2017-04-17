@@ -32,7 +32,5 @@ class procedures
         $Query->closeCursor();    
         return $array;
     }
-    
-
 }
 ?>

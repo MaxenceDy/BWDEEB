@@ -15,7 +15,12 @@
     public static function getInstance(){
       if(is_null(self::$PDOInstance)){
         if(self::configDone()){
-          self::$PDOInstance = new PDO(self::$dsn, self::$username, self::$password, self::$options);
+          try{
+            self::$PDOInstance = new PDO(self::$dsn, self::$username, self::$password, self::$options);
+          }
+          catch (PDOException $e) {
+            echo 'Échec lors de la connexion : ' . $e->getMessage();
+          }
         }else{
           throw new Exception(__CLASS__." : no config !");
         }
