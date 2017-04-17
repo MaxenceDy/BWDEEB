@@ -2,7 +2,7 @@
 	require('class/users.php');
 	include('verification.php'); 
 	
-	$incription = new users();
+	$inscription = new users();
 	$renvoie;
 	?>
 
@@ -12,18 +12,26 @@
   if(isset($_SESSION['connecte']))
   {
     header('Location: index.php');
-		<script>alert("déjà connecté et inscrit")</script>
+		echo '<script>alert("déjà connecté et inscrit")</script>';
     exit();
   }
 	elseif(isset($_POST['email'])  && isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['password']) && isset($_POST['repassword']))
   {
-		elseif $_POST['password']==$_POST['repassword']{
-			$inscript = $inscription->($_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['password']);
-					if(count($inscript) == 1){
-						//a voir pour remplir avec les erreur possible en bd car mail = unique
-						//et peut pas test car pas de procédure ><
+		if ($_POST['password']==$_POST['repassword']) {
+			
+			$inscription->SignUp($_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['password']);
+		
+		
+		//a voir pour remplir avec les erreur possible en bd car mail = unique
+		//et peut pas test car pas de procédure ><
+		
+		// sinon script => aucune correspondance entre les 2 mdp
+		
 		}
-	}
+		else{
+			$message = "non correspondance entre les 2 mot de passe";
+		}
+  }
 	?>
 
 <!DOCTYPE html>
@@ -60,6 +68,15 @@
 				<input type="password" name="repassword" id="pass" /> <br />
 				
 				<input type="submit" value="s'inscrire" />
+			
+			<?php 
+					if(isset($message)){
+						echo '<p id="err">';
+						echo "\t\t<strong>", $message ,"</strong>\n";
+						echo "\t</p>\n\n";
+					}
+			?>
+			
 			</div>
 		</form>
   </div>
