@@ -22,10 +22,10 @@
       <div class="container">
         <img id="monImg" src="Images/LAN2016.jpg">
         <br>
-        <div class="container>"
+        <div class="container" id="all_jaime">
           <a href="" onclick=""><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
           <?php/* include('like-photo.php');*/ ?>
-          <?php /*echo $data[];*/ print 2 ?>
+          <div id="Compteur_jaime">Nombre de J'aime : <?php /*echo $data[];*/ print( 2) ?></div>
         </div>
       </div>
       <div id="OutCom">

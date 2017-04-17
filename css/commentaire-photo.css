@@ -18,9 +18,34 @@
     background-color: #F4C3C3;
     text-align: center;
 }
+
+#all_jaime{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: line;
+    height: 51px auto;
+    margin-bottom: 20px;
+    
+}
+
 #jaime{
     height: 50px;
-    width: auto;
+    width: auto;    
+    display: inline-flex;
+}
+
+#Compteur_jaime{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    display: flex;
+    width: 150px auto;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px; 
+    text-align: center;
+    line-height:50px; /* centrage vertical */
 }
 
 hr {
@@ -75,22 +100,22 @@ hr {
 
 }
 
-
 .container
 {
     margin-left: 60px;
     margin-right: 60px;
     margin-top: 20px;
     /*border:solid 1px;*/
-    
 }
+
+
 
 img
 {
     width: 630px;
     height: 450px auto;
-    margin-bottom: 20px;
 }
+
 #myImg {
     border-radius: 5px;
     cursor: pointer;
