@@ -5,12 +5,6 @@ INSERT INTO article (Id_Article, Nom_Article, Description_Article, Prix_Article,
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteArticle`(IN `ID` INT)
-    MODIFIES SQL DATA
-DELETE FROM article WHERE Id_Article = ID$$
-DELIMITER ;
-
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddPhoto`(IN `Nom` VARCHAR(50), IN `ID` INT)
     MODIFIES SQL DATA
 INSERT INTO photo (Nom_Photo, Moderation, Id_Activite) VALUES (Nom, 0, ID)$$
@@ -20,6 +14,12 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetArticles`()
     READS SQL DATA
 SELECT Nom_Article AS Image, Denomination AS Nom, Id_Article AS ID FROM article$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteArticle`(IN `ID` INT)
+    MODIFIES SQL DATA
+DELETE FROM article WHERE Id_Article = ID$$
 DELIMITER ;
 
 DELIMITER $$
@@ -118,4 +118,12 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `VoteA`(IN `IDA` INT, IN `IDU` INT)
     MODIFIES SQL DATA
 INSERT INTO vote_activite (Id_Idee_Activite, Id_utilisateur) VALUES (IDA, IDU)$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateInfos`(IN `nom` TEXT, IN `prenom` TEXT, IN `dateN` VARCHAR(50), IN `adresse` VARCHAR(50), IN `codeP` INT, IN `Ville` VARCHAR(50))
+    MODIFIES SQL DATA
+UPDATE utilisateur
+SET Nom_Utilisateur = nom, Prenom_Utilisateur = prenom, Date_Naissance = dateN, Adresse_Postale = adresse, Code_Postal = codeP, Ville = ValVille
+WHERE Mail = Vmail$$
 DELIMITER ;
