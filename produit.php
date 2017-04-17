@@ -4,16 +4,16 @@
 
   $articles = new articles();
 
-  $detail = $articles->DetailArticle(/*$_GET['id']*/11);
+  $detail = $articles->DetailArticle($_GET['id']);
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
-    <title>BDE Exia Reims : <?php echo $detail[0]['Nom'] ?></title>
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/produit.css">
+    <title>BDE Exia Reims : <?php echo $detail[0]['Nom'] ?>></title>
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/produit.css">
   </head>
 
   <body>
@@ -22,7 +22,7 @@
   
   <div id="wrapper">
     <div id="containerImg">
-	    <img src=<?php echo '"',$detail[0]['Image'], '"' ?>>
+	    <img src=<?php echo '"../',$detail[0]['Image'], '"' ?>>
       <form>
         <p>Coloris : 
         <input type="radio" name="coloris" value="noir" checked>Noir</input>
