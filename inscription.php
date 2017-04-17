@@ -18,9 +18,16 @@
 	elseif(isset($_POST['email'])  && isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['password']) && isset($_POST['repassword']))
   {
 		if ($_POST['password']==$_POST['repassword']) {
-			
-			$inscription->SignUp($_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['password']);
-		
+			try{
+				$inscription->SignUp($_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['password']);
+			}catch (PDOException $e) {
+				 if($e->getMessage() == "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ '".$_POST['email']."' pour la clef 'Mail_2'"){
+					$message = "ce mail est déjà pris";
+				 }
+				 else{
+					 $message = "problème durant l'envoie du formulaire";
+				 }
+			}
 		
 		//a voir pour remplir avec les erreur possible en bd car mail = unique
 		//et peut pas test car pas de procédure ><
@@ -53,13 +60,13 @@
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
 				
 				<br /><label for="email">Email</label> <br />
-				<input type="email" name="email" id="email" /> <br />
+				<input type="email" name="email" id="email" <?php if(isset($_POST['email'])) echo 'value="'.$_POST['email'].'"'; ?> /> <br />
 				
 				<label for="text">Nom</label> <br />
-				<input type="text" name="nom" id="pass" /> <br />
+				<input type="text" name="nom" id="pass" <?php if(isset($_POST['email'])) echo 'value="'.$_POST['nom'].'"'; ?> /> <br />
 
 				<label for="texte">Prénom</label> <br />
-				<input type="text" name="prenom" id="pass" /> <br />
+				<input type="text" name="prenom" id="pass" <?php if(isset($_POST['email'])) echo 'value="'.$_POST['prenom'].'"'; ?> /> <br />
 				
 				<label for="password">Password</label> <br />
 				<input type="password" name="password" id="pass" /> <br />
