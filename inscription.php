@@ -21,14 +21,17 @@
 				<br /><label for="email">Email</label> <br />
 				<input type="email" name="email" id="email" /> <br />
 				
-				<label for="password">Utilisateur</label> <br />
-				<input type="password" name="password" id="pass" /> <br />
+				<label for="text">Nom</label> <br />
+				<input type="text" name="nom" id="pass" /> <br />
+
+				<label for="texte">Prénom</label> <br />
+				<input type="text" name="prenom" id="pass" /> <br />
 				
-				<br /><label for="email">Password</label> <br />
-				<input type="email" name="email" id="email" /> <br />
+				<label for="password">Password</label> <br />
+				<input type="password" name="password" id="pass" /> <br />
 				
 				<label for="password">Retapez votre password</label> <br />
-				<input type="password" name="password" id="pass" /> <br />
+				<input type="password" name="repassword" id="pass" /> <br />
 				
 				<input type="submit" value="s'inscrire" />
 			</div>
