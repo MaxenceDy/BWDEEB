@@ -127,3 +127,10 @@ UPDATE utilisateur
 SET Nom_Utilisateur = nom, Prenom_Utilisateur = prenom, Date_Naissance = dateN, Adresse_Postale = adresse, Code_Postal = codeP, Ville = ValVille
 WHERE Mail = Vmail$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUserInfo`()
+    READS SQL DATA
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Mail, fonction.Nom_Fonction FROM utilisateur, fonction WHERE fonction.Id_Fonction=utilisateur.Id_Fonction$$
+DELIMITER ;
+

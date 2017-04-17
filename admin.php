@@ -199,7 +199,7 @@
 								</tr>
 								<tr id="show">
 									<td>Carmen</td>
-									<td>33 ans</td>
+									<td id="hidden">33 ans</td>
 									<td>Espagne</td>
 								</tr>
 								<tr id="hidden">
