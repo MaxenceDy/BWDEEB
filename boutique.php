@@ -1,4 +1,11 @@
-<?php include('verification.php'); ?>
+<?php
+  require('class/articles.php');
+  include('verification.php'); 
+
+  $articles = new articles();
+
+  $listeArticles = $articles->ListeArticles();
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,51 +21,24 @@
   <?php include('header.php'); ?>
     
 	<div id="wrapper">
+    <!--CONTAINER MODELE
     <div class="container">
       <a href="produit.php"><img src="Images/sweat.png"></a>
       <div class="fondTexte"></div>
       <p>Sweat</p>
     </div>
-     <div class="container">
-      <a href="produit.php"><img src="Images/housse.jpg"></a>
-      <div class="fondTexte"></div>      
-      <p>Housse</p>
-    </div>
-     <div class="container">
-      <a href="produit.php"><img src="Images/Logo.png"></a>
-      <div class="fondTexte"></div>
-      <p>Sticker</p>
-    </div>
-     <div class="container">
-      <a href="produit.php"><img src="Images/snapback.jpg"></a>
-      <div class="fondTexte"></div>
-      <p>Casquette</p>
-    </div>
-     <div class="container">
-      <a href="produit.php"><img src="Images/Spinner2.png"></a>
-      <div class="fondTexte"></div>
-      <p>Spinner 2 branches</p>
-    </div>
-     <div class="container">
-      <a href="produit.php"><img src="Images/Spinner3.png"></a>
-      <div class="fondTexte"></div>
-      <p>Spinner 3 branches</p>
-    </div>
-     <div class="container">
-      <a href="produit.php"><img src="Images/tshirt.jpg"></a>
-      <div class="fondTexte"></div>
-      <p>T-shirt</p>
-    </div>
-    <div class="container">
-      <a href="produit.php"><img src="Images/gourde.jpg"></a>
-      <div class="fondTexte"></div>
-      <p>Gourde</p>
-    </div>
-    <div class="container">
-      <a href="produit.php"><img src="Images/mug.jpg"></a>
-      <div class="fondTexte"></div>
-      <p>Mug</p>
-    </div>
+    -->
+
+    <?php
+      foreach($listeArticles as $e){?>
+        <div class="container">
+          <a href=<?php echo 'produit.php/',htmlspecialchars($e['ID']) ?> ><img src=<?php echo htmlspecialchars($e['Image']) ?>></a>
+          <div class="fondTexte"></div>
+          <p><?php echo $e['Nom'] ?></p>
+        </div>
+      <?php }
+    ?>
+
   </div>
 
   <?php include 'footer.php'; ?>
