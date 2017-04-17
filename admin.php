@@ -7,6 +7,7 @@
     <title>BDE Exia Reims : Mon compte</title>
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
+    <link rel="stylesheet" type="text/css" href="css/admin.css">	
 	<script src="script/form.js"></script>
   </head>
 
@@ -105,6 +106,118 @@
 								<option value="choix3">Choix 3</option>
 								<option value="choix4">Choix 4</option>
 							</select>
+							<table>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="show">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+								<tr id="hidden">
+									<td>Carmen</td>
+									<td>33 ans</td>
+									<td>Espagne</td>
+								</tr>
+								<tr id="hidden">
+									<td>Michelle</td>
+									<td>26 ans</td>
+									<td>États-Unis</td>
+								</tr>
+							</table>
 						<!--</FORM>-->
 						
 						<input type="submit" name="envoyer" value="Valider le changement de droit">
