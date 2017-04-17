@@ -24,10 +24,10 @@
 			<div id="nav">
 				<nav id="compte">
 					<ul>
-						<li><a href="#" id="bt_avatar">AVATAR</a></li>
-						<li><a href="#" id="bt_info">PHOTO</a></li>        
-						<li><a href="#" id="bt_boutique">BOUTIQUE</a></li>
-						<li><a href="#" id="bt_gestion_droit">GESTION DE DROITS</a></li>      
+						<li><a href="#avatar" id="bt_avatar">AVATAR</a></li>
+						<li><a href="#photo" id="bt_info">PHOTO</a></li>        
+						<li><a href="#boutique" id="bt_boutique">BOUTIQUE</a></li>
+						<li><a href="#gestion_droit" id="bt_gestion_droit">GESTION DE DROITS</a></li>      
 					</ul>        
 				</nav>
 			</div>
@@ -35,7 +35,7 @@
 			<!-- MODERATION DES AVATAR -->
 			<div id="gest-avatar">
 				<form method="POST" action="upload.php" enctype="multipart/form-data">
-					<div class="form">
+					<div class="form" action="#avatar">
 						
 						<!-- On limite le fichier à 100Ko -->
 						<input type="hidden" name="MAX_FILE_SIZE" value="100000">
@@ -52,7 +52,7 @@
 			<!-- MODERATION DES PHOTOS -->
 			<div id="gest-perso">
 				<form id="gest-perso" method="POST" action="#">
-				<div class="form">
+				<div class="form" action="#photo">
 					
 					<br /><label for="nom">Nom</label> <br />
 					<input type="text" name="nom" id="nom" /> <br />
@@ -81,7 +81,7 @@
 			<!-- MODERATION DE LA BOUTIQUE -->
 			<div id="gest-boutique">
 				<form method="POST" action="upload.php" enctype="multipart/form-data">
-					<div class="form">
+					<div class="form" action="#boutique">
 						
 						<!-- On limite le fichier à 100Ko -->
 						<input type="hidden" name="MAX_FILE_SIZE" value="100000">
@@ -94,7 +94,24 @@
 				</form>
 				
 			</div>
-			
+
+			<!-- MODERATION DE DROIT -->
+			<div id="gest_gestion_droit">
+					<div class="form" action="#gestion_droit">
+						<!--<FORM>-->
+							<select name="choix">
+								<option value="choix1">Choix 1</option>
+								<option value="choix2">Choix 2</option>
+								<option value="choix3">Choix 3</option>
+								<option value="choix4">Choix 4</option>
+							</select>
+						<!--</FORM>-->
+						
+						<input type="submit" name="envoyer" value="Valider le changement de droit">
+					</div>
+				</form>
+				
+			</div>
 			
 	  </div>
   </div>
