@@ -25,5 +25,21 @@
             return $array;
 		}
 		
+        function DetailArticle($id){
+            //on prépare la requête
+            $Query = $this->co->prepare('CALL GetDetailP(:ID)');
+
+            //on choisi les paramètres
+			$Query->bindParam(':ID', $id);
+
+            //on execute
+			$Query->execute();
+            $array = $Query->fetchAll();
+
+			//fin de la fonction
+			$Query->closeCursor();
+            return $array;
+        }
+
 	}
 ?>

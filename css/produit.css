@@ -24,4 +24,10 @@ img
     background-color: #F4C3C3;
     padding: 20px;
     height: 290px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+#containerDsc #prix{
+    height: auto;
 }

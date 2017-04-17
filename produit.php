@@ -1,10 +1,17 @@
-<?php include('verification.php'); ?>
+<?php 
+  require('class/articles.php');; 
+  include('verification.php'); 
+
+  $articles = new articles();
+
+  $detail = $articles->DetailArticle(/*$_GET['id']*/11);
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
-    <title>BDE Exia Reims : connexion</title>
+    <title>BDE Exia Reims : <?php echo $detail[0]['Nom'] ?></title>
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/produit.css">
   </head>
@@ -15,7 +22,7 @@
   
   <div id="wrapper">
     <div id="containerImg">
-	    <img src="Images/tshirt.jpg">
+	    <img src=<?php echo '"',$detail[0]['Image'], '"' ?>>
       <form>
         <p>Coloris : 
         <input type="radio" name="coloris" value="noir" checked>Noir</input>
@@ -31,11 +38,12 @@
     </div>
 
     <aside id="containerDsc">
-      <h1>Gourde Exia</h1>
+      <h1><?php echo $detail[0]['Nom'] ?></h1>
       <p>
         Description :<br><br>
-        Magnifique gourde avec le logo de l'Exia pour partir en balade.
+        <?php echo $detail[0]['Description'] ?>
       </p>
+      <p id="prix">Prix : <?php echo $detail[0]['Prix'] ?></p>
     </aside>
 
   </div>
