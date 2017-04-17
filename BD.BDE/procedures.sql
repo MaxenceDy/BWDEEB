@@ -65,9 +65,9 @@ SELECT Id_like FROM like_photo INNER JOIN utilisateur ON utilisateur.Id_utilisat
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Inscription`(IN `mdp` VARCHAR(50), IN `nom` TEXT, IN `prenom` TEXT, IN `mail` VARCHAR(50), IN `fonction` INT(5) UNSIGNED)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Inscription`(IN `mdp` VARCHAR(50), IN `nom` TEXT, IN `prenom` TEXT, IN `mail` VARCHAR(50), IN `Avatar` VARCHAR(50), IN `fonction` INT(5) UNSIGNED)
     MODIFIES SQL DATA
-INSERT INTO utilisateur (Mdp, Nom_Utilisateur, Prenom_Utilisateur, Mail, Id_Fonction) VALUES (mdp, nom, prenom, mail, fonction)$$
+INSERT INTO utilisateur (Mdp, Nom_Utilisateur, Prenom_Utilisateur, Mail, Avatar, Id_Fonction) VALUES (mdp, nom, prenom, mail, Images/avatar.jpg, 3)$$
 DELIMITER ;
 
 DELIMITER $$
