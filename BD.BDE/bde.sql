@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 17 Avril 2017 à 12:59
+-- Généré le :  Lun 17 Avril 2017 à 15:01
 -- Version du serveur :  5.7.14
--- Version de PHP :  7.0.10
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,24 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `bde`
 --
+
+DELIMITER $$
+--
+-- Procédures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetActivites` ()  READS SQL DATA
+SELECT Id_Activite AS ID, Nom_Activite AS Nom, Date_Activite AS DateA, Description_A AS Description, Prix_Activites AS Prix, photo_Activites AS Image FROM activites$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetIActivites` ()  READS SQL DATA
+SELECT Id_Idee_Activite AS ID, Nom_Idee_Activite AS Nom, Description_I_A AS Description, Prix_Idees_Activites AS Prix, Images_I_A AS Image FROM idees_activites$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Inscription` (IN `mdp` VARCHAR(50), IN `nom` TEXT, IN `prenom` TEXT, IN `mail` VARCHAR(50), IN `fonction` INT(5) UNSIGNED)  MODIFIES SQL DATA
+INSERT INTO utilisateur (Mdp, Nom_Utilisateur, Prenom_Utilisateur, Mail, Id_Fonction) VALUES (mdp, nom, prenom, mail, fonction)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Login` (IN `Vmdp` VARCHAR(50), IN `Vmail` VARCHAR(50))  READS SQL DATA
+SELECT Id_utilisateur FROM utilisateur WHERE Mdp = SHA1(Vmdp) AND Mail = Vmail$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -204,7 +222,6 @@ INSERT INTO `fonction` (`Id_Fonction`, `Nom_Fonction`) VALUES
 (9, 'chargé-évenements'),
 (8, 'communication'),
 (3, 'étudiants'),
-(10, 'Lambda'),
 (4, 'président'),
 (1, 'staff Cesi'),
 (6, 'trésorier'),
@@ -480,19 +497,18 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`Id_utilisateur`, `Mdp`, `Nom_Utilisateur`, `Prenom_Utilisateur`, `Mail`, `Date_Naissance`, `Adresse_Postale`, `Code_Postal`, `Ville`, `Avatar`, `Id_Fonction`) VALUES
-(1, '79e2475f81a6317276bf7cbb3958b20d289b78df', 'rebus', 'gregory', 'gregory.rebus@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/avatar.jpg', 1),
-(2, '0706025b2bbcec1ed8d64822f4eccd96314938d0', 'dufrenoy', 'maxence', 'maxence.dufrenoy@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/avatar.jpg', 1),
+(1, '79e2475f81a6317276bf7cbb3958b20d289b78df', 'rebus', 'gregory', 'gregory.rebus@viacesi.fr', NULL, NULL, NULL, NULL, NULL, 1),
+(2, '0706025b2bbcec1ed8d64822f4eccd96314938d0', 'dufrenoy', 'maxence', 'maxence.dufrenoy@viacesi.fr', NULL, NULL, NULL, NULL, NULL, 1),
 (3, 'c028c213ed5efcf30c3f4fc7361dbde0c893c5b7', 'liaud', 'joshua', 'joshua.liaud@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/josh.jpg', 5),
-(4, '01d22012aa39d30e36a6d8fc0253ce5edf084423', 'chalot', 'gaelle', 'gaelle.chalot@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/avatar.jpg', 1),
-(5, '0bbf31d9da625147cbe69f7b1f5af704a8105f12', 'etudiant', 'etudiant', 'etudiant@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/avatar.jpg', 3),
+(4, '01d22012aa39d30e36a6d8fc0253ce5edf084423', 'chalot', 'gaelle', 'gaelle.chalot@viacesi.fr', NULL, NULL, NULL, NULL, NULL, 1),
+(5, '0bbf31d9da625147cbe69f7b1f5af704a8105f12', 'etudiant', 'etudiant', 'etudiant@viacesi.fr', NULL, NULL, NULL, NULL, NULL, 3),
 (7, '1fa2ef4755a9226cb9a0a4840bd89b158ac71391', 'boxho', 'matthieu', 'matthieu.boxho@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/matthieu.png', 4),
 (8, 'cce3b81ce1c05726331254f5d3dba8d589a4bfa8', 'deruelle', 'baptiste', 'baptiste.deruelle@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/baptiste.png', 6),
 (9, 'fbe2b1ad416b7e3251086de11ad56d27ec6f72a3', 'laurent', 'lou-théo', 'lou-theo.laurent@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/loutheo.png', 7),
 (10, 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c', 'woutelet', 'louis', 'louis.woutelet@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/louisW.jpg', 7),
 (11, 'bf5cf299ce6ad0978a1465386899de8d6e61819d', 'dejoncheere', 'stephane', 'stephane.dejoncheere@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/stephane1.png', 9),
 (12, '75b1383a6f80bf121b182167edba49b84ea9a811', 'broutin', 'dorian', 'dorian.broutin@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/dorian.png', 9),
-(13, 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c', 'hans', 'louis', 'louis.hans@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/louiH.jpg', 8),
-(14, '06e675f91c421183750a1faee6812061ff8a55ec', 'Margaine', 'moumou', 'maxence.margaine@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/avatar.jpg', 10);
+(13, 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c', 'hans', 'louis', 'louis.hans@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/louiH.jpg', 8);
 
 -- --------------------------------------------------------
 
@@ -731,7 +747,7 @@ ALTER TABLE `commentaire_photo`
 -- AUTO_INCREMENT pour la table `fonction`
 --
 ALTER TABLE `fonction`
-  MODIFY `Id_Fonction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id_Fonction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `idees_activites`
 --
@@ -776,7 +792,7 @@ ALTER TABLE `type_article`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `Id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT pour la table `vote_activite`
 --
