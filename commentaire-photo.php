@@ -1,4 +1,21 @@
-<?php include('verification.php'); ?>
+<?php 
+  require('class/like.php');
+  include('verification.php'); 
+  /*$likes = new like();*/
+  $message;
+?>
+
+<?php 
+  if(isset($_GET['vote'])){
+    var_dump($_GET['vote']);
+    if($_GET['vote'] == 'true'){
+      $message = "vous avez like";
+    }
+    else{
+      $message = "Quelque chose a mal tourné";
+    }
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,15 +33,20 @@
   <?php include('header.php'); ?>
     
 	<div id="wrapper">
-    <h1>Commentaire Photo</h1>
+    <h1>Commentaires</h1>
+
+    <?php 
+      if(isset($message)){
+        echo "<p>",htmlspecialchars($message), "</p>";
+      }
+    ?>
 
     <div id="PhotoCom">
       <div class="container">
         <img id="monImg" src="Images/LAN2016.jpg">
         <br>
         <div class="container" id="all_jaime">
-          <a href="" onclick=""><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
-          <?php/* include('like-photo.php');*/ ?>
+          <a href="?vote=true"><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
           <div id="Compteur_jaime">Nombre de J'aime : <?php /*echo $data[];*/ print( 2) ?></div>
         </div>
       </div>
