@@ -1,7 +1,9 @@
 RewriteEngine on
 RewriteRule header.php /BWDEEB/erreur.php [L]
 RewriteRule footer.php /BWDEEB/erreur.php [L]
-
+#RewriteRule detailActi.php/(.+)$ detailActi.php?id=$1 [L]
+#RewriteRule commentaire-photo.php/(.+)$ commentaire-photo.php?id=$1 [L]
+#RewriteRule produit.php/(.+)$ produit.php?id=$1 [L]
 
 
 #RewriteRule API.php/(.+)/(.+)$ API.php?users=$1&id=$2 [L]
