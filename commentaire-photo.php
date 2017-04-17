@@ -23,6 +23,17 @@
         <img id="monImg" src="Images/LAN2016.jpg">
         <br>
         <a href="" onclick=""><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
+        <?php
+          $sql = 'SELECT COUNT(*) FROM Like_Photo';
+
+          $req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+
+          $data = mysql_fetch_array($req);
+
+          mysql_free_result ($req);
+          mysql_close ();
+        ?>
+        <?php echo $data[]; ?>
       </div>
       <div id="OutCom">
         <div class="container custom-scroll-bar" id="ComOut">
