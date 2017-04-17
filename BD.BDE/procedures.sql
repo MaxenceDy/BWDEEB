@@ -23,15 +23,15 @@ SELECT Commentaire_P AS Commentaire, Date_Commentaire_Photo AS DateC, Nom_Utilis
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetDetailP`(IN `VID` INT)
-    READS SQL DATA
-SELECT Nom_Article AS Nom, Description_Article AS Description, Prix_Article AS Prix,  Image_Article AS Image FROM article WHERE Id_Article = VID$$
-DELIMITER ;
-
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetDetailA`(IN `VID` INT)
     READS SQL DATA
 SELECT Id_Activite AS ID, Nom_Activite AS Nom, Date_Activite AS DateA, Description_A AS Description, Prix_Activites AS Prix, photo_Activites AS Image FROM activites WHERE Id_Activite = VID$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetDetailP`(IN `VID` INT)
+    READS SQL DATA
+SELECT Nom_Article AS Nom, Description_Article AS Description, Prix_Article AS Prix,  Image_Article AS Image FROM article WHERE Id_Article = VID$$
 DELIMITER ;
 
 DELIMITER $$
@@ -65,9 +65,9 @@ SELECT Id_like FROM like_photo INNER JOIN utilisateur ON utilisateur.Id_utilisat
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Inscription`(IN `mdp` VARCHAR(50), IN `nom` TEXT, IN `prenom` TEXT, IN `mail` VARCHAR(50), IN `Avatar` VARCHAR(50), IN `fonction` INT(5) UNSIGNED)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Inscription`(IN `mdp` VARCHAR(50), IN `nom` TEXT, IN `prenom` TEXT, IN `mail` VARCHAR(50), IN `fonction` INT(5) UNSIGNED)
     MODIFIES SQL DATA
-INSERT INTO utilisateur (Mdp, Nom_Utilisateur, Prenom_Utilisateur, Mail, Avatar, Id_Fonction) VALUES (mdp, nom, prenom, mail, Images/avatar.jpg, 3)$$
+INSERT INTO utilisateur (Mdp, Nom_Utilisateur, Prenom_Utilisateur, Mail, Id_Fonction) VALUES (mdp, nom, prenom, mail, fonction)$$
 DELIMITER ;
 
 DELIMITER $$
@@ -80,4 +80,36 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Login`(IN `Vmdp` VARCHAR(50), IN `Vmail` VARCHAR(50))
     READS SQL DATA
 SELECT Id_utilisateur FROM utilisateur WHERE Mdp = SHA1(Vmdp) AND Mail = Vmail$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SetAvatar`(IN `Image` VARCHAR(50), IN `Vmail` INT)
+    MODIFIES SQL DATA
+UPDATE utilisateur
+SET Avatar = Image
+WHERE Mail = Vmail$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddArticle`(IN `ID` INT(50), IN `Nom` VARCHAR(50), IN `Descr` VARCHAR(50), IN `Prix` INT(50), IN `IdT` INT(50), IN `Den` VARCHAR(50))
+    MODIFIES SQL DATA
+INSERT INTO article (Id_Article, Nom_Article, Description_Article, Prix_Article, Id_Type, Denomination) VALUES (ID, Nom, Descr, Prix, IdT, Den)$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteArticle`(IN `ID` INT)
+    MODIFIES SQL DATA
+DELETE FROM article WHERE Id_Article = ID$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VoteA`(IN `IDA` INT, IN `IDU` INT)
+    MODIFIES SQL DATA
+INSERT INTO vote_activite (Id_Idee_Activite, Id_utilisateur) VALUES (IDA, IDU)$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddPhoto`(IN `Nom` VARCHAR(50), IN `ID` INT)
+    MODIFIES SQL DATA
+INSERT INTO photo (Nom_Photo, Moderation, Id_Activite) VALUES (Nom, 0, ID)$$
 DELIMITER ;
