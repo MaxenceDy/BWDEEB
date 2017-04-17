@@ -96,7 +96,7 @@
 			</div>
 
 			<!-- MODERATION DE DROIT -->
-			<div id="gest_gestion_droit">
+			<div id="gest_droit">
 					<div class="form" action="#gestion_droit">
 						<!--<FORM>-->
 							<select name="choix">
