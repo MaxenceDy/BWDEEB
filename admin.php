@@ -26,7 +26,8 @@
 					<ul>
 						<li><a href="#" id="bt_avatar">AVATAR</a></li>
 						<li><a href="#" id="bt_info">PHOTO</a></li>        
-						<li><a href="#" id="bt_boutique">BOUTIQUE</a></li>        
+						<li><a href="#" id="bt_boutique">BOUTIQUE</a></li>
+						<li><a href="#" id="bt_gestion_droit">GESTION DE DROITS</a></li>      
 					</ul>        
 				</nav>
 			</div>
