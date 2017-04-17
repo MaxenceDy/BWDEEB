@@ -1,4 +1,11 @@
-<?php include('verification.php'); ?>
+<?php 
+	require('class/users.php');
+	include('verification.php'); 
+
+	$users = new users();
+
+	
+?>
 
 <?php 
 
@@ -12,11 +19,20 @@
   //si les données ont été envoyées
   elseif(isset($_POST['email'])  && isset($_POST['password']))
   {
-    $_SESSION['email'] = $_POST['email'];
-    $_SESSION['password'] = $_POST['password'];
-    $_SESSION['connecte'] = true;
-	$_SESSION['LAST_ACTIVITY'] = time(); // set activity time stamp
-    header('Location: index.php');
+	$log = $users->SignIn($_POST['password'], $_POST['email']);
+	
+	if(count($log) == 1){
+		$_SESSION['email'] = $_POST['email'];
+		$_SESSION['password'] = $_POST['password'];
+		$_SESSION['connecte'] = true;
+		$_SESSION['LAST_ACTIVITY'] = time(); // set activity time stamp
+		header('Location: index.php');
+	}
+	else{
+		echo '<p id="err">';
+        echo "\t\t<strong>", "MAUVAIS LOGIN" ,"</strong>\n";
+        echo "\t</p>\n\n";
+	}
   }
 ?>
 

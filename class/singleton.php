@@ -1,4 +1,5 @@
 <?php
+require_once 'config.php';
   final class singleton{
     private static $PDOInstance = null;
     private static $dsn         = null;
