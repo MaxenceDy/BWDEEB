@@ -15,13 +15,13 @@
 		
 		function SignUp($password, $nom, $prenom, $mail){
 			//on prépare la requête
-			$Query = $co->prepare('CALL Inscription(:password, :nom, :prenom, :mail, 1)');
+			$Query = $co->prepare('CALL Inscription(:nom, :prenom, :mail, :motpass)');
 
 			//on choisi les paramètres
-			$stmt->bindParam(':password', $password);
+			$stmt->bindParam(':mail', $mail);			
 			$stmt->bindParam(':nom', $nom);
 			$stmt->bindParam(':prenom', $prenom);
-			$stmt->bindParam(':mail', $mail);
+			$stmt->bindParam(':motpass', $password);
 
 			//on execute
 			$Query->execute();

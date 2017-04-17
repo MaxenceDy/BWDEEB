@@ -1,4 +1,30 @@
-<?php include('verification.php'); ?>
+<?php
+	require('class/users.php');
+	include('verification.php'); 
+	
+	$incription = new users();
+	$renvoie;
+	?>
+
+	<?php 
+
+  //si il est déjà connecté
+  if(isset($_SESSION['connecte']))
+  {
+    header('Location: index.php');
+		<script>alert("déjà connecté et inscrit")</script>
+    exit();
+  }
+	elseif(isset($_POST['email'])  && isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['password']) && isset($_POST['repassword']))
+  {
+		elseif $_POST['password']==$_POST['repassword']{
+			$inscript = $inscription->($_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['password']);
+					if(count($inscript) == 1){
+						//a voir pour remplir avec les erreur possible en bd car mail = unique
+						//et peut pas test car pas de procédure ><
+		}
+	}
+	?>
 
 <!DOCTYPE html>
 <html lang="fr">
