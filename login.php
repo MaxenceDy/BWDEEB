@@ -3,36 +3,33 @@
 	include('verification.php'); 
 
 	$users = new users();
-
+	$message;
 	
 ?>
 
 <?php 
 
   //si il est déjà connecté
-  if(isset($_SESSION['email']) && isset($_SESSION['password']))
+  if(isset($_SESSION['connecte']))
   {
-    $_SESSION['connecte'] = true;
     header('Location: index.php');
     exit();
   }
   //si les données ont été envoyées
   elseif(isset($_POST['email'])  && isset($_POST['password']))
   {
-	$log = $users->SignIn($_POST['password'], $_POST['email']);
-	
-	if(count($log) == 1){
-		$_SESSION['email'] = $_POST['email'];
-		$_SESSION['password'] = $_POST['password'];
-		$_SESSION['connecte'] = true;
-		$_SESSION['LAST_ACTIVITY'] = time(); // set activity time stamp
-		header('Location: index.php');
-	}
-	else{
-		echo '<p id="err">';
-        echo "\t\t<strong>", "MAUVAIS LOGIN" ,"</strong>\n";
-        echo "\t</p>\n\n";
-	}
+		$log = $users->SignIn($_POST['password'], $_POST['email']);
+		
+		if(count($log) == 1){
+			$_SESSION['email'] = $_POST['email'];
+			$_SESSION['password'] = $_POST['password'];
+			$_SESSION['connecte'] = true;
+			$_SESSION['LAST_ACTIVITY'] = time(); // set activity time stamp
+			header('Location: index.php');
+		}
+		else{
+			$message = "MAUVAIS LOGIN";
+		}
   }
 ?>
 
@@ -53,6 +50,14 @@
 		<form id="LOGIN" method="POST" action="login.php">
 			<div class="form">
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
+
+				<?php 
+					if(isset($message)){
+						echo '<p id="err">';
+						echo "\t\t<strong>", $message ,"</strong>\n";
+						echo "\t</p>\n\n";
+					}
+				?>
 				
 				<br /><label for="email">Email</label> <br />
 				<input type="email" name="email" id="email" /> <br />
