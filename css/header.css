@@ -137,14 +137,12 @@ nav a
     border-bottom: 2px solid;
     border-bottom-color: #CC7A90;
     color: black;    
-    transition: 0.5s;
-    transition-property: border-bottom-color;
 }
 
 nav a:hover
 {
     border-bottom: 2px solid;
     border-bottom-color: #B01A2E;
-    transition: 0.5s;
+    transition: 0.5s ease-in-out;
     transition-property: border-bottom-color;
 }
