@@ -1,8 +1,10 @@
 <?php 
   require('class/like.php');
   include('verification.php'); 
-  /*$likes = new like();*/
+  $likes = new like();
   $message;
+
+  $count = $likes->CountLike(1);
 ?>
 
 <?php 
@@ -47,7 +49,7 @@
         <br>
         <div class="container" id="all_jaime">
           <a href="?vote=true"><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
-          <div id="Compteur_jaime">Nombre de J'aime : <?php /*echo $data[];*/ print( 2) ?></div>
+          <div id="Compteur_jaime">Nombre de J'aime : <?php echo $count[0]['Likes'] ?></div>
         </div>
       </div>
       <div id="OutCom">

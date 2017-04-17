@@ -12,13 +12,13 @@
 			
 		}
 		
-        function Like($Id_User, $Id_Photo){
+        function Like($Mail, $Id_Photo){
 
 			//on prépare la requête
-			$Query = $this->co->prepare('CALL Like(:IDU, :IDP)');
+			$Query = $this->co->prepare('CALL Like(:Mail, :IDP)');
 
 			//on choisi les paramètres
-			$Query->bindParam(':IDU', $Id_User);
+			$Query->bindParam(':Mail', $Mail);
 			$Query->bindParam(':IDP', $Id_Photo);
 
 			//on execute
@@ -47,7 +47,7 @@
 		
 		function CountLike($Id_Photo){
 			//on prépare la requête
-			$Query = $this->co->prepare('CALL Login(:Id_Photo)');
+			$Query = $this->co->prepare('CALL GetLikes(:Id_Photo)');
 
 			//on choisi les paramètres
 			$Query->bindParam(':Id_Photo', $Id_Photo);
