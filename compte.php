@@ -1,96 +1,5 @@
 <?php include('verification.php'); ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta http-equiv="content-type" content="text/html" charset="utf-8">
-    <title>BDE Exia Reims : Mon compte</title>
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/form.css">
-	<script src="script/form.js"></script>
-  </head>
-
-  <body>
-
-  <?php include('header.php'); ?>
-    
-		
-		
-		<div id=wrapper>
-			
-	<div id=wrapper2>
-		
-		<!-- NAVIGATION -->
-			<div id="nav">
-				<nav id="compte">
-					<ul>
-						<li><a href="#" id="bt_avatar">Avatar</a></li>
-						<li><a href="#" id="bt_info">info perso</a></li>        
-					</ul>        
-				</nav>
-			</div>
-			
-			<!-- GESTION DE L'AVATAR -->
-			<div id="gest-avatar">
-			
-				<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
-					<fieldset>
-						<div class="form">
-							
-						<p>
-							<label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier :</label>
-
-							<input name="fichier" type="file" id="fichier_a_uploader" value="" /> </br>
-							<input type="submit" name="submit" value="Uploader" />
-						</p>
-
-						</div>
-						
-					</fieldset>
-				</form>
-				
-			</div>
-			
-			<!-- GESTION DES INFO PERSO -->
-			<div id="gest-perso">
-				<form id="gest-perso" method="POST" action="#">
-				<div class="form">
-					
-					<br /><label for="nom">Nom</label> <br />
-					<input type="text" name="nom" id="nom" /> <br />
-					
-					<label for="prenom">Prénom</label> <br />
-					<input type="text" name="prenom" id="prenom" /> <br />
-					
-					<label for="dateN">Date de naissance</label> <br />
-					<input type="date" name="dateN" id="dateN" /> <br />
-					
-					<br /><label for="ville">Ville</label> <br />
-					<input type="text" name="ville" id="ville" /> <br />
-					
-					<label for="adresse">Adresse</label> <br />
-					<input type="text" name="adresse" id="adresse" /> <br />
-					
-					<label for="code">Code postal</label> <br />
-					<input type="text" name="code" id="code" /> <br />
-					
-					<input type="submit" value="enregistrer" />
-				</div>
-			</form>
-				
-			</div>
-			
-			
-	  </div>
-  </div>
-
-  <?php include 'footer.php'; ?>
-	
-  </body>
-</html>
-
-
-
 <?php
  
 // Constantes
@@ -178,11 +87,101 @@ if(!empty($_POST))
     // Sinon on affiche une erreur pour le champ vide
     $message = 'Veuillez remplir le formulaire svp !';
   }
-	if( !empty($message) ) 
-	{
-		echo '<p id="img">',"";
-		echo "\t\t<strong>", htmlspecialchars($message) ,"</strong>\n";
-		echo "\t</p>\n\n";
-	}
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <title>BDE Exia Reims : Mon compte</title>
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+	<script src="script/form.js"></script>
+  </head>
+
+  <body>
+
+  <?php include('header.php'); ?>
+    
+		
+		
+		<div id=wrapper>
+			
+	<div id=wrapper2>
+		
+		<!-- NAVIGATION -->
+			<div id="nav">
+				<nav id="compte">
+					<ul>
+						<li><a href="#" id="bt_avatar">Avatar</a></li>
+						<li><a href="#" id="bt_info">info perso</a></li>        
+					</ul>        
+				</nav>
+			</div>
+			
+			<!-- GESTION DE L'AVATAR -->
+			<div id="gest-avatar">
+			
+				<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
+					<fieldset>
+						<div class="form">
+							
+						<p>
+							<label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier :</label>
+
+							<input name="fichier" type="file" id="fichier_a_uploader" value="" /> </br>
+							<input type="submit" name="submit" value="Uploader" />
+              <?php 
+              	if( !empty($message) ) 
+                {
+                  echo '<p id="img">';
+                  echo "\t\t<strong>", htmlspecialchars($message) ,"</strong>\n";
+                  echo "\t</p>\n\n";
+                }?>
+						</p>
+
+						</div>
+						
+					</fieldset>
+				</form>
+				
+			</div>
+			
+			<!-- GESTION DES INFO PERSO -->
+			<div id="gest-perso">
+				<form id="gest-perso" method="POST" action="#">
+				<div class="form">
+					
+					<br /><label for="nom">Nom</label> <br />
+					<input type="text" name="nom" id="nom" /> <br />
+					
+					<label for="prenom">Prénom</label> <br />
+					<input type="text" name="prenom" id="prenom" /> <br />
+					
+					<label for="dateN">Date de naissance</label> <br />
+					<input type="date" name="dateN" id="dateN" /> <br />
+					
+					<br /><label for="ville">Ville</label> <br />
+					<input type="text" name="ville" id="ville" /> <br />
+					
+					<label for="adresse">Adresse</label> <br />
+					<input type="text" name="adresse" id="adresse" /> <br />
+					
+					<label for="code">Code postal</label> <br />
+					<input type="text" name="code" id="code" /> <br />
+					
+					<input type="submit" value="enregistrer" />
+				</div>
+			</form>
+				
+			</div>
+			
+			
+	  </div>
+  </div>
+
+  <?php include 'footer.php'; ?>
+	
+  </body>
+</html>
