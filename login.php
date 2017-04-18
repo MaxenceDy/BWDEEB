@@ -1,5 +1,5 @@
 <?php 
-	require('class/users.php');
+	require_once('class/users.php');
 	include('verification.php'); 
 
 	$users = new users();

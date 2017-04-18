@@ -1,7 +1,7 @@
 <?php include('verification.php');
 	require('class/users.php');
 	require('class/Photo_admin.php');
-	$articles = new article();
+	$Photo = new Photo();
 	$users = new users();
 ?>
 <!DOCTYPE html>
@@ -61,7 +61,7 @@
 								<table border="1">
 									<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th></tr>
 									<?php
-										$rowPhoto = $articles->GetModerationPhotos();
+										$rowPhoto = $Photo->GetModerationPhotos();
 										foreach($rowPhoto as $rowP) {
 											if ($rowP['Moderation'] = 1){
 												$rowP['Moderation'] = 'Validée';
@@ -69,7 +69,7 @@
 											else {
 												$rowP['Moderation'] = 'En Attente';
 											}
-											echo ('<tr>' . '<td>' . '<img src=' . $rowP['Nom'] . '>' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>');
+											echo ('<tr>' . '<td>' . '<img src=' . $rowP['Nom'] . '>' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>' . '<td> <input type="checkbox" value="Valider"> </td> <td> <input type="checkbox" value="Supprimer"> </td>');
 										}
 									?>
 								</table>
