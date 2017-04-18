@@ -10,6 +10,7 @@
   $count = $likes->CountLike(1);
 
   $commentaires = $comm->Commentaires($_GET['id']);
+  $image = $comm->DetailPhoto($_GET['id']);
 ?>
 
 <?php 
@@ -50,45 +51,35 @@
 
     <div id="PhotoCom">
       <div class="container">
-        <img id="monImg" src="Images/LAN2016.jpg">
+        <img id="monImg" src=<?php echo '../',$image[0]['Image']?>>
         <br>
         <div class="container" id="all_jaime">
-          <a href="?vote=true"><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
+          <a href="?vote=true"><img src="../Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
           <div id="Compteur_jaime">Nombre de J'aime : <?php echo $count[0]['Likes'] ?></div>
         </div>
       </div>
       <div id="OutCom">
         <div class="container custom-scroll-bar" id="ComOut">
+          <!--CONTAINER MODELE
           <div id="ComIn">
             <h4>LIAUD Joshua<br></h4>
             <br>
             <hr></hr>
             <p>Je commente une première fois</p>
           </div>
-          <div id="ComIn">
-            <h4>LIAUD Joshua<br></h4>
-            <br>
-            <hr></hr>
-            <p>Je commente une deuxième fois</p>
-          </div>
-          <div id="ComIn">
-            <h4>LIAUD Joshua<br></h4>
-            <br>
-            <hr></hr>
-            <p>Je commente une troisième fois</p>
-          </div>
-          <div id="ComIn">
-            <h4>LIAUD Joshua<br></h4>
-            <br>
-            <hr></hr>
-            <p>Je commente une cinquifème fois</p>
-          </div>
-          <div id="ComIn">
-            <h4>LIAUD Joshua<br></h4>
-            <br>
-            <hr></hr>
-            <p>Je commente une sixième fois bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla</p>
-          </div>
+          -->
+          
+          <?php 
+            foreach($commentaires as $e){?>
+              <div id="ComIn">
+                <h4><?php echo $e['Nom'], ' ', $e['Prenom']?><br></h4>
+                <br>
+                <hr></hr>
+                <p><?php echo $e['Commentaire'] ?></p>
+              </div>
+            <?php }
+          ?>
+
           <br>
         </div>
         <div class="container">
@@ -104,9 +95,9 @@
       <div id="caption"></div>
     </div>
   </div>
-  <script src="script/jquery-3.2.1.js"></script>
-  <script src="script/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-  <script src="script/custom.js"></script>
+  <script src="../script/jquery-3.2.1.js"></script>
+  <script src="../script/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../script/custom.js"></script>
 
   <?php include 'footer.php'; ?>
 	
