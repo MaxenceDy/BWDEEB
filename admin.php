@@ -145,23 +145,6 @@
 											<td>Espagne</td>
 										</tr>
 									</table>
-								</div>
-							<div id="droit">
-								<div id="selection">
-									<select name="choix" id="s">
-										<option value="choix1">Choix 1</option>
-										<option value="choix2">Choix 2</option>
-										<option value="choix3">Choix 3</option>
-										<option value="choix4">Choix 4</option>
-									</select>
-								</div>
-								<div id="check_box">
-										<input type="radio" name="fonction" value="male" checked id="radio_focntion"> <br>
-										<input type="radio" name="fonction" value="female" id="radio_focntion"> Female<br>
-										<input type="radio" name="fonction" value="other" id="radio_focntion"> Other<br><br>
-										
-								</div>
-								<input type="submit">
 							</div>
 		<!--<table border="1">
 		<?php	/*
@@ -171,7 +154,31 @@
 			}
 		print "</table>";*/
 		?>-->
-	
+							<div id="droit">
+								<div id="selection">
+									<select name="choix" id="s">
+										<option value="choix1">Choix 1</option>
+										<option value="choix2">Choix 2</option>
+										<option value="choix3">Choix 3</option>
+										<option value="choix4">Choix 4</option>
+									</select>
+								</div>
+								<?php	/*
+									$fonctionAll = $users->GetFonction();*/
+								?>
+								<div id="check_box">
+										<input type="radio" name="fonction" value="<?php /*echo $fonctionAll[2];*/?>*/" checked id="radio_fonction"> <?php/* echo $fonctionAll[2];*/?>
+										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[1];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[1];*/?>
+										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[3];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[3];*/?>
+										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[4];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[4];*/?>
+										<input type="radio" name="fonction" value="<?php /*echo $fonctionAll[5];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[5];*/?>
+										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[6];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[6];*/?>
+										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[7];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[7];*/?>
+										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[8];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[8];*/?>
+										
+								</div>
+								<input type="submit">
+							</div>
 						<!--</FORM>-->
 						
 					<!--	<input type="submit" name="envoyer" value="Valider le changement de droit">-->

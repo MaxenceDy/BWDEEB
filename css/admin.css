@@ -18,6 +18,7 @@
     flex-wrap: wrap;
     margin: 25px 50px 25px 20px;
     border:solid 1px;
+    justify-content: center;
 }
 #selection{
     display: flex !important;

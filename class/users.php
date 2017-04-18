@@ -60,6 +60,19 @@
 				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
 			}
 		}
+
+
+		function GetFonction(){
+			try {
+				$Query = $this->co->prepare('CALL GetFonction()');
+
+				$pdo_select->execute();
+				$rowAll = $pdo_select->fetchAll();
+			} 
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+		}
 		
 		
 		
