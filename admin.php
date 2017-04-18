@@ -66,7 +66,7 @@
 							<?php
 								$rowPhoto = $Administration->GetModerationPhotos();
 								foreach($rowPhoto as $rowP) {
-									if ($rowP['Moderation'] = 1){
+									if ($rowP['Moderation'] == 1){
 										$rowP['Moderation'] = 'Validée';
 									}
 									else {
