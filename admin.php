@@ -1,5 +1,7 @@
-<?php include('verification.php'); ?>
-
+<?php include('verification.php'); 
+	require('class/users.php');
+	$users = new users();
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -218,6 +220,15 @@
 									<td>États-Unis</td>
 								</tr>
 							</table>
+							
+							<table border="1">
+							<?php	
+								$rowAll = $users->GetAllUserInfo();
+								foreach($rowAll as $row) {
+									echo ('<tr>' . '<td>' . $row['Nom'] . '</td>' . '<td>' . $row['Prenom'] . '</td>' . '<td>' . $row['Mail'] . '</td>' . '<td>' . $row['funct'] . '</td>' . '</tr>');
+								}
+							print "</table>";
+							?>
 						<!--</FORM>-->
 						
 						<input type="submit" name="envoyer" value="Valider le changement de droit">

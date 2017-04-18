@@ -49,6 +49,17 @@
 		}
 		
 		
+		function GetAllUserInfo(){
+			try {
+				$Query = $this->co->prepare('CALL GetAllUserInfo()');
+
+				$pdo_select->execute();
+				$rowAll = $pdo_select->fetchAll();
+			} 
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+		}
 		
 		
 		
