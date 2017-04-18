@@ -145,7 +145,7 @@
 											<td>Espagne</td>
 										</tr>
 									</table>
-							</div>
+							
 		<!--<table border="1">
 		<?php	/*
 			$rowAll = $users->GetAllUserInfo();
@@ -154,6 +154,7 @@
 			}
 		print "</table>";*/
 		?>-->
+							</div>
 							<div id="droit">
 								<div id="selection">
 									<select name="choix" id="s">
