@@ -14,9 +14,10 @@
   $commentaires = $comm->Commentaires($_GET['id']);
   $image = $comm->DetailPhoto($_GET['id']);
   $id = $user->GetUserID($_SESSION['email']);
-  $hasliked = $likes->GetUserLike($_SESSION['email']);
+  $hasliked = $likes->GetUserLike($_SESSION['email'], $_GET['id']);
 
   var_dump($hasliked);
+  var_dump($_GET['vote']);
 ?>
 
 <?php 
@@ -41,10 +42,10 @@
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <title>BDE Exia Reims : Commentaires</title>
-    <link rel="stylesheet" type="text/css" href="../css/header.css">
-    <link rel="stylesheet" type="text/css" href="../css/commentaire-photo.css">
-    <link rel="stylesheet" type="text/css" href="../script/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" type="text/css" href="../script/form.css">    
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/commentaire-photo.css">
+    <link rel="stylesheet" type="text/css" href="script/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="script/form.css">    
   </head>
 
   <body>
@@ -62,10 +63,10 @@
 
     <div id="PhotoCom">
       <div class="container">
-        <img id="monImg" src=<?php echo '../',$image[0]['Image']?>>
+        <img id="monImg" src=<?php echo $image[0]['Image']?>>
         <br>
         <div class="container" id="all_jaime">
-          <a href="?vote=true"><img src="../Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
+          <a href="/true"><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
           <div id="Compteur_jaime">Nombre de J'aime : <?php echo $count[0]['Likes'] ?></div>
         </div>
       </div>

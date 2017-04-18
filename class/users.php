@@ -124,27 +124,5 @@
 			$Query->closeCursor();
 			return $array;
 		}
-
-		/*
-		function getCategorie(){
-			
-			return $this->co->query("select * from categorie")->fetchAll();
-			
-		}
-		
-		function delCategorie($ID){
-			
-			return $this->co->exec("DELETE FROM categorie WHERE id=".$ID);
-			
-		}
-		
-		function addCategorie($nom){
-			
-			return $this->co->exec("INSERT INTO `categorie` (`id`, `nom`) VALUES (NULL, '".$nom."')");
-			
-		}*/
-		
-		
-		
 	}
 ?>

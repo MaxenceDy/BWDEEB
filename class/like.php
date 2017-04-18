@@ -28,13 +28,14 @@
 			$Query->closeCursor();
 		}
 		
-		function GetUserLike($mail){
+		function GetUserLike($mail, $id){
 
 			//on prépare la requête
-			$Query = $this->co->prepare('CALL GetUserLike(:mail)');
+			$Query = $this->co->prepare('CALL GetUserLike(:mail, :id)');
 
 			//on choisi les paramètres
 			$Query->bindParam(':mail', $mail);
+			$Query->bindParam(':id', $id);
             
 			//on execute
 			$Query->execute();
@@ -42,6 +43,7 @@
 
 			//fin de la fonction
 			$Query->closeCursor();
+			return $array;
 		}
 		
 		
