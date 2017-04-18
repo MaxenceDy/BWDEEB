@@ -11,7 +11,9 @@
     <title>BDE Exia Reims : Mon compte</title>
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
-    <link rel="stylesheet" type="text/css" href="css/admin.css">	
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+	<link rel="stylesheet" type="text/css" href="script/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css">
+	
 	<script src="script/form.js"></script>
   </head>
 
@@ -41,7 +43,7 @@
 			<div id="gest-avatar">
 				<form method="POST" action="upload.php" enctype="multipart/form-data">
 					<div class="form" action="#avatar">
-						<div class="tableau_fonction">		
+						<div class="tableau_fonction custom-scroll-bar">		
 							<table border="1">
 								<tr><th>Photo</th><th>Supprimer</th></tr>
 								<?php
@@ -60,7 +62,7 @@
 			<div id="gest-perso">
 				<form id="gest-perso" method="POST" action="#">
 				<div class="form" action="#photo">
-					<div class="tableau_fonction">		
+					<div class="tableau_fonction custom-scroll-bar">		
 						<table border="1">
 							<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th></tr>
 							<?php
@@ -86,7 +88,7 @@
 			<div id="gest-boutique">
 				<form method="POST" action="upload.php" enctype="multipart/form-data">
 					<div class="form" action="#boutique">
-						<div class="tableau_fonction">		
+						<div class="tableau_fonction custom-scroll-bar">		
 							<table border="1">
 								<tr><th>Photo</th><th>Nom</th><th>Prix</th><th>Supprimer</th></tr>
 								<?php
@@ -106,7 +108,7 @@
 			<div id="gest_droit">
 					<div class="form" action="#gestion_droit">
 						<!--<FORM>-->
-							<div class="tableau_fonction">		
+							<div class="tableau_fonction custom-scroll-bar">		
 								<table border="1">
 								<?php
 									$rowAll = $users->GetAllUserInfo();
@@ -118,9 +120,9 @@
 							</div>
 							<div id="droit">
 								<div id="selection">
-								<?php
-									$fonctionAllUser = $users->getAllUser();
-								?>	
+									<?php
+										$fonctionAllUser = $users->getAllUser();
+									?>	
 									<select name="choix" id="s">
 									<?php
 										foreach($fonctionAllUser as $rowU) {
@@ -136,14 +138,14 @@
 									<?php
 										$fonctionAll = $users->GetFonction();
 									?>	
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll[1]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[1]['f'];?> <!--etudiant-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll[0]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[0]['f'];?><!--staffexia-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll[2]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[2]['f'];?><!--président-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll[3]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[3]['f'];?><!--vice-president-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll[4]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[4]['f'];?><!--tresorier-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll[5]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[5]['f'];?><!--vice-tresorier-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll[6]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[6]['f'];?><!--communication-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll[7]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[7]['f'];?><!--chargé d'evenement-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[1]['Funct'];?>" id="radio_fonction"> <?php echo $fonctionAll[1]['Funct'];?> <!--etudiant-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[2]['Funct'];?>" id="radio_fonction"> <?php echo $fonctionAll[2]['Funct'];?><!--président-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[0]['Funct'];?>" id="radio_fonction"> <?php echo $fonctionAll[0]['Funct'];?><!--staffexia-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[3]['Funct'];?>" id="radio_fonction"> <?php echo $fonctionAll[3]['Funct'];?><!--vice-president-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[4]['Funct'];?>" id="radio_fonction"> <?php echo $fonctionAll[4]['Funct'];?><!--tresorier-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[5]['Funct'];?>" id="radio_fonction"> <?php echo $fonctionAll[5]['Funct'];?><!--vice-tresorier-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[6]['Funct'];?>" id="radio_fonction"> <?php echo $fonctionAll[6]['Funct'];?><!--communication-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[7]['Funct'];?>" id="radio_fonction"> <?php echo $fonctionAll[7]['Funct'];?><!--chargé d'evenement-->
 										
 								</div>
 								<!--<input type="submit">-->
@@ -156,8 +158,12 @@
 				
 			</div>
 			
-	  </div>
-  </div>
+	  	</div>
+  	</div>
+
+	<script src="script/jquery-3.2.1.js"></script>
+	<script src="script/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="script/custom.js"></script>
 
   <?php include 'footer.php'; ?>
 	
