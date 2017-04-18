@@ -79,6 +79,19 @@
 		}
 		
 		
+		function getAllUser(){
+			try {
+				$Query = $this->co->prepare('CALL getAllUser()');
+
+				$Query->execute();
+				$rowAll = $Query->fetchAll();
+				
+				return $rowAll;
+			} 
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+		}
 		
 		/*
 		function getCategorie(){

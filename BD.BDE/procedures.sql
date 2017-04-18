@@ -138,8 +138,14 @@ AND utilisateur.Id_Fonction <> 3
 DELIMITER ;
 
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUser`()
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Id_utilisateur AS ID
+FROM utilisateur
+DELIMITER ;
+
+
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetFonction`()
 SELECT Nom_Fonction AS Funct FROM fonction 
-WHERE Id_Fonction <> 3
 ORDER BY Id_Fonction
 DELIMITER ;

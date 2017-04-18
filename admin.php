@@ -114,11 +114,15 @@
 				</div>
 							<div id="droit">
 								<div id="selection">
+								<?php
+									$fonctionAllUser = $users->getAllUser();
+								?>	
 									<select name="choix" id="s">
-										<option value="choix1">Choix 1</option>
-										<option value="choix2">Choix 2</option>
-										<option value="choix3">Choix 3</option>
-										<option value="choix4">Choix 4</option>
+									<?php
+										foreach($fonctionAllUser as $rowU) {
+											echo ('<option value="' . $rowU['Nom'] . '">' . $rowU['Nom'] . ' ' . $rowU['Prenom'] . '</option>');
+										}
+									?>
 									</select>
 								</div>
 								<?php
@@ -127,29 +131,22 @@
 								<div id="check_box">
 									<?php
 										$fonctionAll = $users->GetFonction();
-										/*
-										foreach($fonctionAll as $row) {
-											echo ('<input type="radio" name="fonction" value="'<?php /*echo $row[''];*/?>*/'" checked id="radio_fonction">' <?php/* echo $fonctionAll[2];*/?>);
-										}*/
-									?>
-										
-										
-
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][2];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][2];?> <!--etudiant-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][1];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][1];?><!--staffexia-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][3];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][3];?><!--président-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][4];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][4];?><!--vice-president-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][5];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][5];?><!--tresorier-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][6];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][6];?><!--vice-tresorier-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][7];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][7];?><!--communication-->
-										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][8];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][8];?><!--chargé d'evenement-->
+									?>	
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[1]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[1]['f'];?> <!--etudiant-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[0]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[0]['f'];?><!--staffexia-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[2]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[2]['f'];?><!--président-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[3]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[3]['f'];?><!--vice-president-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[4]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[4]['f'];?><!--tresorier-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[5]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[5]['f'];?><!--vice-tresorier-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[6]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[6]['f'];?><!--communication-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll[7]['f'];?>" id="radio_fonction"> <?php echo $fonctionAll[7]['f'];?><!--chargé d'evenement-->
 										
 								</div>
-								<input type="submit">
+								<!--<input type="submit">-->
 							</div>
 						<!--</FORM>-->
 						
-					<!--	<input type="submit" name="envoyer" value="Valider le changement de droit">-->
+						<input type="submit" name="envoyer" value="Valider le changement de droit">
 					</div>
 				</form>
 				
