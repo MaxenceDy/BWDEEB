@@ -15,13 +15,14 @@
 		
 		function SignUp($mail, $nom, $prenom, $password){
 			//on prépare la requête
-			$Query = $this->co->prepare('CALL Inscription(:mdp, :nom, :prenom, :mail)');
+			$Query = $this->co->prepare('CALL Inscription(:mdp, :nom, :prenom, :mail, :fonction)');
 
 			//on choisi les paramètres
 			$Query->bindParam(':mail', $mail);			
 			$Query->bindParam(':nom', $nom);
 			$Query->bindParam(':prenom', $prenom);
 			$Query->bindParam(':mdp', $password);
+			$Query->bindValue(':fonction', '3');
 
 			//on execute
 			$Query->execute();

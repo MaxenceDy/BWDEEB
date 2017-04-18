@@ -79,7 +79,7 @@
 			<?php 
 					if(isset($message)){
 						echo '<p id="err">';
-						echo "\t\t<strong>", $message ,"</strong>\n";
+						echo "\t\t<strong>", $e->getMessage() ,"</strong>\n";
 						echo "\t</p>\n\n";
 					}
 			?>
