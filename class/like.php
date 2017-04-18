@@ -12,17 +12,22 @@
 			
 		}
 		
-        function Like($Mail, $Id_Photo){
+        function Like($id, $Id_Photo){
 
 			//on prépare la requête
-			$Query = $this->co->prepare('CALL Like(:Mail, :IDP)');
+			$Query = $this->co->prepare('CALL LikeP(:id, :IDP)');
 
 			//on choisi les paramètres
-			$Query->bindParam(':Mail', $Mail);
+			$Query->bindParam(':id', $id);
 			$Query->bindParam(':IDP', $Id_Photo);
 
-			//on execute
-			$Query->execute();
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
 
 			//fin de la fonction
 			$Query->closeCursor();

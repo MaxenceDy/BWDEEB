@@ -1,7 +1,7 @@
 <?php 
-  require('class/like.php');
-  require('class/votesActis.php');
-  require('class/users.php');
+  require_once('class/like.php');
+  require_once('class/votesActis.php');
+  require_once('class/users.php');
   include('verification.php'); 
   $likes = new like();
   $comm = new votesActis();
@@ -9,25 +9,24 @@
 
   $message;
 
-  $count = $likes->CountLike(1);
+  $count = $likes->CountLike($_GET['id']);
 
   $commentaires = $comm->Commentaires($_GET['id']);
   $image = $comm->DetailPhoto($_GET['id']);
   $id = $user->GetUserID($_SESSION['email']);
+  var_dump($id[0]['ID']);
   $hasliked = $likes->GetUserLike($_SESSION['email'], $_GET['id']);
-
-  var_dump($hasliked);
-  var_dump($_GET['vote']);
 ?>
 
 <?php 
   if(isset($_GET['vote'])){
-    var_dump($_GET['vote']);
     if($_GET['vote'] == 'true'){
       if(!$hasliked == null){
         $message = "vous avez deja like";
       }
       else{
+        var_dump(intVal($id[0]['ID']));
+        $likes->Like($id[0]['ID'], $_GET['id']);
         $message = "vous avez like";
       }
     }
@@ -66,7 +65,7 @@
         <img id="monImg" src=<?php echo $image[0]['Image']?>>
         <br>
         <div class="container" id="all_jaime">
-          <a href="/true"><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
+          <a href=<?php echo 'commentaire-photo.php?id=', $_GET['id'], '&vote=true' ?>><img src="Images/poucebleu.jpg" alt="j'aime" id="jaime"></a>
           <div id="Compteur_jaime">Nombre de J'aime : <?php echo $count[0]['Likes'] ?></div>
         </div>
       </div>
@@ -107,9 +106,9 @@
       <div id="caption"></div>
     </div>
   </div>
-  <script src="../script/jquery-3.2.1.js"></script>
-  <script src="../script/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-  <script src="../script/custom.js"></script>
+  <script src="script/jquery-3.2.1.js"></script>
+  <script src="script/malihu-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="script/custom.js"></script>
 
   <?php include 'footer.php'; ?>
 	
