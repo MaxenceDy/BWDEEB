@@ -28,13 +28,13 @@
 			$Query->closeCursor();
 		}
 		
-		function GetUserLike($Id_User){
+		function GetUserLike($mail){
 
 			//on prépare la requête
-			$Query = $this->co->prepare('CALL GetUserLike(:VID)');
+			$Query = $this->co->prepare('CALL GetUserLike(:mail)');
 
 			//on choisi les paramètres
-			$Query->bindParam(':VID', $Id_User);
+			$Query->bindParam(':mail', $mail);
             
 			//on execute
 			$Query->execute();

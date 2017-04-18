@@ -1,9 +1,11 @@
 <?php 
   require('class/like.php');
   require('class/votesActis.php');
+  require('class/users.php');
   include('verification.php'); 
   $likes = new like();
   $comm = new votesActis();
+  $user = new users();
 
   $message;
 
@@ -11,14 +13,22 @@
 
   $commentaires = $comm->Commentaires($_GET['id']);
   $image = $comm->DetailPhoto($_GET['id']);
+  $id = $user->GetUserID($_SESSION['email']);
+  $hasliked = $likes->GetUserLike($_SESSION['email']);
+
+  var_dump($hasliked);
 ?>
 
 <?php 
   if(isset($_GET['vote'])){
     var_dump($_GET['vote']);
     if($_GET['vote'] == 'true'){
-      
-      $message = "vous avez like";
+      if(!$hasliked == null){
+        $message = "vous avez deja like";
+      }
+      else{
+        $message = "vous avez like";
+      }
     }
     else{
       $message = "Quelque chose a mal tourné";
