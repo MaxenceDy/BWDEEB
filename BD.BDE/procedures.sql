@@ -1,19 +1,13 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddArticle`(IN `ID` INT(50), IN `Nom` VARCHAR(50), IN `Descr` VARCHAR(50), IN `Prix` INT(50), IN `IdT` INT(50), IN `Den` VARCHAR(50))
-    MODIFIES SQL DATA
-INSERT INTO article (Id_Article, Nom_Article, Description_Article, Prix_Article, Id_Type, Denomination) VALUES (ID, Nom, Descr, Prix, IdT, Den)$$
-DELIMITER ;
-
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `AddPhoto`(IN `Nom` VARCHAR(50), IN `ID` INT)
     MODIFIES SQL DATA
 INSERT INTO photo (Nom_Photo, Moderation, Id_Activite) VALUES (Nom, 0, ID)$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetArticles`()
-    READS SQL DATA
-SELECT Nom_Article AS Image, Denomination AS Nom, Id_Article AS ID FROM article$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddArticle`(IN `ID` INT(50), IN `Nom` VARCHAR(50), IN `Descr` VARCHAR(50), IN `Prix` INT(50), IN `IdT` INT(50), IN `Den` VARCHAR(50))
+    MODIFIES SQL DATA
+INSERT INTO article (Id_Article, Nom_Article, Description_Article, Prix_Article, Id_Type, Denomination) VALUES (ID, Nom, Descr, Prix, IdT, Den)$$
 DELIMITER ;
 
 DELIMITER $$
@@ -26,6 +20,28 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetActivites`()
     READS SQL DATA
 SELECT Id_Activite AS ID, Nom_Activite AS Nom, Date_Activite AS DateA, photo_Activites AS Image FROM activites$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUserInfo`()
+    READS SQL DATA
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Mail, fonction.Nom_Fonction AS funct 
+FROM utilisateur, fonction 
+WHERE fonction.Id_Fonction=utilisateur.Id_Fonction
+AND utilisateur.Id_Fonction <> 3$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUser`()
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Id_utilisateur AS ID
+FROM utilisateur
+DELIMITER$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetArticles`()
+    READS SQL DATA
+SELECT Nom_Article AS Image, Denomination AS Nom, Id_Article AS ID FROM article$$
 DELIMITER ;
 
 DELIMITER $$
@@ -53,6 +69,12 @@ SELECT Nom_Photo AS Image FROM photo WHERE Id_Photo = VID$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetFonction`()
+SELECT Nom_Fonction AS Funct FROM fonction 
+ORDER BY Id_Fonction$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetIActivites`()
     READS SQL DATA
 SELECT Id_Idee_Activite AS ID, Nom_Idee_Activite AS Nom, Images_I_A AS Image FROM idees_activites$$
@@ -65,9 +87,9 @@ SELECT COUNT(Id_like) AS Likes FROM like_photo WHERE Id_Photo = VID$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPhotos`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPhotos`(IN `IDA` INT)
     READS SQL DATA
-SELECT Nom_Photo AS Image FROM photo WHERE Id_Activite = IDA AND Moderation = 1$$
+SELECT Nom_Photo AS Image, Id_Photo as ID FROM photo WHERE Id_Activite = IDA AND Moderation = 1$$
 DELIMITER ;
 
 DELIMITER $$
@@ -77,9 +99,15 @@ SELECT Taille, Nom_Coloris, Stock FROM (stock_article INNER JOIN taille_article 
 DELIMITER ;
 
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserID`(IN `Vmail` VARCHAR(50))
+    READS SQL DATA
+SELECT Id_utilisateur AS ID FROM utilisateur WHERE Mail = Vmail$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserInfo`(IN `Vmail` VARCHAR(50))
     READS SQL DATA
-SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom FROM utilisateur WHERE Mail = Vmail$$
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Avatar FROM utilisateur WHERE Mail = Vmail$$
 DELIMITER ;
 
 DELIMITER $$
@@ -115,12 +143,6 @@ WHERE Mail = Vmail$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VoteA`(IN `IDA` INT, IN `IDU` INT)
-    MODIFIES SQL DATA
-INSERT INTO vote_activite (Id_Idee_Activite, Id_utilisateur) VALUES (IDA, IDU)$$
-DELIMITER ;
-
-DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateInfos`(IN `nom` TEXT, IN `prenom` TEXT, IN `dateN` VARCHAR(50), IN `adresse` VARCHAR(50), IN `codeP` INT, IN `Ville` VARCHAR(50))
     MODIFIES SQL DATA
 UPDATE utilisateur
@@ -129,23 +151,7 @@ WHERE Mail = Vmail$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUserInfo`()
-    READS SQL DATA
-SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Mail, fonction.Nom_Fonction AS funct 
-FROM utilisateur, fonction 
-WHERE fonction.Id_Fonction=utilisateur.Id_Fonction
-AND utilisateur.Id_Fonction <> 3
-DELIMITER ;
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUser`()
-SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Id_utilisateur AS ID
-FROM utilisateur
-DELIMITER ;
-
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetFonction`()
-SELECT Nom_Fonction AS Funct FROM fonction 
-ORDER BY Id_Fonction
+CREATE DEFINER=`root`@`localhost` PROCEDURE `VoteA`(IN `IDA` INT, IN `IDU` INT)
+    MODIFIES SQL DATA
+INSERT INTO vote_activite (Id_Idee_Activite, Id_utilisateur) VALUES (IDA, IDU)$$
 DELIMITER ;
