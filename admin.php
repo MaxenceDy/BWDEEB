@@ -49,7 +49,6 @@
 						<input type="submit" name="envoyer" value="Envoyer le fichier">
 					</div>
 				</form>
-				
 			</div>
 			
 			<!-- MODERATION DES PHOTOS -->

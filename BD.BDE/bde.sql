@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 17 Avril 2017 à 22:07
+-- Généré le :  Mar 18 Avril 2017 à 18:45
 -- Version du serveur :  5.7.14
--- Version de PHP :  5.6.25
+-- Version de PHP :  7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -24,72 +24,27 @@ DELIMITER $$
 --
 -- Procédures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddArticle` (IN `ID` INT(50), IN `Nom` VARCHAR(50), IN `Descr` VARCHAR(50), IN `Prix` INT(50), IN `IdT` INT(50), IN `Den` VARCHAR(50))  MODIFIES SQL DATA
-INSERT INTO article (Id_Article, Nom_Article, Description_Article, Prix_Article, Id_Type, Denomination) VALUES (ID, Nom, Descr, Prix, IdT, Den)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUserInfo` ()  READS SQL DATA
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Mail, fonction.Nom_Fonction AS funct FROM utilisateur, fonction WHERE fonction.Id_Fonction=utilisateur.Id_Fonction$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddPhoto` (IN `Nom` VARCHAR(50), IN `ID` INT)  MODIFIES SQL DATA
-INSERT INTO photo (Nom_Photo, Moderation, Id_Activite) VALUES (Nom, 0, ID)$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteArticle` (IN `ID` INT)  MODIFIES SQL DATA
-DELETE FROM article WHERE Id_Article = ID$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetActivites` ()  READS SQL DATA
-SELECT Id_Activite AS ID, Nom_Activite AS Nom, Date_Activite AS DateA, photo_Activites AS Image FROM activites$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetArticles` ()  READS SQL DATA
-SELECT Nom_Article AS Image, Denomination AS Nom, Id_Article AS ID FROM article$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetCommentaires` (IN `VID` INT)  READS SQL DATA
-SELECT Commentaire_P AS Commentaire, Date_Commentaire_Photo AS DateC, Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom FROM commentaire_photo INNER JOIN utilisateur ON commentaire_photo.Id_utilisateur = utilisateur.Id_utilisateur WHERE Id_Photo = VID$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetDetailA` (IN `VID` INT)  READS SQL DATA
-SELECT Id_Activite AS ID, Nom_Activite AS Nom, Date_Activite AS DateA, Description_A AS Description, Prix_Activites AS Prix, photo_Activites AS Image FROM activites WHERE Id_Activite = VID$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetDetailP` (IN `VID` INT)  READS SQL DATA
-SELECT Denomination AS Nom, Description_Article AS Description, Prix_Article AS Prix, Nom_Article AS Image FROM article WHERE Id_Article = VID$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetDetailPhoto` (IN `VID` INT)  READS SQL DATA
-SELECT Nom_Photo AS Image FROM photo WHERE Id_Photo = VID$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetIActivites` ()  READS SQL DATA
-SELECT Id_Idee_Activite AS ID, Nom_Idee_Activite AS Nom, Images_I_A AS Image FROM idees_activites$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetFonction` ()  READS SQL DATA
+SELECT Nom_Fonction AS Funct FROM fonction 
+ORDER BY Id_Fonction$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetLikes` (IN `VID` INT)  READS SQL DATA
 SELECT COUNT(Id_like) AS Likes FROM like_photo WHERE Id_Photo = VID$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetModerationPhotos` ()  READS SQL DATA
+SELECT Nom_Photo AS Image, Moderation FROM photo$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetPhotos` ()  READS SQL DATA
 SELECT Nom_Photo AS Image FROM photo WHERE Id_Activite = IDA AND Moderation = 1$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetStock` (IN `VID` INT)  READS SQL DATA
-SELECT Taille, Nom_Coloris, Stock FROM (stock_article INNER JOIN taille_article ON stock_article.Id_Taille = taille_article.Id_Taille) INNER JOIN coloris ON coloris.Id_Colors = stock_article.Id_Colors WHERE Id_Article = VID$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserInfo` (IN `Vmail` VARCHAR(50))  READS SQL DATA
-SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom FROM utilisateur WHERE Mail = Vmail$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserLike` (IN `Vmail` VARCHAR(50))  READS SQL DATA
-SELECT Id_like FROM like_photo INNER JOIN utilisateur ON utilisateur.Id_utilisateur = like_photo.Id_utilisateur WHERE utilisateur.Mail = Vmail$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Inscription` (IN `mdp` VARCHAR(50), IN `nom` TEXT, IN `prenom` TEXT, IN `mail` VARCHAR(50), IN `fonction` INT(5) UNSIGNED)  MODIFIES SQL DATA
-INSERT INTO utilisateur (Mdp, Nom_Utilisateur, Prenom_Utilisateur, Mail, Id_Fonction) VALUES (mdp, nom, prenom, mail, fonction)$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserLike` (IN `VID` INT)  READS SQL DATA
+SELECT Id_like FROM like_photo INNER JOIN utilisateur ON utilisateur.Id_utilisateur = like_photo.Id_utilisateur WHERE utilisateur.Id_utilisateur = VID$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Like` (IN `IDU` INT, IN `IDP` INT)  MODIFIES SQL DATA
 INSERT INTO like_photo (Id_utilisateur, Id_Photo) VALUES (IDU, IDP)$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Login` (IN `Vmdp` VARCHAR(50), IN `Vmail` VARCHAR(50))  READS SQL DATA
-SELECT Id_utilisateur FROM utilisateur WHERE Mdp = SHA1(Vmdp) AND Mail = Vmail$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `SetAvatar` (IN `Image` VARCHAR(50), IN `Vmail` INT)  MODIFIES SQL DATA
-UPDATE utilisateur
-SET Avatar = Image
-WHERE Mail = Vmail$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateInfos` (IN `nom` TEXT, IN `prenom` TEXT, IN `dateN` VARCHAR(50), IN `adresse` VARCHAR(50), IN `codeP` INT, IN `Ville` VARCHAR(50))  MODIFIES SQL DATA
-UPDATE utilisateur
-SET Nom_Utilisateur = nom, Prenom_Utilisateur = prenom, Date_Naissance = dateN, Adresse_Postale = adresse, Code_Postal = codeP, Ville = ValVille
-WHERE Mail = Vmail$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `VoteA` (IN `IDA` INT, IN `IDU` INT)  MODIFIES SQL DATA
-INSERT INTO vote_activite (Id_Idee_Activite, Id_utilisateur) VALUES (IDA, IDU)$$
 
 DELIMITER ;
 
@@ -102,20 +57,23 @@ DELIMITER ;
 CREATE TABLE `activites` (
   `Id_Activite` int(11) NOT NULL,
   `Nom_Activite` char(25) NOT NULL,
-  `Date_Activite` date NOT NULL,
+  `Date_Activite` date DEFAULT NULL,
   `Description_A` varchar(1000) NOT NULL,
   `Prix_Activites` int(11) NOT NULL,
-  `photo_Activites` varchar(50) NOT NULL
+  `photo_Activites` varchar(50) NOT NULL,
+  `Valide` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `activites`
 --
 
-INSERT INTO `activites` (`Id_Activite`, `Nom_Activite`, `Date_Activite`, `Description_A`, `Prix_Activites`, `photo_Activites`) VALUES
-(1, 'Geekobowling 18 01 2017', '2017-01-18', 'Venez affronter d\'autre promo d\'informatique à une super soirée bowling, color-bowl de Reims. Venez nombreux', 15, 'Images/Activites/geekobowling.01.2017.png'),
-(2, 'LAN#7 7-8 04 2017', '2017-04-07', 'EXIA LAN#7, Venez vous affontez sur nos tournois pour rencontrés des teams de votre niveaux sur Counter Strike : Global Offensive, ou League Of Legend, ou encore Overwatch et tenter de remporter les différents lots :\r\nCS:GO	LOL	OW\r\n750	500	240\r\n500	350	180\r\n300 	150	60', 15, 'Images/Activites/LAN.04.2017.jpg'),
-(3, 'LAN#6 15-16 01 2017', '2016-01-15', 'EXIA LAN#6', 15, 'Images/Activites/LAN.01.2016.png');
+INSERT INTO `activites` (`Id_Activite`, `Nom_Activite`, `Date_Activite`, `Description_A`, `Prix_Activites`, `photo_Activites`, `Valide`) VALUES
+(1, 'Geekobowling 18 01 2017', '2017-01-18', 'Venez affronter d\'autre promo d\'informatique à une super soirée bowling, color-bowl de Reims. Venez nombreux', 15, 'Images/Activites/geekobowling.01.2017.png', 1),
+(2, 'LAN#7 7-8 04 2017', '2017-04-07', 'EXIA LAN#7, Venez vous affontez sur nos tournois pour rencontrés des teams de votre niveaux sur Counter Strike : Global Offensive, ou League Of Legend, ou encore Overwatch et tenter de remporter les différents lots :\r\nCS:GO	LOL	OW\r\n750	500	240\r\n500	350	180\r\n300 	150	60', 15, 'Images/Activites/LAN.04.2017.jpg', 1),
+(3, 'LAN#6 15-16 01 2017', '2016-01-15', 'EXIA LAN#6', 15, 'Images/Activites/LAN.01.2016.png', 1),
+(8, 'LAN#8 24-25 11 2017', '2017-11-24', 'La plus grosse LAN de la region', 150, '', 0),
+(9, 'Ping pong', NULL, 'Ping pong a lexia', 1, '', 0);
 
 -- --------------------------------------------------------
 
@@ -141,8 +99,8 @@ INSERT INTO `article` (`Id_Article`, `Nom_Article`, `Description_Article`, `Prix
 (2, 'Images/housse.jpg', 'housse d\'ordinateur exia', 36, 2, 'Housse'),
 (3, 'Images/Logo.png', 'sticker exia', 2, 2, 'Stickers'),
 (4, 'Images/snapback.jpg', 'snapback accompagnée de son logo exia', 20, 1, 'Snapback'),
-(5, 'images/Spinner2.png', 'spinner 2 branches fabriqué au sein de l\'école', 5, 2, 'Spineur &agrave; deux branches'),
-(6, 'Images/Spinner3.png', 'spinner 3 branches fabriqué au sein de l\'école', 7, 2, 'Spineur &agrave; trois branches'),
+(5, 'images/Spinner2.png', 'spinner 2 branches fabriqué au sein de l\'école', 5, 2, 'Spineur à deux branches'),
+(6, 'Images/Spinner3.png', 'spinner 3 branches fabriqué au sein de l\'école', 7, 2, 'Spineur à trois branches'),
 (7, 'Images/mugGeek.jpg', 'Mug fun Exia', 7, 2, 'Mug Exia'),
 (8, 'Images/tshirt.jpg', 't-shirt aux couleurs du CESI', 10, 1, 'T-Shirt Exia'),
 (9, 'Images/gourde.jpg', 'gourde d\'une contenance d\'1L', 15, 2, 'Gourde Exia'),
@@ -286,29 +244,6 @@ INSERT INTO `fonction` (`Id_Fonction`, `Nom_Fonction`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `idees_activites`
---
-
-CREATE TABLE `idees_activites` (
-  `Id_Idee_Activite` int(11) NOT NULL,
-  `Nom_Idee_Activite` varchar(25) NOT NULL,
-  `Valide` tinyint(1) DEFAULT NULL,
-  `Description_I_A` varchar(1000) NOT NULL,
-  `Prix_Idees_Activites` int(11) NOT NULL,
-  `Images_I_A` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `idees_activites`
---
-
-INSERT INTO `idees_activites` (`Id_Idee_Activite`, `Nom_Idee_Activite`, `Valide`, `Description_I_A`, `Prix_Idees_Activites`, `Images_I_A`) VALUES
-(1, 'LAN#8 25-26 11 2017', 0, 'La plus grosse LAN de la region', 150, 'Images/Activites/lanfuture.jpg'),
-(2, 'Ping pong', 0, 'Ping pong a lexia', 1, 'Images/Activites/ping-pong.jpg');
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `like_photo`
 --
 
@@ -372,7 +307,7 @@ CREATE TABLE `photo` (
 INSERT INTO `photo` (`Id_Photo`, `Nom_Photo`, `Moderation`, `Id_Activite`) VALUES
 (1, 'Images/Activites/DCM1000.jpg', 1, 1),
 (2, 'Images/Activites/DCM1001.jpg', 1, 1),
-(3, 'Images/Activites/DCM1002.jpg', 1, 1),
+(3, 'Images/Activites/DCM1002.jpg', 0, 1),
 (4, 'Images/Activites/DCM1003.jpg', 1, 1),
 (5, 'Images/Activites/DCM1004.jpg', 1, 1);
 
@@ -385,14 +320,14 @@ INSERT INTO `photo` (`Id_Photo`, `Nom_Photo`, `Moderation`, `Id_Activite`) VALUE
 CREATE TABLE `proposition_date_i_a` (
   `Id_Date` int(11) NOT NULL,
   `Date_I_A` date DEFAULT NULL,
-  `Id_Idee_Activite` int(11) NOT NULL
+  `Id_Activite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `proposition_date_i_a`
 --
 
-INSERT INTO `proposition_date_i_a` (`Id_Date`, `Date_I_A`, `Id_Idee_Activite`) VALUES
+INSERT INTO `proposition_date_i_a` (`Id_Date`, `Date_I_A`, `Id_Activite`) VALUES
 (1, '2017-04-20', 2),
 (2, '2017-04-27', 2),
 (3, '2017-05-04', 2),
@@ -542,28 +477,29 @@ CREATE TABLE `utilisateur` (
   `Date_Naissance` date DEFAULT NULL,
   `Adresse_Postale` varchar(25) DEFAULT NULL,
   `Code_Postal` tinyint(4) DEFAULT NULL,
-  `Ville` varchar(50) DEFAULT NULL,
-  `Avatar` varchar(25) DEFAULT NULL,
-  `Id_Fonction` int(11) NOT NULL
+  `Avatar` varchar(50) DEFAULT NULL,
+  `Id_Fonction` int(11) NOT NULL,
+  `Ville` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`Id_utilisateur`, `Mdp`, `Nom_Utilisateur`, `Prenom_Utilisateur`, `Mail`, `Date_Naissance`, `Adresse_Postale`, `Code_Postal`, `Ville`, `Avatar`, `Id_Fonction`) VALUES
-(1, '79e2475f81a6317276bf7cbb3958b20d289b78df', 'rebus', 'gregory', 'gregory.rebus@viacesi.fr', NULL, NULL, NULL, NULL, NULL, 1),
-(2, '0706025b2bbcec1ed8d64822f4eccd96314938d0', 'dufrenoy', 'maxence', 'maxence.dufrenoy@viacesi.fr', NULL, NULL, NULL, NULL, NULL, 1),
-(3, 'c028c213ed5efcf30c3f4fc7361dbde0c893c5b7', 'liaud', 'joshua', 'joshua.liaud@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/josh.jpg', 5),
-(4, '01d22012aa39d30e36a6d8fc0253ce5edf084423', 'chalot', 'gaelle', 'gaelle.chalot@viacesi.fr', NULL, NULL, NULL, NULL, NULL, 1),
-(5, '0bbf31d9da625147cbe69f7b1f5af704a8105f12', 'etudiant', 'etudiant', 'etudiant@viacesi.fr', NULL, NULL, NULL, NULL, NULL, 3),
-(7, '1fa2ef4755a9226cb9a0a4840bd89b158ac71391', 'boxho', 'matthieu', 'matthieu.boxho@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/matthieu.png', 4),
-(8, 'cce3b81ce1c05726331254f5d3dba8d589a4bfa8', 'deruelle', 'baptiste', 'baptiste.deruelle@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/baptiste.png', 6),
-(9, 'fbe2b1ad416b7e3251086de11ad56d27ec6f72a3', 'laurent', 'lou-théo', 'lou-theo.laurent@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/loutheo.png', 7),
-(10, 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c', 'woutelet', 'louis', 'louis.woutelet@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/louisW.jpg', 7),
-(11, 'bf5cf299ce6ad0978a1465386899de8d6e61819d', 'dejoncheere', 'stephane', 'stephane.dejoncheere@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/stephane1.png', 9),
-(12, '75b1383a6f80bf121b182167edba49b84ea9a811', 'broutin', 'dorian', 'dorian.broutin@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/dorian.png', 9),
-(13, 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c', 'hans', 'louis', 'louis.hans@viacesi.fr', NULL, NULL, NULL, NULL, 'Images/louiH.jpg', 8);
+INSERT INTO `utilisateur` (`Id_utilisateur`, `Mdp`, `Nom_Utilisateur`, `Prenom_Utilisateur`, `Mail`, `Date_Naissance`, `Adresse_Postale`, `Code_Postal`, `Avatar`, `Id_Fonction`, `Ville`) VALUES
+(1, '79e2475f81a6317276bf7cbb3958b20d289b78df', 'rebus', 'gregory', 'gregory.rebus@viacesi.fr', NULL, NULL, NULL, 'Images/avatar.jpg', 1, NULL),
+(2, '0706025b2bbcec1ed8d64822f4eccd96314938d0', 'dufrenoy', 'maxence', 'maxence.dufrenoy@viacesi.fr', NULL, NULL, NULL, 'Images/avatar.jpg', 1, NULL),
+(3, 'c028c213ed5efcf30c3f4fc7361dbde0c893c5b7', 'liaud', 'joshua', 'joshua.liaud@viacesi.fr', NULL, NULL, NULL, 'Images/josh.jpg', 5, NULL),
+(4, '01d22012aa39d30e36a6d8fc0253ce5edf084423', 'chalot', 'gaelle', 'gaelle.chalot@viacesi.fr', NULL, NULL, NULL, 'Images/avatar.jpg', 1, NULL),
+(5, '0bbf31d9da625147cbe69f7b1f5af704a8105f12', 'etudiant', 'etudiant', 'etudiant@viacesi.fr', NULL, NULL, NULL, 'Images/avatar.jpg', 3, NULL),
+(7, '1fa2ef4755a9226cb9a0a4840bd89b158ac71391', 'boxho', 'matthieu', 'matthieu.boxho@viacesi.fr', NULL, NULL, NULL, 'Images/matthieu.png', 4, NULL),
+(8, 'cce3b81ce1c05726331254f5d3dba8d589a4bfa8', 'deruelle', 'baptiste', 'baptiste.deruelle@viacesi.fr', NULL, NULL, NULL, 'Images/baptiste.png', 6, NULL),
+(9, 'fbe2b1ad416b7e3251086de11ad56d27ec6f72a3', 'laurent', 'lou-théo', 'lou-theo.laurent@viacesi.fr', NULL, NULL, NULL, 'Images/loutheo.png', 7, NULL),
+(10, 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c', 'wautelet', 'louis', 'louis.woutelet@viacesi.fr', NULL, NULL, NULL, 'Images/louisW.jpg', 7, NULL),
+(11, 'bf5cf299ce6ad0978a1465386899de8d6e61819d', 'dejoncheere', 'stephane', 'stephane.dejoncheere@viacesi.fr', NULL, NULL, NULL, 'Images/stephane1.png', 9, NULL),
+(12, '75b1383a6f80bf121b182167edba49b84ea9a811', 'broutin', 'dorian', 'dorian.broutin@viacesi.fr', NULL, NULL, NULL, 'Images/dorian.png', 9, NULL),
+(13, 'd82ece8d514aca7e24d3fc11fbb8dada57f2966c', 'hans', 'louis', 'louis.hans@viacesi.fr', NULL, NULL, NULL, 'Images/louiH.jpg', 8, NULL),
+(14, '06e675f91c421183750a1faee6812061ff8a55ec', 'Margaine', 'moumou', 'maxence.margaine@viacesi.fr', NULL, NULL, NULL, 'Images/avatar.jpg', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -573,7 +509,7 @@ INSERT INTO `utilisateur` (`Id_utilisateur`, `Mdp`, `Nom_Utilisateur`, `Prenom_U
 
 CREATE TABLE `vote_activite` (
   `Id_Vote_Activite` int(11) NOT NULL,
-  `Id_Idee_Activite` int(11) NOT NULL,
+  `Id_Activite` int(11) NOT NULL,
   `Id_utilisateur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -581,7 +517,7 @@ CREATE TABLE `vote_activite` (
 -- Contenu de la table `vote_activite`
 --
 
-INSERT INTO `vote_activite` (`Id_Vote_Activite`, `Id_Idee_Activite`, `Id_utilisateur`) VALUES
+INSERT INTO `vote_activite` (`Id_Vote_Activite`, `Id_Activite`, `Id_utilisateur`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (12, 1, 3),
@@ -680,12 +616,6 @@ ALTER TABLE `fonction`
   ADD UNIQUE KEY `Nom_Fonction` (`Nom_Fonction`);
 
 --
--- Index pour la table `idees_activites`
---
-ALTER TABLE `idees_activites`
-  ADD PRIMARY KEY (`Id_Idee_Activite`);
-
---
 -- Index pour la table `like_photo`
 --
 ALTER TABLE `like_photo`
@@ -714,7 +644,7 @@ ALTER TABLE `photo`
 --
 ALTER TABLE `proposition_date_i_a`
   ADD PRIMARY KEY (`Id_Date`),
-  ADD KEY `FK_Proposition_Date_I_A_Id_Idee_Activite` (`Id_Idee_Activite`);
+  ADD KEY `FK_Proposition_Date_I_A_Id_Idee_Activite` (`Id_Activite`);
 
 --
 -- Index pour la table `stock_article`
@@ -745,7 +675,7 @@ ALTER TABLE `type_article`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`Id_utilisateur`),
-  ADD UNIQUE KEY `Mail` (`Mail`,`Ville`),
+  ADD UNIQUE KEY `Mail` (`Mail`),
   ADD KEY `FK_Utilisateur_Id_Fonction` (`Id_Fonction`);
 
 --
@@ -753,7 +683,7 @@ ALTER TABLE `utilisateur`
 --
 ALTER TABLE `vote_activite`
   ADD PRIMARY KEY (`Id_Vote_Activite`),
-  ADD KEY `FK_Vote_Acitivite_Id_Idee_Activite` (`Id_Idee_Activite`),
+  ADD KEY `FK_Vote_Acitivite_Id_Idee_Activite` (`Id_Activite`),
   ADD KEY `FK_Vote_Acitivite_Id_utilisateur` (`Id_utilisateur`);
 
 --
@@ -772,7 +702,7 @@ ALTER TABLE `vote_date`
 -- AUTO_INCREMENT pour la table `activites`
 --
 ALTER TABLE `activites`
-  MODIFY `Id_Activite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_Activite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `article`
 --
@@ -803,11 +733,6 @@ ALTER TABLE `commentaire_photo`
 --
 ALTER TABLE `fonction`
   MODIFY `Id_Fonction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT pour la table `idees_activites`
---
-ALTER TABLE `idees_activites`
-  MODIFY `Id_Idee_Activite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `like_photo`
 --
@@ -847,7 +772,7 @@ ALTER TABLE `type_article`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `Id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id_utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pour la table `vote_activite`
 --
@@ -920,7 +845,7 @@ ALTER TABLE `photo`
 -- Contraintes pour la table `proposition_date_i_a`
 --
 ALTER TABLE `proposition_date_i_a`
-  ADD CONSTRAINT `FK_Proposition_Date_I_A_Id_Idee_Activite` FOREIGN KEY (`Id_Idee_Activite`) REFERENCES `idees_activites` (`Id_Idee_Activite`);
+  ADD CONSTRAINT `FK_Proposition_Date_I_A_Id_Activite` FOREIGN KEY (`Id_Activite`) REFERENCES `activites` (`Id_Activite`);
 
 --
 -- Contraintes pour la table `utilisateur`
@@ -932,7 +857,7 @@ ALTER TABLE `utilisateur`
 -- Contraintes pour la table `vote_activite`
 --
 ALTER TABLE `vote_activite`
-  ADD CONSTRAINT `FK_Vote_Acitivite_Id_Idee_Activite` FOREIGN KEY (`Id_Idee_Activite`) REFERENCES `idees_activites` (`Id_Idee_Activite`),
+  ADD CONSTRAINT `FK_Vote_Acitivite_Id_Activite` FOREIGN KEY (`Id_Activite`) REFERENCES `activites` (`Id_Activite`),
   ADD CONSTRAINT `FK_Vote_Acitivite_Id_utilisateur` FOREIGN KEY (`Id_utilisateur`) REFERENCES `utilisateur` (`Id_utilisateur`);
 
 --
