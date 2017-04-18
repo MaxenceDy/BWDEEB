@@ -5,7 +5,7 @@
   $actis = new votesActis();
 
   $details = $actis->DetailActi($_GET['id']);
-  $photos = $actis->DetailActi($_GET['id']);
+  $photos = $actis->PhotosActis($_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +57,7 @@
           <div id="photosDate">
             <?php 
               foreach($photos as $e){?>
-                <a href=<?php echo 'commentaire-photo.php/', $e['ID']?>><img src=<?php echo '../', $e['Image']?>></a>
+                <a href=<?php echo '../commentaire-photo.php/', $e['ID']?>><img src=<?php echo '../', $e['Image']?>></a>
               <?php }?>
           </div>
         <?php }

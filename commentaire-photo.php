@@ -1,10 +1,15 @@
 <?php 
   require('class/like.php');
+  require('class/votesActis.php');
   include('verification.php'); 
   $likes = new like();
+  $comm = new votesActis();
+
   $message;
 
   $count = $likes->CountLike(1);
+
+  $commentaires = $comm->Commentaires($_GET['id']);
 ?>
 
 <?php 
@@ -24,10 +29,10 @@
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <title>BDE Exia Reims : Commentaires</title>
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/commentaire-photo.css">
-    <link rel="stylesheet" type="text/css" href="script/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" type="text/css" href="script/form.css">    
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/commentaire-photo.css">
+    <link rel="stylesheet" type="text/css" href="../script/malihu-custom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" type="text/css" href="../script/form.css">    
   </head>
 
   <body>

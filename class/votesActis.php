@@ -1,6 +1,6 @@
 <?php
 	
-	require('singleton.php');
+	require_once('singleton.php');
 	
 	class votesActis{
 		
@@ -69,5 +69,23 @@
 			$Query->closeCursor();
             return $array;
 		}
+
+		function Commentaires($id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetCommentaires(:ID)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':ID', $id);
+
+			//on execute
+			$Query->execute();
+            $array = $Query->fetchAll();
+
+			//fin de la fonction
+			$Query->closeCursor();
+            return $array;
+		}
+
+		
 	}
 ?>

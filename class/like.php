@@ -1,6 +1,6 @@
 <?php
 	
-	require('singleton.php');
+	require_once('singleton.php');
 	
 	class like{
 		
