@@ -41,14 +41,17 @@
 			<div id="gest-avatar">
 				<form method="POST" action="upload.php" enctype="multipart/form-data">
 					<div class="form" action="#avatar">
-						
-						<!-- On limite le fichier à 100Ko -->
-						<input type="hidden" name="MAX_FILE_SIZE" value="100000">
-						
-						<br /><label for="email">Fichier : </label> <br />
-						<input type="file" name="avatar"> <br />
-						
-						<input type="submit" name="envoyer" value="Envoyer le fichier">
+						<div class="tableau_fonction">		
+							<table border="1">
+								<tr><th>Photo</th><th>Supprimer</th></tr>
+								<?php
+									$rowAvatar = $Photo->GetAvatar();
+									foreach($rowAvatar as $rowA) {
+										echo ('<tr>' . '<td>' . '<img src=' . $rowA['Avatar'] . 'id="Image_tableau">' . '</td>' . ' <td> <input type="checkbox" value="Supprimer' . $rowA['ID'] . '"> </td>');
+									}
+								?>
+							</table>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -58,22 +61,22 @@
 				<form id="gest-perso" method="POST" action="#">
 				<div class="form" action="#photo">
 					<div class="tableau_fonction">		
-								<table border="1">
-									<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th></tr>
-									<?php
-										$rowPhoto = $Photo->GetModerationPhotos();
-										foreach($rowPhoto as $rowP) {
-											if ($rowP['Moderation'] = 1){
-												$rowP['Moderation'] = 'Validée';
-											}
-											else {
-												$rowP['Moderation'] = 'En Attente';
-											}
-											echo ('<tr>' . '<td>' . '<img src=' . $rowP['Nom'] . 'id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>' . '<td> <input type="checkbox" value="Valider"> </td> <td> <input type="checkbox" value="Supprimer"> </td>');
-										}
-									?>
-								</table>
-							</div>
+						<table border="1">
+							<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th></tr>
+							<?php
+								$rowPhoto = $Photo->GetModerationPhotos();
+								foreach($rowPhoto as $rowP) {
+									if ($rowP['Moderation'] = 1){
+										$rowP['Moderation'] = 'Validée';
+									}
+									else {
+										$rowP['Moderation'] = 'En Attente';
+									}
+									echo ('<tr>' . '<td>' . '<img src=' . $rowP['Nom'] . 'id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>' . '<td> <input type="checkbox" value="Valider"> </td> <td> <input type="checkbox" value="Supprimer"> </td>');
+								}
+							?>
+						</table>
+					</div>
 				</div>
 			</form>
 				

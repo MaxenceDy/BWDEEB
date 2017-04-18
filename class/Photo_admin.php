@@ -26,5 +26,18 @@
 			}
 		}
 
+        function GetAvatar(){
+			try {
+				$Query = $this->co->prepare('CALL GetAvatar()');
+
+				$Query->execute();
+				$rowAll = $Query->fetchAll();
+				
+				return $rowAll;
+			} 
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+		}
 	}
 ?>

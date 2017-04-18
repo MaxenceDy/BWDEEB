@@ -69,6 +69,12 @@ SELECT Nom_Photo AS Image FROM photo WHERE Id_Photo = VID$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetModerationPhotos`()
+    READS SQL DATA
+SELECT Nom_Photo AS Image, Moderation, Id_Photo AS ID FROM photo$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetFonction`()
 SELECT Nom_Fonction AS Funct FROM fonction 
 ORDER BY Id_Fonction$$
@@ -159,5 +165,11 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAvatar`()
     READS SQL DATA
-SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Avatar FROM utilisateur WHERE Avatar <> 'Images/avatar.jpg'$$
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Avatar, Id_utilisateur AS ID FROM utilisateur WHERE Avatar <> 'Images/avatar.jpg' ORDER BY utilisateur.Id_utilisateur DESC$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetArticles`()
+    READS SQL DATA
+SELECT Nom_Article AS Image, Denomination AS Nom, Id_Article AS ID FROM article$$
 DELIMITER ;
