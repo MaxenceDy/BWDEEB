@@ -47,7 +47,7 @@
 								<?php
 									$rowAvatar = $Administration->GetAvatar();
 									foreach($rowAvatar as $rowA) {
-										echo ('<tr>' . '<td>' . '<img src=' . $rowA['Avatar'] . 'id="Image_tableau">' . '</td>' . ' <td> <input type="checkbox" value="' . $rowA['ID'] . '"> </td>');
+										echo ('<tr>' . '<td>' . '<img src="' . $rowA['Avatar'] . '" id="Image_tableau">' . '</td>' . ' <td> <input type="checkbox" value="' . $rowA['ID'] . '"> </td>');
 									}
 								?>
 							</table>
@@ -72,7 +72,7 @@
 									else {
 										$rowP['Moderation'] = 'En Attente';
 									}
-									echo ('<tr>' . '<td>' . '<img src=' . $rowP['Nom'] . 'id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>' . '<td> <input type="checkbox" value="' . $rowP['ID'] . '"> </td> <td> <input type="checkbox" value="' . $rowP['ID'] . '"> </td>');
+									echo ('<tr>' . '<td>' . '<img src="' . $rowP['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>' . '<td> <input type="checkbox" value="' . $rowP['ID'] . '"> </td> <td> <input type="checkbox" value="' . $rowP['ID'] . '"> </td>');
 								}
 							?>
 						</table>
@@ -92,7 +92,7 @@
 								<?php
 									$rowArticles = $Administration->GetArtAdmin();
 									foreach($rowArticles as $rowArt) {
-										echo ('<tr>' . '<td>' . '<img src=' . $rowArt['Image'] . 'id="Image_tableau">' . '</td>' . '<td>' . $rowArt['Nom'] . '</td>' . '<td>' . $rowArt['Article'] . '</td>'  . '<td> <input type="checkbox" value="' . $rowArt['ID'] . '"> </td> <td> <input type="checkbox" value="' . $rowArt['ID'] . '"> </td>');
+										echo ('<tr>' . '<td>' . '<img src="' . $rowArt['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowArt['Nom'] . '</td>' . '<td>' . $rowArt['Article'] . '</td>'  . '<td> <input type="checkbox" value="' . $rowArt['ID'] . '"> </td> <td> <input type="checkbox" value="' . $rowArt['ID'] . '"> </td>');
 									}
 								?>
 							</table>
