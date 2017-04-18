@@ -53,8 +53,10 @@
 			try {
 				$Query = $this->co->prepare('CALL GetAllUserInfo()');
 
-				$pdo_select->execute();
-				$rowAll = $pdo_select->fetchAll();
+				$Query->execute();
+				$rowAll = $Query->fetchAll();
+				
+				return $rowAll;
 			} 
 			catch (PDOException $e){ 
 				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
@@ -66,8 +68,10 @@
 			try {
 				$Query = $this->co->prepare('CALL GetFonction()');
 
-				$pdo_select->execute();
-				$rowAll = $pdo_select->fetchAll();
+				$Query->execute();
+				$rowAll = $Query->fetchAll();
+				
+				return $rowAll;
 			} 
 			catch (PDOException $e){ 
 				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 

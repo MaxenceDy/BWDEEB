@@ -131,10 +131,15 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUserInfo`()
     READS SQL DATA
-SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Mail, fonction.Nom_Fonction AS funct FROM utilisateur, fonction WHERE fonction.Id_Fonction=utilisateur.Id_Fonction$$
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Mail, fonction.Nom_Fonction AS funct 
+FROM utilisateur, fonction 
+WHERE fonction.Id_Fonction=utilisateur.Id_Fonction
+AND utilisateur.Id_Fonction <> 3
 DELIMITER ;
 
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetFonction`()
 SELECT Nom_Fonction AS Funct FROM fonction 
+WHERE Id_Fonction <> 3
 ORDER BY Id_Fonction
 DELIMITER ;

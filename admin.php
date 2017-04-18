@@ -102,59 +102,16 @@
 			<div id="gest_droit">
 					<div class="form" action="#gestion_droit">
 						<!--<FORM>-->
-							<div class="tableau_fonction">
-									<table border="1">
-										<tr>
-											<td>Michelle</td>
-											<td>26 ans</td>
-											<td>États-Unis</td>
-										</tr>
-										<tr>
-											<td>Carmen</td>
-											<td>33 ans</td>
-											<td>Espagne</td>
-										</tr>
-										<tr>
-											<td>Michelle</td>
-											<td>26 ans</td>
-											<td>États-Unis</td>
-										</tr>
-										<tr>
-											<td>Carmen</td>
-											<td>33 ans</td>
-											<td>Espagne</td>
-										</tr>
-										<tr>
-											<td>Michelle</td>
-											<td>26 ans</td>
-											<td>États-Unis</td>
-										</tr>
-										<tr>
-											<td>Carmen</td>
-											<td>33 ans</td>
-											<td>Espagne</td>
-										</tr>
-										<tr>
-											<td>Michelle</td>
-											<td>26 ans</td>
-											<td>États-Unis</td>
-										</tr>
-										<tr>
-											<td>Carmen</td>
-											<td>33 ans</td>
-											<td>Espagne</td>
-										</tr>
-									</table>
-							
-		<!--<table border="1">
-		<?php	/*
-			$rowAll = $users->GetAllUserInfo();
-			foreach($rowAll as $row) {
-				echo ('<tr>' . '<td>' . $row['Nom'] . '</td>' . '<td>' . $row['Prenom'] . '</td>' . '<td>' . $row['Mail'] . '</td>' . '<td>' . $row['funct'] . '</td>' . '</tr>');
-			}
-		print "</table>";*/
-		?>-->
-							</div>
+							<div class="tableau_fonction">		
+								<table border="1">
+								<?php
+									$rowAll = $users->GetAllUserInfo();
+									foreach($rowAll as $row) {
+										echo ('<tr>' . '<td>' . $row['Nom'] . '</td>' . '<td>' . $row['Prenom'] . '</td>' . '<td>' . $row['Mail'] . '</td>' . '<td>' . $row['funct'] . '</td>' . '</tr>');
+									}
+								?>
+								</table>
+				</div>
 							<div id="droit">
 								<div id="selection">
 									<select name="choix" id="s">
@@ -164,18 +121,28 @@
 										<option value="choix4">Choix 4</option>
 									</select>
 								</div>
-								<?php	/*
-									$fonctionAll = $users->GetFonction();*/
+								<?php
+									
 								?>
 								<div id="check_box">
-										<input type="radio" name="fonction" value="<?php /*echo $fonctionAll[2];*/?>*/" checked id="radio_fonction"> <?php/* echo $fonctionAll[2];*/?>
-										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[1];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[1];*/?>
-										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[3];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[3];*/?>
-										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[4];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[4];*/?>
-										<input type="radio" name="fonction" value="<?php /*echo $fonctionAll[5];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[5];*/?>
-										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[6];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[6];*/?>
-										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[7];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[7];*/?>
-										<input type="radio" name="fonction" value="<?php/* echo $fonctionAll[8];*/?>" id="radio_fonction"> <?php/* echo $fonctionAll[8];*/?>
+									<?php
+										$fonctionAll = $users->GetFonction();
+										/*
+										foreach($fonctionAll as $row) {
+											echo ('<input type="radio" name="fonction" value="'<?php /*echo $row[''];*/?>*/'" checked id="radio_fonction">' <?php/* echo $fonctionAll[2];*/?>);
+										}*/
+									?>
+										
+										
+
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][2];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][2];?> <!--etudiant-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][1];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][1];?><!--staffexia-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][3];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][3];?><!--président-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][4];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][4];?><!--vice-president-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][5];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][5];?><!--tresorier-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][6];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][6];?><!--vice-tresorier-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][7];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][7];?><!--communication-->
+										<input type="radio" name="fonction" value="<?php echo $fonctionAll['Funct'][8];?>" id="radio_fonction"> <?php echo $fonctionAll['Funct'][8];?><!--chargé d'evenement-->
 										
 								</div>
 								<input type="submit">
@@ -195,3 +162,48 @@
 	
   </body>
 </html>
+
+
+
+								<!--	<table border="1">
+										<tr>
+											<td>Michelle</td>
+											<td>26 ans</td>
+											<td>États-Unis</td>
+										</tr>
+										<tr>
+											<td>Carmen</td>
+											<td>33 ans</td>
+											<td>Espagne</td>
+										</tr>
+										<tr>
+											<td>Michelle</td>
+											<td>26 ans</td>
+											<td>États-Unis</td>
+										</tr>
+										<tr>
+											<td>Carmen</td>
+											<td>33 ans</td>
+											<td>Espagne</td>
+										</tr>
+										<tr>
+											<td>Michelle</td>
+											<td>26 ans</td>
+											<td>États-Unis</td>
+										</tr>
+										<tr>
+											<td>Carmen</td>
+											<td>33 ans</td>
+											<td>Espagne</td>
+										</tr>
+										<tr>
+											<td>Michelle</td>
+											<td>26 ans</td>
+											<td>États-Unis</td>
+										</tr>
+										<tr>
+											<td>Carmen</td>
+											<td>33 ans</td>
+											<td>Espagne</td>
+										</tr>
+									</table>-->
