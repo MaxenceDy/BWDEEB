@@ -17,6 +17,7 @@
   if(isset($_GET['vote'])){
     var_dump($_GET['vote']);
     if($_GET['vote'] == 'true'){
+      
       $message = "vous avez like";
     }
     else{

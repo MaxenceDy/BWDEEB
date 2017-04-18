@@ -93,6 +93,38 @@
 			}
 		}
 		
+		function GetUserInfo($mail){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetUserInfo(:mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':mail', $mail);
+
+			//on execute
+			$Query->execute();
+			$array = $Query->fetchAll();
+			//fin de la fonction
+			 
+			$Query->closeCursor();
+			return $array;
+		}
+
+		function GetUserID($mail){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetUserID(:mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':mail', $mail);
+
+			//on execute
+			$Query->execute();
+			$array = $Query->fetchAll();
+			//fin de la fonction
+			 
+			$Query->closeCursor();
+			return $array;
+		}
+
 		/*
 		function getCategorie(){
 			
