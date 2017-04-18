@@ -69,7 +69,7 @@
 											else {
 												$rowP['Moderation'] = 'En Attente';
 											}
-											echo ('<tr>' . '<td>' . '<img src=' . $rowP['Nom'] . '>' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>' . '<td> <input type="checkbox" value="Valider"> </td> <td> <input type="checkbox" value="Supprimer"> </td>');
+											echo ('<tr>' . '<td>' . '<img src=' . $rowP['Nom'] . 'id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>' . '<td> <input type="checkbox" value="Valider"> </td> <td> <input type="checkbox" value="Supprimer"> </td>');
 										}
 									?>
 								</table>
