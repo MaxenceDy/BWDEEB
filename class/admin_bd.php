@@ -2,7 +2,7 @@
 	
 	require_once('singleton.php');
 	
-	class Photo{
+	class Administration{
 		
 		private $co = null;
 		
@@ -39,5 +39,22 @@
 				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
 			}
 		}
+		
+		function GetArtAdmin(){
+			try {
+				$Query = $this->co->prepare('CALL GetArtAdmin()');
+
+				$Query->execute();
+				$rowAll = $Query->fetchAll();
+				
+				return $rowAll;
+			} 
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+		}
+
+
+
 	}
 ?>

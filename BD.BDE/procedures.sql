@@ -169,7 +169,7 @@ SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Avatar, Id_utilisat
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetArticles`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetArtAdmin`()
     READS SQL DATA
-SELECT Nom_Article AS Image, Denomination AS Nom, Id_Article AS ID FROM article$$
+SELECT Nom_Article AS Image, Denomination AS Nom, Prix_Article AS Article, Id_Article AS ID FROM article$$
 DELIMITER ;
