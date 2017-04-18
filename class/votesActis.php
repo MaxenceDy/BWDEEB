@@ -38,5 +38,36 @@
             return $array;
         }
 
+		function DetailActi($id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetDetailA(:ID)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':ID', $id);
+
+			//on execute
+			$Query->execute();
+            $array = $Query->fetchAll();
+
+			//fin de la fonction
+			$Query->closeCursor();
+            return $array;
+		}
+
+		function PhotosActis($id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetPhotos(:ID)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':ID', $id);
+
+			//on execute
+			$Query->execute();
+            $array = $Query->fetchAll();
+
+			//fin de la fonction
+			$Query->closeCursor();
+            return $array;
+		}
 	}
 ?>

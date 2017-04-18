@@ -1,12 +1,20 @@
-<?php include('verification.php'); ?>
+<?php
+  require('class/votesActis.php');
+  include('verification.php'); 
+
+  $actis = new votesActis();
+
+  $details = $actis->DetailActi($_GET['id']);
+  $photos = $actis->DetailActi($_GET['id']);
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
-    <title>BDE Exia Reims : Balade</title>
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/detailActi.css">
+    <title>BDE Exia Reims : <?php echo $details[0]['Nom'] ?></title>
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/detailActi.css">
   </head>
 
   <body>
@@ -18,16 +26,16 @@
     <section id=containerActi>
 
       <div id="containerImg">
-        <img src="Images/foret.png">
+        <img src=<?php echo '"../',$details[0]['Image'],'"' ?>>
       </div>
 
       <aside id="containerDsc">
-        <h1>Voyage en plein air - 21 Janvier 2017</h1>        
+        <h1><?php echo $details[0]['Nom'],' - ', $details[0]['DateA']?></h1>        
         <p id="description">
           Description :<br><br>
-          Balade dans la foret.
+          <?php echo $details[0]['Description'] ?>
         </p>
-        <p id="prix">Prix de l'activité : 10€
+        <p id="prix">Prix de l'activité : <?php echo $details[0]['Prix'] ?>€
         <input type="button" onclick="#" id="bouton" value="Je vote pour l'activité">
         </p>
       </aside>
@@ -38,32 +46,23 @@
     
     <section id="containerPhotos">
       <h1>Photos</h1>
-      <!--
-      <p id="avertissement">
-        <a href="login.php">Connectez-vous</a> pour voir ces photos ou pour vous inscrire à des activités !
-      </p>
-      -->
-      <div id="photosDate">
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-        <a href="#"><img src="Images/foret.png"></a>
-      </div>
+
+      <?php 
+        if(!isset($_SESSION['connecte'])){?>
+          <p id="avertissement">
+          <a href="login.php">Connectez-vous</a> pour voir ces photos ou pour vous inscrire à des activités !
+          </p>
+        <?php }
+        else{?>
+          <div id="photosDate">
+            <?php 
+              foreach($photos as $e){?>
+                <a href=<?php echo 'commentaire-photo.php/', $e['ID']?>><img src=<?php echo '../', $e['Image']?>></a>
+              <?php }?>
+          </div>
+        <?php }
+      ?>
+
     </section>
   </div>
 

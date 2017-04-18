@@ -3,28 +3,28 @@
         //var_dump( $connecte);
         if(isset($_SESSION['connecte']) && ($_SESSION['connecte'] == true)){
         ?>
-            <a href="compte.php">Mon compte</a>
-            <a href="logout.php">Deconnexion</a>
+            <a href="http://localhost/BWDEEB/compte.php">Mon compte</a>
+            <a href="http://localhost/BWDEEB/logout.php">Deconnexion</a>
         <?php
         }
         else{ 
         ?>
-            <a href="inscription.php">Inscription</a>
-            <a href="login.php">Connexion</a>
+            <a href="http://localhost/BWDEEB/inscription.php">Inscription</a>
+            <a href="http://localhost/BWDEEB/login.php">Connexion</a>
         <?php 
         }
     ?>
 
-    <img src="Images/Logo.png" alt="logo" id="logoHeader">
+    <img src="http://localhost/BWDEEB/Images/Logo.png" alt="logo" id="logoHeader">
     <h1 id="titreHeader">Site du BDE</h1>
 </header>
 
 <nav>
     <ul>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="activites.php">Activités</a></li>
-        <li><a href="boutique.php">Boutique</a></li>
-        <li><a href="suggestion.php">Suggestions d'idées</a></li>
-        <li><a href="admin.php">Administration</a></li>            
+        <li><a href="http://localhost/BWDEEB/index.php">Accueil</a></li>
+        <li><a href="http://localhost/BWDEEB/activites.php">Activités</a></li>
+        <li><a href="http://localhost/BWDEEB/boutique.php">Boutique</a></li>
+        <li><a href="http://localhost/BWDEEB/suggestion.php">Suggestions d'idées</a></li>
+        <li><a href="http://localhost/BWDEEB/admin.php">Administration</a></li>            
     </ul>        
 </nav>
