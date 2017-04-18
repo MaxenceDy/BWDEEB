@@ -1,5 +1,7 @@
-<?php include('verification.php'); ?>
-
+<?php 
+	include('verification.php'); ?>
+	
+	
 <?php
  
 // Constantes
