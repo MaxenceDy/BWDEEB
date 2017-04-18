@@ -5,3 +5,28 @@
 #show{
     display: inline;
 }
+#droit{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    vertical-align: center; 
+}
+.tableau_fonction{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 25px 50px 25px 20px;
+    border:solid 1px;
+}
+#selection{
+    display: flex;
+    width : 50px auto;
+}
+#s{
+    width: 150px auto;
+    height: 50px;
+}
+option, select{
+    font-size: 20px;
+
+}

@@ -102,133 +102,69 @@
 			<div id="gest_droit">
 					<div class="form" action="#gestion_droit">
 						<!--<FORM>-->
-							<select name="choix">
-								<option value="choix1">Choix 1</option>
-								<option value="choix2">Choix 2</option>
-								<option value="choix3">Choix 3</option>
-								<option value="choix4">Choix 4</option>
-							</select>
-							<table>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="show">
-									<td>Carmen</td>
-									<td id="hidden">33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-								<tr id="hidden">
-									<td>Carmen</td>
-									<td>33 ans</td>
-									<td>Espagne</td>
-								</tr>
-								<tr id="hidden">
-									<td>Michelle</td>
-									<td>26 ans</td>
-									<td>États-Unis</td>
-								</tr>
-							</table>
-							
-							<table border="1">
-							<?php	
-								$rowAll = $users->GetAllUserInfo();
-								foreach($rowAll as $row) {
-									echo ('<tr>' . '<td>' . $row['Nom'] . '</td>' . '<td>' . $row['Prenom'] . '</td>' . '<td>' . $row['Mail'] . '</td>' . '<td>' . $row['funct'] . '</td>' . '</tr>');
-								}
-							print "</table>";
-							?>
+							<div class="tableau_fonction">
+									<table border="1">
+										<tr>
+											<td>Michelle</td>
+											<td>26 ans</td>
+											<td>États-Unis</td>
+										</tr>
+										<tr>
+											<td>Carmen</td>
+											<td>33 ans</td>
+											<td>Espagne</td>
+										</tr>
+										<tr>
+											<td>Michelle</td>
+											<td>26 ans</td>
+											<td>États-Unis</td>
+										</tr>
+										<tr>
+											<td>Carmen</td>
+											<td>33 ans</td>
+											<td>Espagne</td>
+										</tr>
+										<tr>
+											<td>Michelle</td>
+											<td>26 ans</td>
+											<td>États-Unis</td>
+										</tr>
+										<tr>
+											<td>Carmen</td>
+											<td>33 ans</td>
+											<td>Espagne</td>
+										</tr>
+										<tr>
+											<td>Michelle</td>
+											<td>26 ans</td>
+											<td>États-Unis</td>
+										</tr>
+										<tr>
+											<td>Carmen</td>
+											<td>33 ans</td>
+											<td>Espagne</td>
+										</tr>
+									</table>
+								</div>
+							<div id="droit">
+								<div id="selection">
+									<select name="choix" id="s">
+										<option value="choix1">Choix 1</option>
+										<option value="choix2">Choix 2</option>
+										<option value="choix3">Choix 3</option>
+										<option value="choix4">Choix 4</option>
+									</select>
+								</div>
+							</div>
+		<table border="1">
+		<?php	
+			$rowAll = $users->GetAllUserInfo();
+			foreach($rowAll as $row) {
+				echo ('<tr>' . '<td>' . $row['Nom'] . '</td>' . '<td>' . $row['Prenom'] . '</td>' . '<td>' . $row['Mail'] . '</td>' . '<td>' . $row['funct'] . '</td>' . '</tr>');
+			}
+		print "</table>";
+		?>
+	
 						<!--</FORM>-->
 						
 						<input type="submit" name="envoyer" value="Valider le changement de droit">
