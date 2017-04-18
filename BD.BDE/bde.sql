@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 18 Avril 2017 à 18:45
+-- Généré le :  Mar 18 Avril 2017 à 19:16
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.0.10
 
@@ -477,7 +477,7 @@ CREATE TABLE `utilisateur` (
   `Date_Naissance` date DEFAULT NULL,
   `Adresse_Postale` varchar(25) DEFAULT NULL,
   `Code_Postal` tinyint(4) DEFAULT NULL,
-  `Avatar` varchar(50) DEFAULT NULL,
+  `Avatar` varchar(50) DEFAULT 'Images/avatar.jpg',
   `Id_Fonction` int(11) NOT NULL,
   `Ville` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

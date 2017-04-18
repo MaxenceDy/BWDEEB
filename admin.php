@@ -1,5 +1,7 @@
-<?php include('verification.php'); 
+<?php include('verification.php');
 	require('class/users.php');
+	require('class/Photo_admin.php');
+	$articles = new article();
 	$users = new users();
 ?>
 <!DOCTYPE html>
@@ -59,10 +61,15 @@
 								<table border="1">
 									<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th></tr>
 									<?php
-										$rowPhoto = $users->GetModerationPhotos();
+										$rowPhoto = $articles->GetModerationPhotos();
 										foreach($rowPhoto as $rowP) {
-											echo ('<tr>' . '<td>' . $row['Nom'] . '</td>' . '<td>' . $row['Prenom'] . '</td>' . '<td>' . $row['Mail'] . '</td>' . '<td>' . $row['funct'] . '</td>' . '</tr>');
-											echo ('<option value="' . $rowU['Nom'] . '">' . $rowU['Nom'] . ' ' . $rowU['Prenom'] . '</option>');
+											if ($rowP['Moderation'] = 1){
+												$rowP['Moderation'] = 'Validée';
+											}
+											else {
+												$rowP['Moderation'] = 'En Attente';
+											}
+											echo ('<tr>' . '<td>' . '<img src=' . $rowP['Nom'] . '>' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>');
 										}
 									?>
 								</table>
