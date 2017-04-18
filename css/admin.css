@@ -6,9 +6,10 @@
     display: inline;
 }
 #droit{
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
     vertical-align: center; 
 }
 .tableau_fonction{
@@ -19,8 +20,9 @@
     border:solid 1px;
 }
 #selection{
-    display: flex;
+    display: flex !important;
     width : 50px auto;
+    margin-top: 10px;
 }
 #s{
     width: 150px auto;
@@ -28,5 +30,21 @@
 }
 option, select{
     font-size: 20px;
+}
+#check_box{
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 50px auto !important;
+    /*max-height: 70px;*/
+    font-size: 20px;
+    /*border: solid 1px;*/
+    margin-top: 25px;
+}
+#radio_fonction{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 30px 5px 30px 5px !important;
 
 }

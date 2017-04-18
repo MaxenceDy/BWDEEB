@@ -155,19 +155,26 @@
 										<option value="choix4">Choix 4</option>
 									</select>
 								</div>
+								<div id="check_box">
+										<input type="radio" name="fonction" value="male" checked id="radio_focntion"> <br>
+										<input type="radio" name="fonction" value="female" id="radio_focntion"> Female<br>
+										<input type="radio" name="fonction" value="other" id="radio_focntion"> Other<br><br>
+										
+								</div>
+								<input type="submit">
 							</div>
-		<table border="1">
-		<?php	
+		<!--<table border="1">
+		<?php	/*
 			$rowAll = $users->GetAllUserInfo();
 			foreach($rowAll as $row) {
 				echo ('<tr>' . '<td>' . $row['Nom'] . '</td>' . '<td>' . $row['Prenom'] . '</td>' . '<td>' . $row['Mail'] . '</td>' . '<td>' . $row['funct'] . '</td>' . '</tr>');
 			}
-		print "</table>";
-		?>
+		print "</table>";*/
+		?>-->
 	
 						<!--</FORM>-->
 						
-						<input type="submit" name="envoyer" value="Valider le changement de droit">
+					<!--	<input type="submit" name="envoyer" value="Valider le changement de droit">-->
 					</div>
 				</form>
 				
