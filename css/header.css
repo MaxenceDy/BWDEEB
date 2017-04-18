@@ -53,6 +53,14 @@ body
     margin-bottom: 10px;
 }
 
+#avatar
+{
+    height: 50px;
+    width: 50px;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
 /*h1*/
 #titreHeader
 {
@@ -68,6 +76,18 @@ header
     background-color: #B01A2E;
     width: 100%;
     height: 80px;
+}
+
+#infos
+{
+    display: flex;
+    margin : 0; 
+    padding-right: 10px;
+}
+
+#infos p
+{
+    line-height: 48px;
 }
 
 header a

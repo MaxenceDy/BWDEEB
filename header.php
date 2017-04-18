@@ -19,10 +19,10 @@
         if(isset($_SESSION['connecte']) && ($_SESSION['connecte'] == true))
         {
             if(isset($infos)){
-                /*php echo '<p id="infos">', */
+                echo '<div id="infos"><img src="http://localhost/BWDEEB/', $infos[0]['Avatar'] ,'" alt="avatar" id="avatar"><p>',$infos[0]['Prenom'], ' ', $infos[0]['Nom'], '</p></div>';
             } ?>
             <a href="http://localhost/BWDEEB/logout.php">Deconnexion</a>
-            <a href="http://localhost/BWDEEB/compte.php">Mon compte</a>            
+            <a href="http://localhost/BWDEEB/compte.php">Mon compte</a>
         <?php
         }
         else{ 
