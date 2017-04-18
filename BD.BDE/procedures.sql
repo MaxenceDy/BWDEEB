@@ -143,9 +143,14 @@ SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur AS Prenom, Id_utilisateur AS I
 FROM utilisateur
 DELIMITER ;
 
-
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetFonction`()
 SELECT Nom_Fonction AS Funct FROM fonction 
 ORDER BY Id_Fonction
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetModerationPhotos`()
+    READS SQL DATA
+SELECT Nom_Photo AS Image, Moderation FROM photo$$
 DELIMITER ;
