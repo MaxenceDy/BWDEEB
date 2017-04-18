@@ -55,26 +55,18 @@
 			<div id="gest-perso">
 				<form id="gest-perso" method="POST" action="#">
 				<div class="form" action="#photo">
-					
-					<br /><label for="nom">Nom</label> <br />
-					<input type="text" name="nom" id="nom" /> <br />
-					
-					<label for="prenom">Prénom</label> <br />
-					<input type="text" name="prenom" id="prenom" /> <br />
-					
-					<label for="dateN">Date de naissance</label> <br />
-					<input type="date" name="dateN" id="dateN" /> <br />
-					
-					<br /><label for="ville">Ville</label> <br />
-					<input type="text" name="ville" id="ville" /> <br />
-					
-					<label for="adresse">Adresse</label> <br />
-					<input type="text" name="adresse" id="adresse" /> <br />
-					
-					<label for="code">Code postal</label> <br />
-					<input type="text" name="code" id="code" /> <br />
-					
-					<input type="submit" value="enregistrer" />
+					<div class="tableau_fonction">		
+								<table border="1">
+									<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th></tr>
+									<?php
+										$rowPhoto = $users->GetModerationPhotos();
+										foreach($rowPhoto as $rowP) {
+											echo ('<tr>' . '<td>' . $row['Nom'] . '</td>' . '<td>' . $row['Prenom'] . '</td>' . '<td>' . $row['Mail'] . '</td>' . '<td>' . $row['funct'] . '</td>' . '</tr>');
+											echo ('<option value="' . $rowU['Nom'] . '">' . $rowU['Nom'] . ' ' . $rowU['Prenom'] . '</option>');
+										}
+									?>
+								</table>
+							</div>
 				</div>
 			</form>
 				
@@ -110,7 +102,7 @@
 									}
 								?>
 								</table>
-				</div>
+							</div>
 							<div id="droit">
 								<div id="selection">
 								<?php
