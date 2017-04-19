@@ -90,6 +90,13 @@ hr
     text-align: center;
 }
 
+#inscription
+{
+    color: black;
+    float: right;
+    text-decoration: none;
+}
+
 /*PHOTOS*/
 #containerPhotos
 {

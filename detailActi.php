@@ -1,16 +1,55 @@
 <?php
-  require('class/votesActis.php');
+  require_once('class/votesActis.php');
+  require_once('class/users.php');
   include('verification.php'); 
 
+  $user = new users();
   $actis = new votesActis();
 
   $details = $actis->DetailActi($_GET['id']);
   $photos = $actis->PhotosActis($_GET['id']);
   $validite = $actis->Validite($_GET['id']);
 
+  $message;
+
+  if(isset($_SESSION['email'])){
+    $id = $user->GetUserID($_SESSION['email']);
+  }
+
   //si passée
   if(isset($details[0]['DateA'])){
     $date = $details[0]['DateA'];
+  }
+
+  //Si vote
+  if(isset($_POST['date'])){
+    $avote = $actis->GetUserVote($_GET['id'], $id[0]['ID']);
+    //Si il a déjà voté
+    if(!$avote == null){
+      $message = '<script>alert("vous avez déjà voté ! ")</script>';
+    }
+    //Si il n'a pas voté
+    else{
+      $idDate = $actis->GetIDDateVote($_POST['date']);
+      $actis->VoteA($_GET['id'], $id[0]['ID']);
+      $actis->VoteD($idDate[0]['ID'], $id[0]['ID']);
+      $message = '<script>alert("vous avez voté ! ")</script>';
+    }
+  }
+
+  //Si s'inscrit
+  if(isset($_GET['ins'])){
+    if($_GET['ins'] == true){
+      $estInscrit = $actis->GetInscription($_GET['id'], $id[0]['ID']);
+      if(!$estInscrit == null)
+      {
+          $message = '<script>alert("vous êtes déjà inscrit ! ")</script>';
+      }
+      else{
+        $actis->InscriptionActi(0, $_GET['id'], $id[0]['ID']);
+        $message = '<script>alert("vous êtes bien inscrit ! ")</script>';        
+      }
+    }
   }
 ?>
 
@@ -62,11 +101,14 @@
             echo '<input type="submit" name="vote" id="bouton" value="Je vote pour l\'activité"></input>';
             echo '</form>';
           }
-          
-          //Si on doit s'inscrire'
+
+          //Si on doit s'inscrire
           elseif($validite[0]['Valide'] == 1){
-            echo '<a href=detailActi.php?id=', $_GET['id'], '&ins=true</a>';
-            echo '<input type="button" onclick="#" id="bouton" value="Je m\'inscris à l\'activité">Inscrit</input>';
+            echo '<a id="inscription" href="detailActi.php?id=', $_GET['id'], '&ins=true">Je m\'inscris à l\'activité</a>';
+          }
+
+          if(isset($message)){
+            echo $message;
           }
         ?>
         </p>
