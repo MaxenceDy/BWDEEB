@@ -5,7 +5,9 @@
   $actis = new votesActis();
 
   $listeActis = $actis->ListeActivites();
+  $listeInsActis = $actis->ListeInsActis();
   $listeIdees = $actis->ListeIdees();
+
 ?>
 
 <!DOCTYPE html>
@@ -33,11 +35,18 @@
       </div>
       -->
       <?php 
+
+        foreach($listeInsActis as $e){?>
+          <div class="container">
+            <a href=<?php echo 'detailActi.php/',htmlspecialchars($e['ID'])?>><img src=<?php echo htmlspecialchars($e['Image'])?>></a>
+            <h2><?php echo htmlspecialchars($e['Nom'])?></h2>
+          </div>
+        <?php }
+        
         foreach($listeIdees as $e){?>
           <div class="container">
             <a href=<?php echo 'detailActi.php/',htmlspecialchars($e['ID'])?>><img src=<?php echo htmlspecialchars($e['Image'])?>></a>
             <h2><?php echo htmlspecialchars($e['Nom'])?></h2>
-            <p>12h</p>
           </div>
         <?php }
       ?>

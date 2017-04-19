@@ -38,6 +38,19 @@
             return $array;
         }
 
+		function ListeInsActis(){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetInsActivite()');
+			
+			//on execute
+			$Query->execute();
+            $array = $Query->fetchAll();
+
+			//fin de la fonction
+			$Query->closeCursor();
+            return $array;
+		}
+
 		function DetailActi($id){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL GetDetailA(:ID)');
