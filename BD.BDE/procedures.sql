@@ -185,3 +185,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `VoteA`(IN `IDA` INT, IN `IDU` INT)
     MODIFIES SQL DATA
 INSERT INTO vote_activite (Id_Idee_Activite, Id_utilisateur) VALUES (IDA, IDU)$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserAllInfo`(IN `Vmail` VARCHAR(50))
+    READS SQL DATA
+SELECT Nom_Utilisateur AS Nom, Prenom_Utilisateur As Prenom, Date_Naissance AS DateN, Adresse_Postale AS Adresse, Code_Postal As CodeP, Ville FROM utilisateur WHERE Mail = Vmail$$
+DELIMITER ;
