@@ -9,7 +9,9 @@
 
   $message;
 
-  if(!isset($_SESSION))
+  if(!isset($_SESSION['connecte'])){
+    header('Location:erreur.php');
+  }
 
   $count = $likes->CountLike($_GET['id']);
 

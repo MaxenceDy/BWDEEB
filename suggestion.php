@@ -4,12 +4,21 @@
   $user = new users();
 
   $id = $user->GetUserID($_SESSION['email']);
+  $message;
 ?>
 
 <?php
+  //Si on est pas connecté
   if(!isset($_SESSION['connecte'])){
     header('Location:erreur.php');
   }
+
+  //Si on a envoyé une suggestion
+  if(isset($_POST['suggestion'])){
+    $user->Suggestion($_POST['suggestion'], $id[0]['ID']);
+    $message = 'Votre suggestion a été envoyée !';
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +39,12 @@
 			<div class="form">
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
 				
+        <?php 
+          if(isset($message)){
+            echo '<p>',$message,'</p>';
+          }
+        ?>
+
 				<br /><label for="suggestion">Ma suggestion</label> <br />
 				<textarea name="suggestion" id="suggestion" rows="10" cols="40"></textarea><br>
 				
