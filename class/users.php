@@ -169,7 +169,7 @@
 
 		function GetCurrAvatar(){
 			//on prépare la requête
-			$Query = $this->co->prepare('CALL GetCurrAvatar(:mail)');
+			$Query = $this->co->prepare('CALL GetCurrentAvatar(:mail)');
 
 			//on choisi les paramètres
 			$Query->bindParam(':mail', $mail);
