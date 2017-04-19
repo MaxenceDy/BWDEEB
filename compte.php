@@ -1,9 +1,13 @@
 <?php 
-	include('verification.php'); ?>
+	require('class/users.php');
+	include('verification.php'); 
 	
-	
+	$user = new users();
+?>
+
+
 <?php
- 
+ var_dump($_POST);
 // Constantes
 define('TARGET', 'Images/avatar/');  // Repertoire cible
 define('MAX_SIZE', 100000);    // Taille max en octets du fichier
@@ -53,42 +57,60 @@ if(!empty($_POST))
             // Si c'est OK, on teste l'upload
             if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage))
             {
-              $message = 'Upload réussi !';
+              //suppression de l'ancienne avatar sur le serveur
+			  $CurrAvatar = $user->GetCurrAvatar($_SESSION['email']);
+			   if($CurrAvatar[0]['Avatar'] != "Images/avatar.jpg"){
+					unlink($CurrAvatar[0]['Avatar']);
+				}
+				
+			  //enregistrement du chemin de l'avatar dans la BDD
+			  $user->SetAvatar(TARGET.$nomImage, $_SESSION['email']);
+			  
+			  //message de confirmation
+			  $valide = 'Upload réussi !';
             }
             else
             {
               // Sinon on affiche une erreur systeme
-              $message = 'Problème lors de l\'upload !';
+              $err = 'Problème lors de l\'upload !';
             }
           }
           else
           {
-            $message = 'Une erreur interne a empêché l\'uplaod de l\'image';
+            $err = 'Une erreur interne a empêché l\'uplaod de l\'image';
           }
         }
         else
         {
           // Sinon erreur sur les dimensions et taille de l'image
-          $message = 'Erreur dans les dimensions de l\'image !';
+          $err = 'Erreur dans les dimensions de l\'image !';
         }
       }
       else
       {
         // Sinon erreur sur le type de l'image
-        $message = 'Le fichier à uploader n\'est pas une image !';
+        $err = 'Le fichier à uploader n\'est pas une image !';
       }
     }
     else
     {
       // Sinon on affiche une erreur pour l'extension
-      $message = 'L\'extension du fichier est incorrecte !';
+      $err = 'L\'extension du fichier est incorrecte !';
     }
   }
   else
   {
     // Sinon on affiche une erreur pour le champ vide
-    $message = 'Veuillez remplir le formulaire svp !';
+    $err = 'Veuillez remplir le formulaire svp !';
   }
+  // enregistrement des info dans le second formulaire
+  if(isset($_POST['nom']) && isset($_POST['prenom']))
+  {
+	  $user->UpdateInfo($_POST['nom'], $_POST['prenom'], $_POST['dateN'], $_POST['adresse'], $_POST['code'], $_POST['ville'], $_SESSION['email']);
+	  $message = 'enregistrement des info réussi';
+	  
+  }
+  
 }
 ?>
 
@@ -120,6 +142,24 @@ if(!empty($_POST))
 						<li><a href="#" id="bt_info">info perso</a></li>        
 					</ul>        
 				</nav>
+				
+				<center>
+					<?php 
+						if( !empty($valide) ) 
+						{
+							echo '<p id="valide">';
+							echo "\t\t<strong>", htmlspecialchars($valide) ,"</strong>\n";
+							echo "\t</p>\n\n";
+						}
+						if( !empty($err) ) 
+						{
+							echo '<p id="err">';
+							echo "\t\t<strong>", htmlspecialchars($err) ,"</strong>\n";
+							echo "\t</p>\n\n";
+						}
+					?>
+				</center>
+				
 			</div>
 			
 			<!-- GESTION DE L'AVATAR -->
@@ -134,13 +174,6 @@ if(!empty($_POST))
 
 							<input name="fichier" type="file" id="fichier_a_uploader" value="" /> </br>
 							<input type="submit" name="submit" value="Uploader" />
-              <?php 
-              	if( !empty($message) ) 
-                {
-                  echo '<p id="img">';
-                  echo "\t\t<strong>", htmlspecialchars($message) ,"</strong>\n";
-                  echo "\t</p>\n\n";
-                }?>
 						</p>
 
 						</div>
@@ -152,28 +185,34 @@ if(!empty($_POST))
 			
 			<!-- GESTION DES INFO PERSO -->
 			<div id="gest-perso">
-				<form id="gest-perso" method="POST" action="#">
+			
+				<?php
+					$CurrInfo = $user->GetUserAllInfo($_SESSION['email']);
+				?>
+			
+				<form id="gest-perso" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 				<div class="form">
 					
 					<br /><label for="nom">Nom</label> <br />
-					<input type="text" name="nom" id="nom" /> <br />
+					<input type="text" name="nom" id="nom" value="<?php echo $CurrInfo[0]['Nom'];?>"/> <br />
 					
 					<label for="prenom">Prénom</label> <br />
-					<input type="text" name="prenom" id="prenom" /> <br />
+					<input type="text" name="prenom" id="prenom" value="<?php echo $CurrInfo[0]['Prenom'];?>"/> <br />
 					
 					<label for="dateN">Date de naissance</label> <br />
-					<input type="date" name="dateN" id="dateN" /> <br />
+					<input type="date" name="dateN" id="dateN" value="<?php echo $CurrInfo[0]['DateN'];?>"/> <br />
 					
 					<br /><label for="ville">Ville</label> <br />
-					<input type="text" name="ville" id="ville" /> <br />
+					<input type="text" name="ville" id="ville" value="<?php echo $CurrInfo[0]['Ville'];?>"/> <br />
 					
 					<label for="adresse">Adresse</label> <br />
-					<input type="text" name="adresse" id="adresse" /> <br />
+					<input type="text" name="adresse" id="adresse" value="<?php echo $CurrInfo[0]['Adresse'];?>"/> <br />
 					
 					<label for="code">Code postal</label> <br />
-					<input type="text" name="code" id="code" /> <br />
+					<input type="text" name="code" id="code" value="<?php echo $CurrInfo[0]['CodeP'];?>"/> <br />
 					
 					<input type="submit" value="enregistrer" />
+					
 				</div>
 			</form>
 				

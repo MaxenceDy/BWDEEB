@@ -9,6 +9,10 @@
 
   $message;
 
+  if(!isset($_SESSION['connecte'])){
+    header('Location:erreur.php');
+  }
+
   $count = $likes->CountLike($_GET['id']);
 
   $commentaires = $comm->Commentaires($_GET['id']);
