@@ -8,6 +8,7 @@
 
 <?php
  var_dump($_POST);
+ var_dump($_FILES);
 // Constantes
 define('TARGET', 'Images/avatar/');  // Repertoire cible
 define('MAX_SIZE', 100000);    // Taille max en octets du fichier
@@ -20,7 +21,8 @@ $infosImg = array();
  
 // Variables
 $extension = '';
-$message = '';
+$err = '';
+$valide = '';
 $nomImage = '';
  
 
@@ -98,20 +100,19 @@ if(!empty($_POST))
       $err = 'L\'extension du fichier est incorrecte !';
     }
   }
-  else
-  {
-    // Sinon on affiche une erreur pour le champ vide
-    $err = 'Veuillez remplir le formulaire svp !';
-  }
   // enregistrement des info dans le second formulaire
   if(isset($_POST['nom']) && isset($_POST['prenom']))
   {
 	  $user->UpdateInfo($_POST['nom'], $_POST['prenom'], $_POST['dateN'], $_POST['adresse'], $_POST['code'], $_POST['ville'], $_SESSION['email']);
-	  $message = 'enregistrement des info réussi';
+	  $valide = 'enregistrement effectué';
 	  
   }
-  
 }
+if(isset($_FILES['fichier']['error']) && $_FILES['fichier']['error'] == 4)
+  {
+    // Sinon on affiche une erreur pour le champ vide
+    $err = 'Veuillez remplir le formulaire svp !';
+  }
 ?>
 
 <!DOCTYPE html>
