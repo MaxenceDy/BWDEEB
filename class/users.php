@@ -109,6 +109,22 @@
 			$Query->closeCursor();
 			return $array;
 		}
+		
+		function GetUserAllInfo($mail){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetUserAllInfo(:mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':mail', $mail);
+
+			//on execute
+			$Query->execute();
+			$array = $Query->fetchAll();
+			//fin de la fonction
+			 
+			$Query->closeCursor();
+			return $array;
+		}
 
 		function GetUserID($mail){
 			//on prépare la requête
@@ -184,5 +200,60 @@
 
 			return $array;
 		}
+		
+		function UpdateInfo($nom, $prenom, $date, $adresse, $code, $ville, $mail){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL UpdateInfos(:nom, :prenom, :date, :adresse, :code, :ville, :Vmail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':nom', $nom);
+			$Query->bindParam(':prenom', $prenom);
+			$Query->bindParam(':Vmail', $mail);
+			
+			//verif valeur date
+			if($date == '') {
+				$Query->bindValue(':date', NULL, PDO::PARAM_NULL);
+			}
+			else{
+				$Query->bindParam(':date', $date);
+			}
+			
+			//verif valeur adresse
+			if($adresse == '') {
+				$Query->bindValue(':adresse', NULL, PDO::PARAM_NULL);
+			}
+			else{
+				$Query->bindParam(':adresse', $adresse);
+			}
+			
+			//verif valeur code
+			if($code == '') {
+				$Query->bindValue(':code', NULL, PDO::PARAM_NULL);
+			}
+			else{
+				$Query->bindParam(':code', $code);
+			}
+			
+			// verif valeur ville
+			if($ville == '') {
+				$Query->bindValue(':ville', NULL, PDO::PARAM_NULL);
+			}
+			else{
+				$Query->bindParam(':ville', $ville);
+			}
+			
+			
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+			//fin de la fonction
+			$Query->closeCursor();
+		}
+		
+		
 	}
 ?>
