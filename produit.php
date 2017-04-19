@@ -43,7 +43,7 @@
         Description :<br><br>
         <?php echo $detail[0]['Description'] ?>
       </p>
-      <p id="prix">Prix : <?php echo $detail[0]['Prix'] ?></p>
+      <p id="prix">Prix : <?php echo $detail[0]['Prix'],'€' ?></p>
     </aside>
 
   </div>

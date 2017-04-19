@@ -38,14 +38,14 @@
 
         foreach($listeInsActis as $e){?>
           <div class="container">
-            <a href=<?php echo 'detailActi.php/',htmlspecialchars($e['ID'])?>><img src=<?php echo htmlspecialchars($e['Image'])?>></a>
+            <a href=<?php echo 'detailActi.php?id=',htmlspecialchars($e['ID'])?>><img src=<?php echo htmlspecialchars($e['Image'])?>></a>
             <h2><?php echo htmlspecialchars($e['Nom'])?></h2>
           </div>
         <?php }
-        
+
         foreach($listeIdees as $e){?>
           <div class="container">
-            <a href=<?php echo 'detailActi.php/',htmlspecialchars($e['ID'])?>><img src=<?php echo htmlspecialchars($e['Image'])?>></a>
+            <a href=<?php echo 'detailActi.php?id=',htmlspecialchars($e['ID'])?>><img src=<?php echo htmlspecialchars($e['Image'])?>></a>
             <h2><?php echo htmlspecialchars($e['Nom'])?></h2>
           </div>
         <?php }
@@ -66,7 +66,7 @@
       <?php 
         foreach($listeActis as $e){?>
           <div class="container">
-            <a href=<?php echo 'detailActi.php/',htmlspecialchars($e['ID'])?>><img src=<?php echo htmlspecialchars($e['Image'])?>></a>
+            <a href=<?php echo 'detailActi.php?id=',htmlspecialchars($e['ID'])?>><img src=<?php echo htmlspecialchars($e['Image'])?>></a>
             <h2><?php echo htmlspecialchars($e['Nom'])?></h2>
             <p><?php echo htmlspecialchars($e['DateA'])?></p>
           </div>

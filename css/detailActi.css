@@ -86,6 +86,17 @@ hr
     background-color: #F00;
 }
 
+#inscrit{
+    text-align: center;
+}
+
+#inscription
+{
+    color: black;
+    float: right;
+    text-decoration: none;
+}
+
 /*PHOTOS*/
 #containerPhotos
 {
