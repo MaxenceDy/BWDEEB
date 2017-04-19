@@ -246,7 +246,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `VoteD`(IN `IDD` INT, IN `IDU` INT)
 INSERT INTO vote_date (Id_Date, Id_utilisateur) VALUES (IDD, IDU)$$
 DELIMITER ;
 
-DELIMITER $$
+DELIMITER $$ 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetModerationActivites`()
+    READS SQL DATA
 SELECT Id_Activite AS ID, Nom_Activite AS Nom, Date_Activite AS DateA, photo_Activites AS Image, Valide FROM activites ORDER BY Valide$$
 DELIMITER ;
 
@@ -263,7 +265,7 @@ UPDATE `photo` SET `Moderation` = '1' WHERE `photo`.`Id_Photo` = ID;$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ValideImage`(IN `IDf` INT, IN `IDu` INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ModificationFonction`(IN `IDf` INT, IN `IDu` INT)
     MODIFIES SQL DATA
 UPDATE `utilisateur` SET `Id_Fonction` = 'ID' WHERE `Id_utilisateur`= ID;$$
 DELIMITER ;
