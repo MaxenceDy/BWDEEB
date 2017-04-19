@@ -91,13 +91,36 @@
 						</table>
 					</div>
 				<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
-				<?php var_dump($_POST);
-				echo $_POST['Valider'][0];
+				<?php 
+				
+					foreach($_POST['Valider'] as $key => $value)
+					{
+						
+						$Administration->ValideImage($value);
+						
+					}
+
+					foreach($_POST['Supprimer'] as $key => $value)
+					{
+						
+						$Administration->DeleteImage($value);
+
+					}
+
+					/*foreach($_POST['Telecharger']  as $key => $value)
+					{
+						
+					}*/
+
+
+				
+				var_dump($_POST);
+				var_dump($_POST['Valider'][0]);
 				echo '<br>';
-				echo $_POST['Supprimer'][0];
+				var_dump($_POST['Supprimer']);
 				echo '<br>';
 				
-				echo $_POST['Telecharger'][0];
+				var_dump($_POST['Telecharger']);
 				
 				?>
 
@@ -116,7 +139,7 @@
 								<?php
 									$rowArticles = $Administration->GetArtAdmin();
 									foreach($rowArticles as $rowArt) {
-										echo ('<tr>' . '<td align="center">' . '<img src="' . $rowArt['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowArt['Nom'] . '</td>' . '<td width=80>' . $rowArt['Article'] . '€</td>'  . '<td align="center"> <input type="checkbox" value="' . $rowArt['ID'] . '"> </td>');
+										echo ('<tr>' . '<td align="center">' . '<img src="' . $rowArt['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowArt['Nom'] . '</td>' . '<td width=80>' . $rowArt['Article'] . '€</td>'  . '<td align="center"> <input type="checkbox" name="Supprimer[]" value="' . $rowArt['ID'] . '"> </td>');
 									}
 								?>
 							</table>
