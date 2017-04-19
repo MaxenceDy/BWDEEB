@@ -177,8 +177,8 @@
 			</div>
 			
 			<!-- MODERATION D ACTIVITES -->
-			<div id="gest-perso">
-				<form id="gest-perso" method="POST" action="#">
+			<div id="gest-actis">
+				<form id="gest-actis" method="POST" action="#">
 				<div class="form" action="#photo">
 					<div class="tableau_fonction custom-scroll-bar">		
 						<table border="1">
