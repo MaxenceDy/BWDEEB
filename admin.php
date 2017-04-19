@@ -34,7 +34,8 @@
 						<li class="link_admin"><a href="#avatar" id="bt_avatar">AVATAR</a></li>
 						<li class="link_admin"><a href="#photo" id="bt_info">PHOTO</a></li>        
 						<li class="link_admin"><a href="#boutique" id="bt_boutique">BOUTIQUE</a></li>
-						<li class="link_admin"><a href="#gestion_droit" id="bt_gestion_droit">GESTION DE DROITS</a></li>      
+						<li class="link_admin"><a href="#gestion_droit" id="bt_gestion_droit">GESTION DE DROITS</a></li>
+						<li class="link_admin"><a href="#gestion_activites" id="bt_gestion_activites">GESTION DES ACTIVITES</a></li> 
 					</ul>        
 				</nav>
 			</div>
@@ -49,11 +50,12 @@
 								<?php
 									$rowAvatar = $Administration->GetAvatar();
 									foreach($rowAvatar as $rowA) {
-										echo ('<tr>' . '<td>' . '<img src="' . $rowA['Avatar'] . '" id="Image_tableau">' . '</td>' . ' <td> <input type="checkbox" value="' . $rowA['ID'] . '"> </td>');
+										echo ('<tr>' . '<td align="center">' . '<img src="' . $rowA['Avatar'] . '" id="Image_tableau">' . '</td>' . ' <td align="center"> <input type="checkbox" value="' . $rowA['ID'] . '"> </td>');
 									}
 								?>
 							</table>
 						</div>
+					<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
 					</div>
 				</form>
 			</div>
@@ -64,21 +66,34 @@
 				<div class="form" action="#photo">
 					<div class="tableau_fonction custom-scroll-bar">		
 						<table border="1">
-							<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th></tr>
+							<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th><th>A Télecharger</th></tr>
 							<?php
 								$rowPhoto = $Administration->GetModerationPhotos();
 								foreach($rowPhoto as $rowP) {
 									if ($rowP['Moderation'] == 1){
 										$rowP['Moderation'] = 'Validée';
+										$rowP['IDv'] = ' ';
 									}
 									else {
 										$rowP['Moderation'] = 'En Attente';
+										$rowP['IDv'] = '<input type="checkbox" name="Valider[]" value="' . $rowP['Image'] . '">'/* </td> <td align="center">'*/;
+										//var_dump($rowP['Image']);
+										//var_dump($rowP['IDv']);
 									}
-									echo ('<tr>' . '<td>' . '<img src="' . $rowP['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td>' . '<td> <input type="checkbox" value="' . $rowP['ID'] . '"> </td> <td> <input type="checkbox" value="' . $rowP['ID'] . '"> </td>');
+
+
+
+									echo ('<tr>' . '<td align="center">' . '<img src="' . $rowP['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td> <td align="center">' . $rowP['IDv'] . '</td> <td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"> </td> <td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $rowP['IDs'] . '"> </td>');
 								}
 							?>
+							
 						</table>
 					</div>
+				<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
+				<?php var_dump($_POST);
+				echo $_POST['Valider'][0];
+				?>
+
 				</div>
 			</form>
 				
@@ -94,7 +109,7 @@
 								<?php
 									$rowArticles = $Administration->GetArtAdmin();
 									foreach($rowArticles as $rowArt) {
-										echo ('<tr>' . '<td>' . '<img src="' . $rowArt['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowArt['Nom'] . '</td>' . '<td>' . $rowArt['Article'] . '</td>'  . '<td> <input type="checkbox" value="' . $rowArt['ID'] . '"> </td> <td> <input type="checkbox" value="' . $rowArt['ID'] . '"> </td>');
+										echo ('<tr>' . '<td align="center">' . '<img src="' . $rowArt['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowArt['Nom'] . '</td>' . '<td width=80>' . $rowArt['Article'] . '€</td>'  . '<td align="center"> <input type="checkbox" value="' . $rowArt['ID'] . '"> </td>');
 									}
 								?>
 							</table>
@@ -108,6 +123,7 @@
 			<div id="gest_droit">
 					<div class="form" action="#gestion_droit">
 						<!--<FORM>-->
+						<div class="droit_admin">
 							<div class="tableau_fonction custom-scroll-bar">		
 								<table border="1">
 								<?php
@@ -150,11 +166,46 @@
 								</div>
 								<!--<input type="submit">-->
 							</div>
+							<input id="BCGTD" type="submit" name="envoyer" value="Valider le changement de droit">
+						</div>
 						<!--</FORM>-->
 						
-						<input type="submit" name="envoyer" value="Valider le changement de droit">
+						
 					</div>
 				</form>
+			</div>
+			
+			<!-- MODERATION D ACTIVITES -->
+			<div id="gest-perso">
+				<form id="gest-perso" method="POST" action="#">
+				<div class="form" action="#photo">
+					<div class="tableau_fonction custom-scroll-bar">		
+						<table border="1">
+							<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th><th>A Télecharger</th></tr>
+							<?php
+								$rowPhoto = $Administration->GetModerationPhotos();
+								foreach($rowPhoto as $rowP) {
+									if ($rowP['Moderation'] == 1){
+										$rowP['Moderation'] = 'Validée';
+										$rowP['IDv'] = ' ';
+									}
+									else {
+										$rowP['Moderation'] = 'En Attente';
+										$rowP['IDv'] = '<input type="checkbox" name="Valider[]" value="' . $rowP['Image'] . '> </td> <td align="center">';
+									}
+
+
+
+									echo ('<tr>' . '<td align="center">' . '<img src="' . $rowP['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td> <td align="center">' . $rowP['IDv'] . '</td> <td align="center"> <input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"> </td> <td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $rowP['IDs'] . '"> </td>');
+								}
+							?>
+							
+						</table>
+					</div>
+				<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
+				<?php var_dump($_POST);?>
+				</div>
+			</form>
 				
 			</div>
 			

@@ -13,7 +13,10 @@
     margin-bottom: 15px !important;
     margin-top: 15px !important;
 }
-
+.droit_admin{
+    display: block;
+    
+}
 
 #droit{
     display: flex !important;
@@ -21,6 +24,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     vertical-align: center; 
+    /*margin: 25px 50px 25px 280px !important*/
 }
 .tableau_fonction{
     display: flex;
@@ -55,7 +59,7 @@ option, select{
     /*max-height: 70px;*/
     font-size: 20px;
     /*border: solid 1px;*/
-    margin-top: 25px;
+    margin-top: 25px ;
 }
 #radio_fonction{
     display: flex;
@@ -65,4 +69,13 @@ option, select{
 #Image_tableau{
     max-height: 250px;
     width: 300px auto;
+}
+
+#BCGTD, #BSA{
+    height: 45px !important;
+    width: 400px !important;
+}
+
+#BSA{
+    margin-top: 250px;
 }
