@@ -200,7 +200,7 @@ if(!empty($_POST))
 					<input type="text" name="prenom" id="prenom" value="<?php echo $CurrInfo[0]['Prenom'];?>"/> <br />
 					
 					<label for="dateN">Date de naissance</label> <br />
-					<input type="date" name="dateN" id="dateN" value="<?php echo $CurrInfo[0]['DateN'];?>"/> <br />
+					<input type="" name="dateN" id="dateN" value="<?php echo $CurrInfo[0]['DateN'];?>"/> <br />
 					
 					<br /><label for="ville">Ville</label> <br />
 					<input type="text" name="ville" id="ville" value="<?php echo $CurrInfo[0]['Ville'];?>"/> <br />
