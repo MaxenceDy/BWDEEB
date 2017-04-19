@@ -35,7 +35,7 @@
 				$err = 'mail non autorisé seul les membre de CESI ont accès à l\'inscription et la totalité du site';
 			}
 			
-			if(empty($sqlCestChiant)){
+			if(empty($err)){
 						 
 						 $valide = 'inscription effectué';
 						 
