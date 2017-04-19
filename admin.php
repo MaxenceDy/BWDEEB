@@ -4,6 +4,47 @@
 	$Administration = new Administration();
 	$users = new users();
 ?>
+
+<?php 
+
+	if(isset($_POST['Valider'])){
+		foreach($_POST['Valider'] as $key => $value)
+		{
+		
+			$Administration->ValideImage($value);
+		
+		}
+	}
+
+	if(isset($_POST['Supprimer'])){
+		foreach($_POST['Supprimer'] as $key => $value)
+		{
+
+			$Administration->DeleteImage($value);
+
+		}
+	}
+
+	/*
+	if(isset($_POST['Valider'])){
+		foreach($_POST['Telecharger']  as $key => $value)
+		{
+			
+		}
+	}
+	*/
+
+	if(isset($_POST['SupprimerA'])){
+		foreach($_POST['SupprimerA'] as $key => $value)
+		{
+			$Administration->DeleteAvatar($value);
+		}
+	}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -42,7 +83,7 @@
 			
 			<!-- MODERATION DES AVATAR -->
 			<div id="gest-avatar">
-				<form method="POST" action="upload.php" enctype="multipart/form-data">
+				<form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 					<div class="form" action="#avatar">
 						<div class="tableau_fonction custom-scroll-bar">		
 							<table border="1">
@@ -50,7 +91,7 @@
 								<?php
 									$rowAvatar = $Administration->GetAvatar();
 									foreach($rowAvatar as $rowA) {
-										echo ('<tr>' . '<td align="center">' . '<img src="' . $rowA['Avatar'] . '" id="Image_tableau">' . '</td>' . ' <td align="center"> <input type="checkbox" value="' . $rowA['ID'] . '"> </td>');
+										echo ('<tr>' . '<td align="center">' . '<img src="' . $rowA['Avatar'] . '" id="Image_tableau">' . '</td>' . ' <td align="center"> <input type="checkbox" name="SupprimerA[]" value="' . $rowA['ID'] . '"> </td>');
 									}
 								?>
 							</table>
@@ -62,7 +103,7 @@
 			
 			<!-- MODERATION DES PHOTOS -->
 			<div id="gest-perso">
-				<form id="gest-perso" method="POST" action="#">
+				<form id="gest-perso" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 				<div class="form" action="#photo">
 					<div class="tableau_fonction custom-scroll-bar">		
 						<table border="1">
@@ -91,38 +132,6 @@
 						</table>
 					</div>
 				<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
-				<?php 
-				
-					foreach($_POST['Valider'] as $key => $value)
-					{
-						
-						$Administration->ValideImage($value);
-						
-					}
-
-					foreach($_POST['Supprimer'] as $key => $value)
-					{
-						
-						$Administration->DeleteImage($value);
-
-					}
-
-					/*foreach($_POST['Telecharger']  as $key => $value)
-					{
-						
-					}*/
-
-
-				
-				var_dump($_POST);
-				var_dump($_POST['Valider'][0]);
-				echo '<br>';
-				var_dump($_POST['Supprimer']);
-				echo '<br>';
-				
-				var_dump($_POST['Telecharger']);
-				
-				?>
 
 				</div>
 			</form>
@@ -131,7 +140,7 @@
 			
 			<!-- MODERATION DE LA BOUTIQUE -->
 			<div id="gest-boutique">
-				<form id="gest-boutique" method="POST" action="upload.php" enctype="multipart/form-data">
+				<form id="gest-boutique" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
 					<div class="form" action="#boutique">
 						<div class="tableau_fonction custom-scroll-bar">		
 							<table border="1">

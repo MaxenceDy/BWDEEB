@@ -71,20 +71,27 @@
 
 		function DeleteImage($id){
 			//on prépare la requête
+			$Query3 = $this->co->prepare('CALL DeleteLike(:ID)');			
+			$Query2 = $this->co->prepare('CALL DeleteCom(:ID)');
 			$Query = $this->co->prepare('CALL DeleteImage(:ID)');
-			
 			//On choisit les paramètres
 			$Query->bindparam(':ID', $id);
-
+			$Query2->bindparam(':ID', $id);
+			$Query3->bindparam(':ID', $id);			
 			try{
 				//on execute
+				$Query3->execute();				
+				$Query2->execute();
 				$Query->execute();
+
 			}
 			catch (PDOException $e){ 
 				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
 			}
 			//fin de la fonction
 			$Query->closeCursor();
+			$Query2->closeCursor();
+			$Query3->closeCursor();
 		}
 		
 		function DeleteArticle($id){
@@ -131,6 +138,23 @@
 			$Query->bindparam(':IDf', $idf);
 			$Query->bindparam(':IDu', $idu);
 
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+			//fin de la fonction
+			$Query->closeCursor();
+		}
+		
+		function DeleteAvatar($id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL DeleteAvatar(:ID)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':ID', $id);
 			try{
 				//on execute
 				$Query->execute();
