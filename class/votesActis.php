@@ -115,6 +115,23 @@
             return $array;
 		}
 
+		function AddCommentaire($Comm, $DateC, $IDU, $IDP){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL AddCommentaire(:Comm, :DateC, :IDU, :IDP)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':Comm', $Comm);
+			$Query->bindparam(':DateC', $DateC);
+			$Query->bindparam(':IDU', $IDU);
+			$Query->bindparam(':IDP', $IDP);
+
+			//on execute
+			$Query->execute();
+
+			//fin de la fonction
+			$Query->closeCursor();
+		}
+
 		function Validite($id){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL GetActiviteValidite(:ID)');

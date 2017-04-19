@@ -72,13 +72,14 @@ hr {
     padding: 10px;
     background-color: #B01A2E;
 }
+
 #ComIn
 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
+    /*justify-content: center;
+    text-align: center;*/
     margin-left: 20px;
     margin-right: 20px;
     border:solid 1px;
@@ -87,9 +88,14 @@ hr {
 
 }
 
+#ComIn h4, #ComIn p
+{
+    width: 600px;
+}
+
 .formCom{
   outline: hidden !important;
-  overflow: -y: hidden !important; 
+  overflow-y: hidden !important; 
   /*-ms-overflow-style: none !important;
   -ms-overflow-style: hidden !important;
   display: hidden;  
