@@ -77,14 +77,14 @@
 									}
 									else {
 										$rowP['Moderation'] = 'En Attente';
-										$rowP['IDv'] = '<input type="checkbox" name="Valider[]" value="' . $rowP['Image'] . '">'/* </td> <td align="center">'*/;
+										$rowP['IDv'] = '<input type="checkbox" name="Valider[]" value="' . $rowP['IDs'] . '">'/* </td><td align="center">'*/;
 										//var_dump($rowP['Image']);
 										//var_dump($rowP['IDv']);
 									}
 
 
 
-									echo ('<tr>' . '<td align="center">' . '<img src="' . $rowP['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td> <td align="center">' . $rowP['IDv'] . '</td> <td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"> </td> <td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $rowP['IDs'] . '"> </td>');
+									echo ('<tr><td align="center"><img src="' . $rowP['Image'] . '" id="Image_tableau"></td> <td>' . $rowP['Moderation'] . '</td><td align="center">' . $rowP['IDv'] . '</td><td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"></td><td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $rowP['IDs'] . '"></td>');
 								}
 							?>
 							
@@ -93,6 +93,12 @@
 				<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
 				<?php var_dump($_POST);
 				echo $_POST['Valider'][0];
+				echo '<br>';
+				echo $_POST['Supprimer'][0];
+				echo '<br>';
+				
+				echo $_POST['Telecharger'][0];
+				
 				?>
 
 				</div>
@@ -102,7 +108,7 @@
 			
 			<!-- MODERATION DE LA BOUTIQUE -->
 			<div id="gest-boutique">
-				<form method="POST" action="upload.php" enctype="multipart/form-data">
+				<form id="gest-boutique" method="POST" action="upload.php" enctype="multipart/form-data">
 					<div class="form" action="#boutique">
 						<div class="tableau_fonction custom-scroll-bar">		
 							<table border="1">
@@ -115,6 +121,7 @@
 								?>
 							</table>
 						</div>
+					<input id="BSA" type="submit" name="envoyer" value="Valider la Suppression">
 					</div>
 				</form>
 				
@@ -182,28 +189,28 @@
 				<div class="form" action="#photo">
 					<div class="tableau_fonction custom-scroll-bar">		
 						<table border="1">
-							<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th><th>A Télecharger</th></tr>
+							<tr><th>Photo</th><th>Nom</th><th>DateA</th><th>Valider</th><th>Supprimer</th></tr>
 							<?php
-								$rowPhoto = $Administration->GetModerationPhotos();
-								foreach($rowPhoto as $rowP) {
-									if ($rowP['Moderation'] == 1){
-										$rowP['Moderation'] = 'Validée';
-										$rowP['IDv'] = ' ';
+								$rowActivites = $Administration->GetModerationActivites();
+								foreach($rowActivites as $rowA) {
+									if ($rowA['Valide'] == 1){
+										$rowA['Valide'] = 'Validée';
+										$Valid = ' ';
 									}
 									else {
-										$rowP['Moderation'] = 'En Attente';
-										$rowP['IDv'] = '<input type="checkbox" name="Valider[]" value="' . $rowP['Image'] . '> </td> <td align="center">';
+										$rowA['Valide'] = 'En Attente';
+										$Valid = '<input type="checkbox" name="Valider[]" value="' . $rowA['ID'] . '> </td><td align="center">';
 									}
 
 
 
-									echo ('<tr>' . '<td align="center">' . '<img src="' . $rowP['Image'] . '" id="Image_tableau">' . '</td>' . '<td>' . $rowP['Moderation'] . '</td> <td align="center">' . $rowP['IDv'] . '</td> <td align="center"> <input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"> </td> <td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $rowP['IDs'] . '"> </td>');
+									echo ('<tr><td align="center"><img src="' . $rowA['Image'] . '" id="Image_tableau"></td><td>' . $rowA['Nom'] . '</td><td width=80px>' . $rowA['DateA'] . '</td><td align="center">' . $Valid . '</td><td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowA['ID'] . '"> </td></tr>');
 								}
 							?>
 							
 						</table>
 					</div>
-				<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
+				<input id="BSA" type="submit" name="envoyer" value="Valider la Sélection">
 				<?php var_dump($_POST);?>
 				</div>
 			</form>
