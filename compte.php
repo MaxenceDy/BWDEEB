@@ -134,6 +134,9 @@ if(!empty($_POST))
 			showOn: "button",
 			buttonImage: "Images/element/calendar.gif",
 			buttonImageOnly: true,
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1900:",
 			buttonText: "Select date"
 			});
 		} );

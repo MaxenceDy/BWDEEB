@@ -18,25 +18,31 @@
 	elseif(isset($_POST['email'])  && isset($_POST['nom']) && isset($_POST['prenom'])  && isset($_POST['password']) && isset($_POST['repassword']))
   {
 		if ($_POST['password']==$_POST['repassword']) {
-			try{
-				$inscription->SignUp($_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['password']);
-			}catch (PDOException $e) {
-				 if($e->getMessage() == "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ '".$_POST['email']."' pour la clef 'Mail_2'"){
-					$message = "ce mail est déjà pris";
-				 }
-				 else{
-					 $message = "problème durant l'envoie du formulaire";
-				 }
+			if (preg_match('#^[\w.-]+@viacesi.fr$#', $_POST['email']) || preg_match('#^[\w.-]+@cesi.fr$#', $_POST['email'])){
+				try{
+					$inscription->SignUp($_POST['email'], $_POST['nom'], $_POST['prenom'], $_POST['password']);
+				}catch (PDOException $e) {
+					 $sqlCestChiant = $e->getMessage();
+					 if($sqlCestChiant == "SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicata du champ '".$_POST['email']."' pour la clef 'Mail'"){
+						$err = "ce mail est déjà pris";
+					 }
+					 else{
+						 $err = "problème durant l'envoie du formulaire";
+					 }
+				}
 			}
-		
-		//a voir pour remplir avec les erreur possible en bd car mail = unique
-		//et peut pas test car pas de procédure ><
-		
-		// sinon script => aucune correspondance entre les 2 mdp
-		
+			else{
+				$err = 'mail non autorisé seul les membre de CESI ont accès à l\'inscription et la totalité du site';
+			}
+			
+			if(empty($sqlCestChiant)){
+						 
+						 $valide = 'inscription effectué';
+						 
+			}		
 		}
 		else{
-			$message = "non correspondance entre les 2 mot de passe";
+			$err = "non correspondance entre les 2 mot de passe";
 		}
   }
 	?>
@@ -57,7 +63,21 @@
 	<div id=wrapper>
 		<form id="LOGIN" method="POST" action="#">
 			<div class="form">
+			
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
+				
+				<?php 
+					if(!empty($valide)){
+						echo '<p id="valide">';
+						echo "\t\t<strong>", $valide ,"</strong>\n";
+						echo "\t</p>\n\n";
+					}
+					if(!empty($err)){
+						echo '<p id="err">';
+						echo "\t\t<strong>",$err ,"</strong>\n";
+						echo "\t</p>\n\n";
+					}
+				?>
 				
 				<br /><label for="email">Email</label> <br />
 				<input type="email" name="email" id="email" <?php if(isset($_POST['email'])) echo 'value="'.$_POST['email'].'"'; ?> /> <br />
@@ -75,14 +95,6 @@
 				<input type="password" name="repassword" id="pass" /> <br />
 				
 				<input type="submit" value="s'inscrire" />
-			
-			<?php 
-					if(isset($message)){
-						echo '<p id="err">';
-						echo "\t\t<strong>", $e->getMessage() ,"</strong>\n";
-						echo "\t</p>\n\n";
-					}
-			?>
 			
 			</div>
 		</form>
