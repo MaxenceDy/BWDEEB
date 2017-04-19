@@ -142,3 +142,8 @@ div.form textarea:focus{
 #err{
   color: red;
 }
+
+#valide
+{
+  color : #70CC48;
+}

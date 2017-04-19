@@ -41,7 +41,7 @@
 				
         <?php 
           if(isset($message)){
-            echo '<p>',$message,'</p>';
+            echo '<p id="valide"><strong>',$message,'</strong></p>';
           }
         ?>
 
