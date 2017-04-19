@@ -9,6 +9,8 @@
 
   $message;
 
+  if(!isset($_SESSION))
+
   $count = $likes->CountLike($_GET['id']);
 
   $commentaires = $comm->Commentaires($_GET['id']);

@@ -125,5 +125,67 @@
 			$Query->closeCursor();
 			return $array;
 		}
+
+		function Suggestion($sugg, $id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL AddSuggestion(:sugg, :id)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':sugg', $sugg);
+			$Query->bindParam(':id', $id);
+			
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+			//fin de la fonction
+			$Query->closeCursor();
+		}
+
+		function SetAvatar($avatar, $mail){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL SetAvatar(:avatar, :mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':avatar', $avatar);
+			$Query->bindParam(':mail', $mail);
+			
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+			//fin de la fonction
+			$array = $Query->fetchAll();
+			$Query->closeCursor();
+
+			return $array;
+		}
+
+		function GetCurrAvatar(){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetCurrAvatar(:mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':mail', $mail);
+			
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+			//fin de la fonction
+			$array = $Query->fetchAll();
+			$Query->closeCursor();
+
+			return $array;
+		}
 	}
 ?>

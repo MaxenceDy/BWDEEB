@@ -1,4 +1,10 @@
-<?php include('verification.php'); ?>
+<?php 
+  require_once('class/users.php');
+  include('verification.php'); 
+  $user = new users();
+
+  $id = $user->GetUserID($_SESSION['email']);
+?>
 
 <?php
   if(!isset($_SESSION['connecte'])){
@@ -20,7 +26,7 @@
   <?php include('header.php'); ?>
 
 	<div id="wrapper">
-		<form id="SUGG" method="POST" action="#">
+		<form id="SUGG" method="POST" action="suggestion.php">
 			<div class="form">
 				<img src="Images/Logo.png" alt="logo" id="LogoLogin">
 				
