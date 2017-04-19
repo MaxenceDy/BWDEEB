@@ -31,10 +31,10 @@
 			<div id="nav">
 				<nav id="compte">
 					<ul>
-						<li><a href="#avatar" id="bt_avatar">AVATAR</a></li>
-						<li><a href="#photo" id="bt_info">PHOTO</a></li>        
-						<li><a href="#boutique" id="bt_boutique">BOUTIQUE</a></li>
-						<li><a href="#gestion_droit" id="bt_gestion_droit">GESTION DE DROITS</a></li>      
+						<li class="link_admin"><a href="#avatar" id="bt_avatar">AVATAR</a></li>
+						<li class="link_admin"><a href="#photo" id="bt_info">PHOTO</a></li>        
+						<li class="link_admin"><a href="#boutique" id="bt_boutique">BOUTIQUE</a></li>
+						<li class="link_admin"><a href="#gestion_droit" id="bt_gestion_droit">GESTION DE DROITS</a></li>      
 					</ul>        
 				</nav>
 			</div>
