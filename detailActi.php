@@ -53,6 +53,93 @@
   }
 ?>
 
+<?php
+// Constantes
+define('TARGET', 'Images/Activites/');  // Repertoire cible
+define('MAX_SIZE', 500000);    // Taille max en octets du fichier
+define('WIDTH_MAX', 3300);    // Largeur max de l'image en pixels
+define('HEIGHT_MAX', 3300);    // Hauteur max de l'image en pixels
+ 
+// Tableaux de donnees
+$tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
+$infosImg = array();
+ 
+// Variables
+$extension = '';
+$err = '';
+$valide = '';
+$nomImage = '';
+ 
+
+/************************************************************
+ * Script d'upload
+ *************************************************************/
+// On verifie si le champ est rempli
+if( !empty($_FILES['fichier']['name']) )
+{
+  // Recuperation de l'extension du fichier
+  $extension  = pathinfo($_FILES['fichier']['name'], PATHINFO_EXTENSION);
+
+  // On verifie l'extension du fichier
+  if(in_array(strtolower($extension),$tabExt))
+  {
+    // On recupere les dimensions du fichier
+    $infosImg = getimagesize($_FILES['fichier']['tmp_name']);
+
+    // On verifie le type de l'image
+    if($infosImg[2] >= 1 && $infosImg[2] <= 14)
+    {
+      // On verifie les dimensions et taille de l'image
+      if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($_FILES['fichier']['tmp_name']) <= MAX_SIZE))
+      {
+        // Parcours du tableau d'erreurs
+        if(isset($_FILES['fichier']['error']) 
+          && UPLOAD_ERR_OK === $_FILES['fichier']['error'])
+        {
+          // On renomme le fichier
+          $nomImage = md5(uniqid()) .'.'. $extension;
+
+          // Si c'est OK, on teste l'upload
+          if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage))
+          {
+            //enregistrement du chemin de l'image dans la BDD
+            var_dump(TARGET.$nomImage);
+            $actis->AjoutPhoto(TARGET.$nomImage, 0, $_GET['id']);
+            
+            //message de confirmation
+            $valide = 'Upload réussi !';
+          }
+          else
+          {
+            // Sinon on affiche une erreur systeme
+            $err = 'Problème lors de l\'upload !';
+          }
+        }
+        else
+        {
+          $err = 'Une erreur interne a empêché l\'uplaod de l\'image';
+        }
+      }
+      else
+      {
+        // Sinon erreur sur les dimensions et taille de l'image
+        $err = 'Erreur dans les dimensions de l\'image !';
+      }
+    }
+    else
+    {
+      // Sinon erreur sur le type de l'image
+      $err = 'Le fichier à uploader n\'est pas une image !';
+    }
+  }
+  else
+  {
+    // Sinon on affiche une erreur pour l'extension
+    $err = 'L\'extension du fichier est incorrecte !';
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -132,6 +219,14 @@
       <h1>Photos</h1>
 
       <?php 
+
+        if(!empty($valide)){
+          echo $valide;
+        }
+        elseif(!empty($err)){
+          echo $err;
+        }
+
         if(!isset($_SESSION['connecte'])){?>
           <p id="avertissement">
           <a href="login.php">Connectez-vous</a> pour voir ces photos ou pour vous inscrire à des activités !
@@ -144,7 +239,26 @@
                 <a href=<?php echo 'commentaire-photo.php?id=', $e['ID']?>><img src=<?php echo $e['Image']?>></a>
               <?php }?>
           </div>
-        <?php }
+        <?php 
+          if($validite[0]['Valide'] == 2){
+            echo '<h2>Importer une nouvelle photo</h2>';?>
+            <form method="POST" action=<?php echo '"detailActi.php?id=', $_GET['id'], '"' ?>enctype="multipart/form-data">
+              <fieldset>
+                <div class="form">
+                  
+                <p>
+                  <label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier :</label>
+
+                  <input name="fichier" type="file" id="fichier_a_uploader" value="" /> </br>
+                  <input type="submit" name="submit" value="Uploader" />
+                </p>
+
+                </div>
+                
+              </fieldset>
+            </form>
+          <?php }
+        }
       ?>
 
     </section>

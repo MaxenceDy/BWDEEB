@@ -7,7 +7,6 @@
   $listeActis = $actis->ListeActivites();
   $listeInsActis = $actis->ListeInsActis();
   $listeIdees = $actis->ListeIdees();
-
 ?>
 
 <!DOCTYPE html>

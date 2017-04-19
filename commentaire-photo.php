@@ -23,6 +23,7 @@
 ?>
 
 <?php 
+  //LIKE DE LA PHOTO
   if(isset($_GET['vote'])){
     if($_GET['vote'] == 'true'){
       if(!$hasliked == null){
@@ -37,6 +38,13 @@
     else{
       $message = "Quelque chose a mal tourné";
     }
+  }
+
+  //ENVOI D'UN COMMENTAIRE
+  if(isset($_POST['commentaire'])){
+    $time = date('Y/m/d H:i:s');
+    $comm->AddCommentaire($_POST['commentaire'], $time, $id[0]['ID'], $_GET['id']);
+    $message = "Votre commentaire a bien été envoyé !";
   }
 ?>
 
@@ -87,18 +95,24 @@
           <?php 
             foreach($commentaires as $e){?>
               <div id="ComIn">
-                <h4><?php echo $e['Nom'], ' ', $e['Prenom']?><br></h4>
-                <br>
-                <hr></hr>
-                <p><?php echo $e['Commentaire'] ?></p>
+                <h4><?php echo $e['Nom'], ' ', $e['Prenom']?></h4>
+                <p><?php echo $e['DateC']?></p><hr><p><?php echo $e['Commentaire'] ?></p>
               </div>
             <?php }
           ?>
 
           <br>
         </div>
+
+        <!--ZONE DE COMMENTAIRE-->
         <div class="container">
-          <textarea name="sugestion" class="formCom custom-scroll-bar" id="suggestion" row="10" cols="40"></textarea>
+          <form id="SUGG" method="POST" action=<?php echo '"commentaire-photo.php?id=', $_GET['id'], '"'?>>
+            <div class="form">
+              <br /><label for="suggestion">Mon commentaire</label><br />
+              <textarea name="commentaire" class="formCom custom-scroll-bar" id="commentaire" row="10" cols="40"></textarea>
+              <input type="submit" value="Envoyer" />
+            </div>
+          </form>
         </div>
       </div>
       
