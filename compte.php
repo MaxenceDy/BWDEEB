@@ -1,7 +1,11 @@
 <?php 
-	include('verification.php'); ?>
+	require('class/users.php');
+	include('verification.php'); 
 	
-	
+	$user = new users();
+?>
+
+
 <?php
  
 // Constantes
@@ -53,7 +57,17 @@ if(!empty($_POST))
             // Si c'est OK, on teste l'upload
             if(move_uploaded_file($_FILES['fichier']['tmp_name'], TARGET.$nomImage))
             {
-              $message = 'Upload réussi !';
+              //suppression de l'ancienne avatar sur le serveur
+			  $CurrAvatar = $user->GetCurrAvatar($_SESSION['email']);
+			   if($CurrAvatar[0]['Avatar'] != "Images/avatar.jpg"){
+					unlink($CurrAvatar[0]['Avatar']);
+				}
+				
+			  //enregistrement du chemin de l'avatar dans la BDD
+			  $user->SetAvatar(TARGET.$nomImage, $_SESSION['email']);
+			  
+			  
+			  $message = 'Upload réussi !';
             }
             else
             {

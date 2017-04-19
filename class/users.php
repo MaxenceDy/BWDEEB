@@ -161,13 +161,10 @@
 				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
 			}
 			//fin de la fonction
-			$array = $Query->fetchAll();
 			$Query->closeCursor();
-
-			return $array;
 		}
 
-		function GetCurrAvatar(){
+		function GetCurrAvatar($mail){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL GetCurrentAvatar(:mail)');
 
