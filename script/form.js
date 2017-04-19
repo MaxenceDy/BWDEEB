@@ -1,12 +1,16 @@
 window.onload = function() {
 	// au chargement de la page seul Avatar est afficher par défaut
 	document.getElementById("gest-perso").classList.add("Hide");
+	
 	if(document.getElementById("gest-boutique")!=null){
 		document.getElementById("gest-boutique").classList.add("Hide");
 		document.getElementById("bt_boutique").addEventListener("click", ShowBoutique);
 		
 		document.getElementById("gest_droit").classList.add("Hide");
 		document.getElementById("bt_gestion_droit").addEventListener("click", ShowGestDroit);
+		
+		document.getElementById("gest-actis").classList.add("Hide");
+		document.getElementById("bt_gestion_activites").addEventListener("click", ShowActis);
 	}
 	
 	
@@ -27,6 +31,7 @@ function ShowAvatar(e){
 	if(document.getElementById("gest-boutique")!=null){
 		document.getElementById("gest-boutique").classList.add("Hide");
 		document.getElementById("gest_droit").classList.add("Hide");
+		document.getElementById("gest-actis").classList.add("Hide");
 	}
 	
 	
@@ -42,6 +47,7 @@ function ShowInfo(e){
 	if(document.getElementById("gest-boutique")!=null){
 		document.getElementById("gest-boutique").classList.add("Hide");
 		document.getElementById("gest_droit").classList.add("Hide");
+		document.getElementById("gest-actis").classList.add("Hide");
 	}
 	
 }
@@ -54,6 +60,7 @@ function ShowBoutique(e){
 	document.getElementById("gest-avatar").classList.add("Hide");
 	document.getElementById("gest-perso").classList.add("Hide");
 	document.getElementById("gest_droit").classList.add("Hide");
+	document.getElementById("gest-actis").classList.add("Hide");
 }
 
 // cache la partie Avatar pour laisser place à la partie INFO
@@ -64,4 +71,16 @@ function ShowGestDroit(e){
 	document.getElementById("gest-avatar").classList.add("Hide");
 	document.getElementById("gest-perso").classList.add("Hide");
 	document.getElementById("gest-boutique").classList.add("Hide");
+	document.getElementById("gest-actis").classList.add("Hide");
+}
+
+// cache la partie Avatar pour laisser place à la partie INFO
+function ShowActis(e){
+	e.preventDefault();
+	document.getElementById("gest-actis").classList.remove("Hide");
+	
+	document.getElementById("gest-avatar").classList.add("Hide");
+	document.getElementById("gest-perso").classList.add("Hide");
+	document.getElementById("gest-boutique").classList.add("Hide");
+	document.getElementById("gest_droit").classList.add("Hide");
 }
