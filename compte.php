@@ -7,8 +7,6 @@
 
 
 <?php
- var_dump($_POST);
- var_dump($_FILES);
 // Constantes
 define('TARGET', 'Images/avatar/');  // Repertoire cible
 define('MAX_SIZE', 100000);    // Taille max en octets du fichier
@@ -121,35 +119,27 @@ if(isset($_FILES['fichier']['error']) && $_FILES['fichier']['error'] == 4)
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <title>BDE Exia Reims : Mon compte</title>
 	
-	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
    
 	<link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/form.css">
 	
-	<!--[if IE]>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		
-		<script>
-			$( function() {
-				$( "#dateN" ).datepicker({
-				showOn: "button",
-				buttonImage: "Images/element/calendar.gif",
-				buttonImageOnly: true,
-				changeMonth: true,
-				changeYear: true,
-				yearRange: "1900:",
-				buttonText: "Select date"
-				});
-			} );
-		</script>
-		
-	<![endif]-->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
-	
-	
-	
+	<script>
+		$( function() {
+			$( "#dateN" ).datepicker({
+			showOn: "button",
+			buttonImage: "Images/element/calendar.gif",
+			buttonImageOnly: true,
+			changeMonth: true,
+			changeYear: true,
+			yearRange: "1900:",
+			buttonText: "Select date"
+			});
+		} );
+	</script>
 	
 	<script src="script/form.js"></script>
   </head>
