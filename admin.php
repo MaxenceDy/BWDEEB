@@ -73,6 +73,7 @@
 									if ($rowP['Moderation'] == 1){
 										$rowP['Moderation'] = 'Validée';
 										$rowP['IDv'] = ' ';
+										$idv = ' ';
 									}
 									else {
 										$rowP['Moderation'] = 'En Attente';
