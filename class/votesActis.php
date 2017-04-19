@@ -115,6 +115,52 @@
             return $array;
 		}
 
+		function Validite($id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetActiviteValidite(:ID)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':ID', $id);
+
+			//on execute
+			$Query->execute();
+            $array = $Query->fetchAll();
+
+			//fin de la fonction
+			$Query->closeCursor();
+            return $array;
+		}
 		
+		function GetPropDate($id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetPropDate(:ID)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':ID', $id);
+
+			//on execute
+			$Query->execute();
+            $array = $Query->fetchAll();
+
+			//fin de la fonction
+			$Query->closeCursor();
+            return $array;
+		}
+
+		function GetParticipants($id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetParticipants(:ID)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':ID', $id);
+
+			//on execute
+			$Query->execute();
+            $array = $Query->fetchAll();
+
+			//fin de la fonction
+			$Query->closeCursor();
+            return $array;			
+		}
 	}
 ?>
