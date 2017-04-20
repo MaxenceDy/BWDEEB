@@ -109,6 +109,12 @@ ORDER BY Id_Fonction$$
 DELIMITER ;
 
 DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserFonction`(IN `ID` INT)
+    READS SQL DATA
+SELECT Id_Fonction AS Funct FROM utilisateur WHERE Id_utilisateur = ID$$
+DELIMITER ;
+
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetIActivites`()
     READS SQL DATA
 SELECT Id_Idee_Activite AS ID, Nom_Idee_Activite AS Nom, Images_I_A AS Image FROM idees_activites$$

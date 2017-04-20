@@ -267,5 +267,11 @@ DELIMITER ;
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ModificationFonction`(IN `IDf` INT, IN `IDu` INT)
     MODIFIES SQL DATA
-UPDATE `utilisateur` SET `Id_Fonction` = 'ID' WHERE `Id_utilisateur`= ID;$$
+UPDATE `utilisateur` SET `Id_Fonction` = 'IDf' WHERE `Id_utilisateur`= IDu;$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DeleteAvatar`(IN `ID` INT)
+    MODIFIES SQL DATA
+UPDATE `utilisateur` SET `Avatar` = 'Images/avatar.jpg' WHERE `Id_utilisateur`= ID;$$
 DELIMITER ;
