@@ -52,6 +52,120 @@
 		}
 	}
 
+	//AJOUT ACTIVITE
+
+	// Constantes
+	define('TARGET', 'Images/Activites/');  // Repertoire cible
+	define('MAX_SIZE', 500000);    // Taille max en octets du fichier
+	define('WIDTH_MAX', 3300);    // Largeur max de l'image en pixels
+	define('HEIGHT_MAX', 3300);    // Hauteur max de l'image en pixels
+	
+	// Tableaux de donnees
+	$tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
+	$infosImg = array();
+	
+	// Variables
+	$extension = '';
+	$err = '';
+	$valide = '';
+	$nomImage = '';
+
+	if(isset($_POST['nom']) &&  isset($_POST['desc']) &&  isset($_POST['prix']) && !empty($_FILES['photo']['name'])){
+		//Si aucune date n'est rentrée
+		if(empty($_POST['date1']) &&  empty($_POST['date2']) &&  empty($_POST['date3']) &&  empty($_POST['date4'])){
+			$err = "Entrez au moins une date !";
+		}
+		//Si au moins une date est rentrée
+		else{
+			//On ajoute l'image
+			/************************************************************
+			* Script d'upload
+			*************************************************************/
+			// On verifie si le champ est rempli
+			if( !empty($_FILES['photo']['name']) )
+			{
+				// Recuperation de l'extension du fichier
+				$extension  = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+			
+				// On verifie l'extension du fichier
+				if(in_array(strtolower($extension),$tabExt))
+				{
+				// On recupere les dimensions du fichier
+				$infosImg = getimagesize($_FILES['photo']['tmp_name']);
+			
+				// On verifie le type de l'image
+				if($infosImg[2] >= 1 && $infosImg[2] <= 14)
+				{
+					// On verifie les dimensions et taille de l'image
+					if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($_FILES['photo']['tmp_name']) <= MAX_SIZE))
+					{
+						// Parcours du tableau d'erreurs
+						if(isset($_FILES['photo']['error']) 
+							&& UPLOAD_ERR_OK === $_FILES['photo']['error'])
+						{
+							// On renomme le fichier
+							$nomImage = md5(uniqid()) .'.'. $extension;
+				
+							// Si c'est OK, on teste l'upload
+							if(move_uploaded_file($_FILES['photo']['tmp_name'], TARGET.$nomImage))
+							{
+								//on ajoute l'activité en BDD
+								$Administration->AddActivite($_POST['nom'], $_POST['desc'], $_POST['prix'], TARGET.$nomImage, 0);
+								
+								//message de confirmation
+								$valide = 'Activité envoyée !';
+							}
+							else
+							{
+							// Sinon on affiche une erreur systeme
+							$err = 'Problème lors de l\'upload !';
+							}
+						}
+						else
+						{
+							$err = 'Une erreur interne a empêché l\'uplaod de l\'image';
+						}
+					}
+					else
+					{
+					// Sinon erreur sur les dimensions et taille de l'image
+					$err = 'Erreur dans les dimensions de l\'image !';
+					}
+				}
+				else
+				{
+					// Sinon erreur sur le type de l'image
+					$err = 'Le fichier à uploader n\'est pas une image !';
+				}
+				}
+				else
+				{
+				// Sinon on affiche une erreur pour l'extension
+				$err = 'L\'extension du fichier est incorrecte !';
+				}
+			}
+
+			//On ajoute les propositions de date
+			$ActiId = $Administration->GetActiID($_POST['nom']);
+			if(!empty($_POST['date1'])){
+
+				$Administration->AddPropDate($_POST['date1'], $ActiId[0]['ID']);
+			}
+			if(!empty($_POST['date2'])){
+
+				$Administration->AddPropDate($_POST['date2'], $ActiId[0]['ID']);
+			}
+			if(!empty($_POST['date3'])){
+
+				$Administration->AddPropDate($_POST['date3'], $ActiId[0]['ID']);
+			}
+			if(!empty($_POST['date4'])){
+
+				$Administration->AddPropDate($_POST['date4'], $ActiId[0]['ID']);
+			}
+		}
+	}
+
 ?>
 
 
@@ -252,9 +366,9 @@
 				</form>
 
 				<!-- AJOUT ACTIVITE -->
-				<form id="add-actis" method="POST" action="#">
+				<form id="add-actis" method="POST" action="admin.php" enctype="multipart/form-data">
 					<div class="form" id="formacti">
-						<?php 
+						<?php  
 							if(!empty($valide)){
 								echo '<p id="valide">';
 								echo "\t\t<strong>", $valide ,"</strong>\n";
@@ -286,10 +400,10 @@
 						
 						<div class="flexinput">						
 							<label for="photo">Image de l'activité</label> <br>
-							<input type="text" name="photo" id="photo"> <br>
+							<input name="photo" type="file" id="fichier_a_uploader"> <br>
 						</div>
 
-						<h3>Date proposées</h3>
+						<h3>Dates proposées</h3>
 
 						<div class="flexinput">											
 							<label for="date1">Date 1</label> <br>
@@ -311,7 +425,7 @@
 							<input type="datetime" name="date4" id="date"> <br>
 						</div>
 
-						<input type="submit" value="Créer l'activité'">
+						<input type="submit" value="Créer l'activité">
 					
 					</div>
 				</form>

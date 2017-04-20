@@ -165,5 +165,65 @@
 			//fin de la fonction
 			$Query->closeCursor();
 		}
+
+		function AddActivite($nom, $des, $prix, $photo, $val){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL AddActivite(:nom, :des, :prix, :photo, :val)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':nom', $nom);
+			$Query->bindparam(':des', $des);
+			$Query->bindparam(':prix', $prix);
+			$Query->bindparam(':photo', $photo);
+			$Query->bindparam(':val', $val);
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+			//fin de la fonction
+			$Query->closeCursor();
+		}
+
+		function AddPropDate($date, $id){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL AddPropDate(:date, :id)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':date', $date);
+			$Query->bindparam(':id', $id);
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+			//fin de la fonction
+			$Query->closeCursor();
+		}
+
+		function GetActiID($nom){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetActiID(:nom)');
+			
+			//On choisit les paramètres
+			$Query->bindparam(':nom', $nom);
+			try{
+				//on execute
+				$Query->execute();
+			}
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+
+			$array = $Query->fetchAll();
+			//fin de la fonction
+			$Query->closeCursor();
+			return $array;
+		}
+		 
 	}
 ?>
