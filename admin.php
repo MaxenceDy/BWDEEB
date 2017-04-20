@@ -36,14 +36,27 @@
 		}
 	}
 
-	/*
-	if(isset($_POST['Valider'])){
-		foreach($_POST['Telecharger']  as $key => $value)
+	
+	if(isset($_POST['Telecharger'])){
+		
+		$ZipName = 'PhotoBDE.zip';
+		$zip = new ZipArchive();
+		$zip->open($ZipName, ZipArchive::CREATE);
+		
+		foreach($_POST['Telecharger'] as $key => $value)
 		{
-			
+			$zip->addFile($value);
 		}
+		
+		$zip->close();
+		
+		header('Content-Type: application/octet-stream');
+		header('Content-disposition: filename="'.basename($ZipName).'"');
+		header('Content-Length: ' . filesize($ZipName));
+		readfile($ZipName);
+		exit;
 	}
-	*/
+	
 
 	if(isset($_POST['SupprimerA'])){
 		foreach($_POST['SupprimerA'] as $key => $value)
@@ -234,6 +247,7 @@
 								<?php
 									$rowPhoto = $Administration->GetModerationPhotos();
 									foreach($rowPhoto as $rowP) {
+										$nom = $rowP['Image'];
 										if ($rowP['Moderation'] == 1){
 											$rowP['Moderation'] = 'Validée';
 											$rowP['IDv'] = ' ';
@@ -248,7 +262,7 @@
 
 
 
-										echo ('<tr><td align="center"><img src="' . $rowP['Image'] . '" id="Image_tableau"></td> <td>' . $rowP['Moderation'] . '</td><td align="center">' . $rowP['IDv'] . '</td><td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"></td><td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $rowP['IDs'] . '"></td>');
+										echo ('<tr><td align="center"><img src="' . $rowP['Image'] . '" id="Image_tableau"></td> <td>' . $rowP['Moderation'] . '</td><td align="center">' . $rowP['IDv'] . '</td><td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"></td><td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $nom . '"></td>');
 									}
 								?>
 								
