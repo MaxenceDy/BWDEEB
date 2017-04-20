@@ -80,3 +80,19 @@ option, select{
 #BSA{
     margin-top: 250px;
 }
+
+#formacti
+{
+    width: 180px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#flexinput
+{
+    display: flex;
+}
+

@@ -71,13 +71,9 @@
 
   <body>
 
-  <?php include('header.php'); 
-  /*var_dump($fonction[0]['Funct']);*/?>
-    
+  <?php include('header.php'); ?>		
 		
-		
-		<div id=wrapper>
-			
+	<div id=wrapper>
 	<div id=wrapper2>
 		
 		<!-- NAVIGATION -->
@@ -115,39 +111,38 @@
 			
 			<!-- MODERATION DES PHOTOS -->
 			<div id="gest-perso">
+				<!--TABLEAU DE PHOTOS -->
 				<form id="gest-perso" method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-				<div class="form" action="#photo">
-					<div class="tableau_fonction custom-scroll-bar">		
-						<table border="1">
-							<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th><th>A Télecharger</th></tr>
-							<?php
-								$rowPhoto = $Administration->GetModerationPhotos();
-								foreach($rowPhoto as $rowP) {
-									if ($rowP['Moderation'] == 1){
-										$rowP['Moderation'] = 'Validée';
-										$rowP['IDv'] = ' ';
-										$idv = ' ';
+					<div class="form" action="#photo">
+						<div class="tableau_fonction custom-scroll-bar">		
+							<table border="1">
+								<tr><th>Photo</th><th>Etat</th><th>Valider</th><th>Supprimer</th><th>A Télecharger</th></tr>
+								<?php
+									$rowPhoto = $Administration->GetModerationPhotos();
+									foreach($rowPhoto as $rowP) {
+										if ($rowP['Moderation'] == 1){
+											$rowP['Moderation'] = 'Validée';
+											$rowP['IDv'] = ' ';
+											$idv = ' ';
+										}
+										else {
+											$rowP['Moderation'] = 'En Attente';
+											$rowP['IDv'] = '<input type="checkbox" name="Valider[]" value="' . $rowP['IDs'] . '">'/* </td><td align="center">'*/;
+											//var_dump($rowP['Image']);
+											//var_dump($rowP['IDv']);
+										}
+
+
+
+										echo ('<tr><td align="center"><img src="' . $rowP['Image'] . '" id="Image_tableau"></td> <td>' . $rowP['Moderation'] . '</td><td align="center">' . $rowP['IDv'] . '</td><td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"></td><td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $rowP['IDs'] . '"></td>');
 									}
-									else {
-										$rowP['Moderation'] = 'En Attente';
-										$rowP['IDv'] = '<input type="checkbox" name="Valider[]" value="' . $rowP['IDs'] . '">'/* </td><td align="center">'*/;
-										//var_dump($rowP['Image']);
-										//var_dump($rowP['IDv']);
-									}
-
-
-
-									echo ('<tr><td align="center"><img src="' . $rowP['Image'] . '" id="Image_tableau"></td> <td>' . $rowP['Moderation'] . '</td><td align="center">' . $rowP['IDv'] . '</td><td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowP['IDs'] . '"></td><td align="center"> <input type="checkbox" name="Telecharger[]" value="' . $rowP['IDs'] . '"></td>');
-								}
-							?>
-							
-						</table>
+								?>
+								
+							</table>
+						</div>
+						<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
 					</div>
-				<input id="BSA" type="submit" name="envoyer" value="Supprimer les avatars selectionnés">
-
-				</div>
-			</form>
-				
+				</form>
 			</div>
 			
 			<!-- MODERATION DE LA BOUTIQUE -->
@@ -230,34 +225,96 @@
 			<!-- MODERATION D ACTIVITES -->
 			<div id="gest-actis">
 				<form id="gest-actis" method="POST" action="#">
-				<div class="form" action="#photo">
-					<div class="tableau_fonction custom-scroll-bar">		
-						<table border="1">
-							<tr><th>Photo</th><th>Nom</th><th>DateA</th><th>Valider</th><th>Supprimer</th></tr>
-							<?php
-								$rowActivites = $Administration->GetModerationActivites();
-								foreach($rowActivites as $rowA) {
-									if ($rowA['Valide'] == 1){
-										$rowA['Valide'] = 'Validée';
-										$Valid = ' ';
+					<div class="form" action="#photo">
+						<div class="tableau_fonction custom-scroll-bar">		
+							<table border="1">
+								<tr><th>Photo</th><th>Nom</th><th>DateA</th><th>Valider</th><th>Supprimer</th></tr>
+								<?php
+									$rowActivites = $Administration->GetModerationActivites();
+									foreach($rowActivites as $rowA) {
+										if ($rowA['Valide'] == 1){
+											$rowA['Valide'] = 'Validée';
+											$Valid = ' ';
+										}
+										else {
+											$rowA['Valide'] = 'En Attente';
+											$Valid = '<input type="checkbox" name="Valider[]" value="' . $rowA['ID'] . '> </td><td align="center">';
+										}
+										echo ('<tr><td align="center"><img src="' . $rowA['Image'] . '" id="Image_tableau"></td><td>' . $rowA['Nom'] . '</td><td width=80px>' . $rowA['DateA'] . '</td><td align="center">' . $Valid . '</td><td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowA['ID'] . '"> </td></tr>');
 									}
-									else {
-										$rowA['Valide'] = 'En Attente';
-										$Valid = '<input type="checkbox" name="Valider[]" value="' . $rowA['ID'] . '> </td><td align="center">';
-									}
-
-
-
-									echo ('<tr><td align="center"><img src="' . $rowA['Image'] . '" id="Image_tableau"></td><td>' . $rowA['Nom'] . '</td><td width=80px>' . $rowA['DateA'] . '</td><td align="center">' . $Valid . '</td><td align="center"><input type="checkbox" name="Supprimer[]" value="' . $rowA['ID'] . '"> </td></tr>');
-								}
-							?>
-							
-						</table>
+								?>
+								
+							</table>
+						</div>
+						<input id="BSA" type="submit" name="envoyer" value="Valider la Sélection">
+						<?php //var_dump($_POST);?>
 					</div>
-				<input id="BSA" type="submit" name="envoyer" value="Valider la Sélection">
-				<?php var_dump($_POST);?>
-				</div>
-			</form>
+				</form>
+
+				<!-- AJOUT ACTIVITE -->
+				<form id="add-actis" method="POST" action="#">
+					<div class="form" id="formacti">
+						<?php 
+							if(!empty($valide)){
+								echo '<p id="valide">';
+								echo "\t\t<strong>", $valide ,"</strong>\n";
+								echo "\t</p>\n\n";
+							}
+							if(!empty($err)){
+								echo '<p id="err">';
+								echo "\t\t<strong>",$err ,"</strong>\n";
+								echo "\t</p>\n\n";
+							}
+						?>
+
+						<h2>Ajouter une activité</h2>
+						
+						<div class="flexinput">
+							<label for="nom">Nom de l'activité</label> <br>
+							<input type="text" name="nom" id="nom"> <br>
+						</div>
+
+						<div class="flexinput">						
+							<label for="desc">Description</label> <br>
+							<input type="text" name="desc" id="desc"> <br>
+						</div>
+
+						<div class="flexinput">						
+							<label for="prix">Prix</label> <br>
+							<input type="text" name="prix" id="prix"> <br>
+						</div>
+						
+						<div class="flexinput">						
+							<label for="photo">Image de l'activité</label> <br>
+							<input type="text" name="photo" id="photo"> <br>
+						</div>
+
+						<h3>Date proposées</h3>
+
+						<div class="flexinput">											
+							<label for="date1">Date 1</label> <br>
+							<input type="datetime" name="date1" id="date"> <br>
+						</div>
+
+						<div class="flexinput">											
+							<label for="date2">Date 2</label> <br>
+							<input type="datetime" name="date2" id="date"> <br>
+						</div>
+
+						<div class="flexinput">											
+							<label for="date3">Date 3</label> <br>
+							<input type="datetime" name="date3" id="date"> <br>
+						</div>
+
+						<div class="flexinput">											
+							<label for="date4">Date 4</label> <br>
+							<input type="datetime" name="date4" id="date"> <br>
+						</div>
+
+						<input type="submit" value="Créer l'activité'">
+					
+					</div>
+				</form>
 				
 			</div>
 			
