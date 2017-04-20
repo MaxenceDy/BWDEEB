@@ -13,11 +13,7 @@
 			header('Location:erreur.php');			
 		}
 	}
-
-?>
-
-<?php 
-
+	
 	if(isset($_POST['Valider'])){
 		foreach($_POST['Valider'] as $key => $value)
 		{
