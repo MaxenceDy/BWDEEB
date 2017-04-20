@@ -3,6 +3,17 @@
 	require('class/admin_bd.php');
 	$Administration = new Administration();
 	$users = new users();
+
+	if(!isset($_SESSION['email'])){
+		header('Location:erreur.php');
+	}
+	else{
+		$fonction = $users->GetUserFonction($_SESSION['email']);
+		if($fonction[0]['Funct'] == 3){
+			header('Location:erreur.php');			
+		}
+	}
+
 ?>
 
 <?php 
@@ -60,7 +71,8 @@
 
   <body>
 
-  <?php include('header.php'); ?>
+  <?php include('header.php'); 
+  /*var_dump($fonction[0]['Funct']);*/?>
     
 		
 		
