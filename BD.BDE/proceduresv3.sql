@@ -109,9 +109,9 @@ ORDER BY Id_Fonction$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserFonction`(IN `ID` INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GetUserFonction`(IN `Vmail` VARCHAR(50))
     READS SQL DATA
-SELECT Id_Fonction AS Funct FROM utilisateur WHERE Id_utilisateur = ID$$
+SELECT Id_Fonction AS Funct FROM utilisateur WHERE Mail = Vmail$$
 DELIMITER ;
 
 DELIMITER $$
