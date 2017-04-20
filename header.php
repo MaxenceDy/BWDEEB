@@ -4,6 +4,7 @@
   $user = new users();
   if(isset($_SESSION['email'])){
     $infos = $user->GetUserInfo($_SESSION['email']);
+	$fonction = $user->GetUserFonction($_SESSION['email']);
   }
 ?>
 
@@ -43,8 +44,11 @@
         <?php if(isset($_SESSION['connecte']) && ($_SESSION['connecte'] == true)){
         ?>
             <li><a href="http://localhost/BWDEEB/suggestion.php">Suggestions d'idées</a></li>
-            <li><a href="http://localhost/BWDEEB/admin.php">Administration</a></li>
-        <?php
-        } ?>
+			<?php if($fonction[0]['Funct'] != 3){ ?>
+				<li><a href="http://localhost/BWDEEB/admin.php">Administration</a></li>
+			<?php
+				} 
+			}
+			?>
     </ul>        
 </nav>

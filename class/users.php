@@ -13,6 +13,7 @@
 		}
 		
 		
+		//enregistre l'utilisateur en BDD
 		function SignUp($mail, $nom, $prenom, $password){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL Inscription(:mdp, :nom, :prenom, :mail, :fonction)');
@@ -32,6 +33,7 @@
 		}
 		
 		
+		//vérifie que l'utilisateur est bien inscrit dans la BDD avant de le connecté
 		function SignIn($password, $mail){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL Login(:password, :mail)');
@@ -50,98 +52,7 @@
 		}
 		
 		
-		function GetAllUserInfo(){
-			try {
-				$Query = $this->co->prepare('CALL GetAllUserInfo()');
-
-				$Query->execute();
-				$rowAll = $Query->fetchAll();
-				
-				return $rowAll;
-			} 
-			catch (PDOException $e){ 
-				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
-			}
-		}
-
-
-		function GetFonction(){
-			try {
-				$Query = $this->co->prepare('CALL GetFonction()');
-
-				$Query->execute();
-				$rowAll = $Query->fetchAll();
-				
-				return $rowAll;
-			} 
-			catch (PDOException $e){ 
-				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
-			}
-		}
-		
-		
-		function getAllUser(){
-			try {
-				$Query = $this->co->prepare('CALL getAllUser()');
-
-				$Query->execute();
-				$rowAll = $Query->fetchAll();
-				
-				return $rowAll;
-			} 
-			catch (PDOException $e){ 
-				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
-			}
-		}
-		
-		function GetUserInfo($mail){
-			//on prépare la requête
-			$Query = $this->co->prepare('CALL GetUserInfo(:mail)');
-
-			//on choisi les paramètres
-			$Query->bindParam(':mail', $mail);
-
-			//on execute
-			$Query->execute();
-			$array = $Query->fetchAll();
-			//fin de la fonction
-			 
-			$Query->closeCursor();
-			return $array;
-		}
-		
-		function GetUserAllInfo($mail){
-			//on prépare la requête
-			$Query = $this->co->prepare('CALL GetUserAllInfo(:mail)');
-
-			//on choisi les paramètres
-			$Query->bindParam(':mail', $mail);
-
-			//on execute
-			$Query->execute();
-			$array = $Query->fetchAll();
-			//fin de la fonction
-			 
-			$Query->closeCursor();
-			return $array;
-		}
-
-		function GetUserID($mail){
-			//on prépare la requête
-			$Query = $this->co->prepare('CALL GetUserID(:mail)');
-
-			//on choisi les paramètres
-			$Query->bindParam(':mail', $mail);
-
-			//on execute
-			$Query->execute();
-			$array = $Query->fetchAll();
-			//fin de la fonction
-			 
-			$Query->closeCursor();
-			return $array;
-		}
-
+		//enregistre la suggestion de l'utilisateur en BDD pour traitement futur par un admin/BDE, etc
 		function Suggestion($sugg, $id){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL AddSuggestion(:sugg, :id)');
@@ -160,7 +71,131 @@
 			//fin de la fonction
 			$Query->closeCursor();
 		}
+		
+		
+		//récupère la liste des fonction existante
+		function GetFonction(){
+			try {
+				$Query = $this->co->prepare('CALL GetFonction()');
 
+				$Query->execute();
+				$rowAll = $Query->fetchAll();
+				
+				return $rowAll;
+			} 
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+		}
+		
+		
+		//récupère la liste de tous les utilisateur inscrit
+		function getAllUser(){
+			try {
+				$Query = $this->co->prepare('CALL getAllUser()');
+
+				$Query->execute();
+				$rowAll = $Query->fetchAll();
+				
+				return $rowAll;
+			} 
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+		}
+		
+		
+		//même chose que GetAllUser mais avec des info en plus
+		function GetAllUserInfo(){
+			try {
+				$Query = $this->co->prepare('CALL GetAllUserInfo()');
+
+				$Query->execute();
+				$rowAll = $Query->fetchAll();
+				
+				return $rowAll;
+			} 
+			catch (PDOException $e){ 
+				echo 'Erreur SQL : '. $e->getMessage().'<br/>'; die(); 
+			}
+		}
+		
+		
+		//récupère des info de l'utilisateur connecté pour header (nom, prénom, avatar)
+		function GetUserInfo($mail){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetUserInfo(:mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':mail', $mail);
+
+			//on execute
+			$Query->execute();
+			$array = $Query->fetchAll();
+			//fin de la fonction
+			 
+			$Query->closeCursor();
+			return $array;
+		}
+		
+		
+		//récupère les info de l'utilisateur connecté pour la page compte.php pour modification des info perso
+		function GetUserAllInfo($mail){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetUserAllInfo(:mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':mail', $mail);
+
+			//on execute
+			$Query->execute();
+			$array = $Query->fetchAll();
+			//fin de la fonction
+			 
+			$Query->closeCursor();
+			return $array;
+		}
+		
+		
+		//récupère l'ID de l'utilisateur connecté
+		function GetUserID($mail){
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetUserID(:mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':mail', $mail);
+
+			//on execute
+			$Query->execute();
+			$array = $Query->fetchAll();
+			//fin de la fonction
+			 
+			$Query->closeCursor();
+			return $array;
+		}
+		
+		
+		//récupère la fonction de l'utilisateur connecté
+		function GetUserFonction($mail){
+			
+			//on prépare la requête
+			$Query = $this->co->prepare('CALL GetUserFonction(:mail)');
+
+			//on choisi les paramètres
+			$Query->bindParam(':mail', $mail);
+
+			//on execute
+			$Query->execute();
+			$array = $Query->fetchAll();
+			//fin de la fonction
+			 
+			$Query->closeCursor();
+			return $array;
+			
+		}
+		
+		
+		//enregistre le nouvel avatar de l'utilisateur
 		function SetAvatar($avatar, $mail){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL SetAvatar(:avatar, :mail)');
@@ -180,6 +215,8 @@
 			$Query->closeCursor();
 		}
 
+		
+		//récupère l'avatar actuel de l'utilisateur
 		function GetCurrAvatar($mail){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL GetCurrentAvatar(:mail)');
@@ -201,6 +238,8 @@
 			return $array;
 		}
 		
+		
+		//enregistre la modification des info de l'utilisateur
 		function UpdateInfo($nom, $prenom, $date, $adresse, $code, $ville, $mail){
 			//on prépare la requête
 			$Query = $this->co->prepare('CALL UpdateInfos(:nom, :prenom, :date, :adresse, :code, :ville, :Vmail)');
@@ -253,7 +292,5 @@
 			//fin de la fonction
 			$Query->closeCursor();
 		}
-		
-		
 	}
 ?>
