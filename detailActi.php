@@ -104,7 +104,8 @@ if( !empty($_FILES['fichier']['name']) )
           {
             //enregistrement du chemin de l'image dans la BDD
             var_dump(TARGET.$nomImage);
-            $actis->AjoutPhoto(TARGET.$nomImage, 0, $_GET['id']);
+			$mod = 0;
+            $actis->AjoutPhoto(TARGET.$nomImage, $mod, $_GET['id']);
             
             //message de confirmation
             $valide = 'Upload réussi !';

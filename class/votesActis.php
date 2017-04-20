@@ -287,7 +287,7 @@
 
 		function AjoutPhoto($img, $mod, $ida){
 			//on prépare la requête
-			$Query = $this->co->prepare('CALL AjoutPhoto(:img, :mod, :ida)');
+			$Query = $this->co->prepare('CALL AddPhoto(:img, :mod, :ida)');
 			
 			//On choisit les paramètres
 			$Query->bindparam(':img', $img);
